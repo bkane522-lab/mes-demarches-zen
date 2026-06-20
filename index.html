@@ -138,6 +138,14 @@ body{
   padding:0 14px;
 }
 
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
 .card{
   background:var(--white);
   border:1px solid var(--border);
@@ -228,12 +236,14 @@ body{
   line-height:1.3;
 }
 
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
+.notice{
+  background:#FFF8E8;
+  border:1px solid #F8E1A0;
+  color:#785A10;
+  border-radius:18px;
+  padding:13px;
+  font-size:13px;
+  line-height:1.4;
 }
 
 .chatBox{
@@ -330,6 +340,25 @@ body{
   color:#B91C1C;
 }
 
+.pills{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:2px;
+}
+
+.pill{
+  flex-shrink:0;
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
 .inputArea{
   display:flex;
   gap:9px;
@@ -366,25 +395,6 @@ textarea:focus{
   font-weight:900;
   cursor:pointer;
   flex-shrink:0;
-}
-
-.pills{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:2px;
-}
-
-.pill{
-  flex-shrink:0;
-  border:1px solid var(--border);
-  background:white;
-  color:var(--navy);
-  border-radius:999px;
-  padding:8px 11px;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
 }
 
 .model{
@@ -494,16 +504,6 @@ textarea:focus{
   margin-top:3px;
   color:var(--muted);
   font-size:12px;
-}
-
-.notice{
-  background:#FFF8E8;
-  border:1px solid #F8E1A0;
-  color:#785A10;
-  border-radius:18px;
-  padding:13px;
-  font-size:13px;
-  line-height:1.4;
 }
 
 .nav{
@@ -626,6 +626,7 @@ textarea:focus{
       <div class="card">
         <div class="sectionTitle">Accès rapide</div>
         <div class="grid">
+
           <div class="quick" onclick="quickAsk('J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.')">
             <b>🏥</b>
             <strong>CPAM</strong>
@@ -649,6 +650,7 @@ textarea:focus{
             <strong>Urgent</strong>
             <span>Date limite, relance, mise en demeure, réponse rapide.</span>
           </div>
+
         </div>
       </div>
 
@@ -667,6 +669,7 @@ textarea:focus{
         <div class="sectionTitle">Assistant démarches</div>
 
         <div class="chatBox">
+
           <div class="pills">
             <button class="pill" onclick="setText('J’ai reçu un courrier CPAM')">Courrier CPAM</button>
             <button class="pill" onclick="setText('J’ai reçu une mise en demeure')">Mise en demeure</button>
@@ -686,6 +689,7 @@ textarea:focus{
             <textarea id="userInput" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..." oninput="autoGrow(this)"></textarea>
             <button class="send" onclick="sendMessage()">↑</button>
           </div>
+
         </div>
       </div>
     </section>
@@ -738,6 +742,7 @@ textarea:focus{
           <p>Demande de délai, erreur, justificatif, contestation simple.</p>
           <button onclick="quickAsk('Prépare-moi un modèle de lettre pour les impôts.')">Utiliser</button>
         </div>
+
       </div>
     </section>
 
@@ -776,7 +781,6 @@ textarea:focus{
 <div id="toast" class="toast"></div>
 
 <script>
-var currentScreen = "home";
 var reminders = [];
 
 try{
@@ -799,8 +803,6 @@ function toast(text){
 }
 
 function openScreen(screen){
-  currentScreen = screen;
-
   ["home","assistant","models","reminders"].forEach(function(s){
     el(s).className = s === screen ? "screen active" : "screen";
   });
@@ -825,6 +827,7 @@ function setText(text){
 
 function quickAsk(text){
   openScreen("assistant");
+
   setTimeout(function(){
     el("userInput").value = text;
     autoGrow(el("userInput"));
@@ -849,7 +852,7 @@ function sendMessage(){
   setTimeout(function(){
     var answer = buildAnswer(text);
     addMessage(answer,"bot",true);
-  },500);
+  },450);
 }
 
 function addMessage(content,type,isHtml){
@@ -926,154 +929,11 @@ function buildAnswer(text){
   var actions = [
     "Relire le courrier et repérer la date limite.",
     "Préparer les documents demandés.",
-    "Faire une copie ou photo du courrier.",
+    "Faire une copie ou une photo du courrier.",
     "Envoyer une réponse claire et garder une preuve d’envoi."
   ];
 
   var model =
     "Madame, Monsieur,<br><br>" +
     "Je fais suite à votre courrier concernant ma situation. " +
-    "Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.<br><br>" +
-    "Vous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.<br><br>" +
-    "Cordialement,<br>" +
-    "[Votre prénom et nom]";
-
-  return '' +
-    '<div class="assistantResult">' +
-      '<div class="resultBlock">' +
-        '<strong>Résumé simple</strong>' +
-        '<p>Votre demande semble concerner : <b>' + category + '</b>. L’objectif est de comprendre ce qui est demandé, répondre correctement et éviter d’oublier une date.</p>' +
-      '</div>' +
-
-      '<div class="resultBlock">' +
-        '<strong>Niveau d’urgence</strong><br>' +
-        '<span class="urgency ' + urgency.className + '">' + urgency.label + '</span>' +
-        '<p>' + urgency.text + '</p>' +
-      '</div>' +
-
-      '<div class="resultBlock">' +
-        '<strong>Actions à faire</strong>' +
-        '<ul>' +
-          actions.map(function(a){ return "<li>" + a + "</li>"; }).join("") +
-        '</ul>' +
-      '</div>' +
-
-      '<div class="resultBlock">' +
-        '<strong>Modèle de réponse</strong>' +
-        '<p id="lastModel">' + model + '</p>' +
-        '<button class="smallBtn secondary" onclick="copyLastModel()">Copier le modèle</button>' +
-      '</div>' +
-    '</div>';
-}
-
-function copyLastModel(){
-  var model = el("lastModel");
-
-  if(!model){
-    toast("Aucun modèle à copier.");
-    return;
-  }
-
-  var text = model.innerText || model.textContent;
-
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(text).then(function(){
-      toast("Modèle copié.");
-    }).catch(function(){
-      fallbackCopy(text);
-    });
-  }else{
-    fallbackCopy(text);
-  }
-}
-
-function fallbackCopy(text){
-  var area = document.createElement("textarea");
-  area.value = text;
-  document.body.appendChild(area);
-  area.select();
-  document.execCommand("copy");
-  document.body.removeChild(area);
-  toast("Copié.");
-}
-
-function addReminder(){
-  var title = el("reminderTitle").value.trim();
-  var date = el("reminderDate").value;
-  var level = el("reminderLevel").value;
-
-  if(!title || !date){
-    toast("Ajoutez un titre et une date.");
-    return;
-  }
-
-  reminders.unshift({
-    title:title,
-    date:date,
-    level:level
-  });
-
-  saveReminders();
-
-  el("reminderTitle").value = "";
-  el("reminderDate").value = "";
-  el("reminderLevel").value = "low";
-
-  renderReminders();
-  toast("Rappel ajouté.");
-}
-
-function saveReminders(){
-  try{
-    localStorage.setItem("mdz_reminders",JSON.stringify(reminders));
-  }catch(e){}
-}
-
-function renderReminders(){
-  var box = el("remindersList");
-  box.innerHTML = "";
-
-  if(reminders.length === 0){
-    box.innerHTML = '<div class="notice" style="margin-top:12px;">Aucun rappel pour le moment.</div>';
-    return;
-  }
-
-  reminders.forEach(function(item,index){
-    var div = document.createElement("div");
-    div.className = "reminderItem";
-
-    var label = item.level === "high" ? "Urgent" : item.level === "medium" ? "Important" : "Normal";
-
-    div.innerHTML =
-      '<div class="dot ' + item.level + '"></div>' +
-      '<div style="flex:1">' +
-        '<strong>' + item.title + '</strong>' +
-        '<p>Date : ' + formatDate(item.date) + ' · ' + label + '</p>' +
-        '<button class="smallBtn secondary" onclick="deleteReminder(' + index + ')">Supprimer</button>' +
-      '</div>';
-
-    box.appendChild(div);
-  });
-}
-
-function deleteReminder(index){
-  reminders.splice(index,1);
-  saveReminders();
-  renderReminders();
-  toast("Rappel supprimé.");
-}
-
-function formatDate(date){
-  var d = new Date(date + "T00:00:00");
-  return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"long",year:"numeric"});
-}
-
-function init(){
-  renderReminders();
-}
-
-init();
-</script>
-
-</body>
-</html>
+    "Je souhaite obtenir des pr
