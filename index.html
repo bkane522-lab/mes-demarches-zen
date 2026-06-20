@@ -2,950 +2,467 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Mes Démarches Zen</title>
-
 <meta name="theme-color" content="#102A43">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Mes Démarches Zen">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#102A43;
-  --blue:#2F80ED;
-  --mint:#39D98A;
-  --violet:#8E6CFF;
-  --white:#FFFFFF;
-  --text:#14213D;
-  --muted:#68778D;
-  --border:#DDE6F1;
-  --warning:#F59E0B;
-  --danger:#EF4444;
+--navy:#102A43;--blue:#2F80ED;--mint:#39D98A;--violet:#8E6CFF;
+--bg:#F2F6FB;--white:#fff;--text:#14213D;--muted:#68778D;
+--border:#DDE6F1;--orange:#F59E0B;--red:#EF4444;
 }
-
 body{
-  min-height:100vh;
-  font-family:Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at 15% 0%,rgba(57,217,138,.18),transparent 28%),
-    radial-gradient(circle at 90% 5%,rgba(142,108,255,.18),transparent 26%),
-    linear-gradient(180deg,#0D2438 0%,#102A43 34%,#F2F6FB 34%,#F2F6FB 100%);
-  color:var(--text);
+font-family:Arial,Helvetica,sans-serif;color:var(--text);min-height:100vh;
+background:linear-gradient(180deg,#0D2438 0%,#102A43 34%,#F2F6FB 34%,#F2F6FB 100%);
 }
-
-.app{
-  max-width:520px;
-  margin:0 auto;
-  min-height:100vh;
-  padding-bottom:82px;
-}
-
-.header{
-  color:white;
-  padding:18px 16px 20px;
-}
-
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.app{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:85px}
+.header{color:#fff;padding:18px 16px 20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px}
 .logo{
-  width:48px;
-  height:48px;
-  border-radius:15px;
-  background:linear-gradient(135deg,var(--mint),var(--blue));
-  display:grid;
-  place-items:center;
-  font-size:24px;
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
+width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--mint),var(--blue));
+display:grid;place-items:center;font-size:24px;box-shadow:0 10px 24px rgba(0,0,0,.18)
 }
-
-.brandText strong{
-  display:block;
-  font-size:19px;
-  font-weight:900;
-  letter-spacing:-.3px;
-}
-
-.brandText span{
-  display:block;
-  margin-top:3px;
-  color:rgba(255,255,255,.76);
-  font-size:12px;
-  font-weight:700;
-}
-
-.badge{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:999px;
-  padding:8px 10px;
-  color:#B9F6D3;
-  font-size:12px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.hero{
-  margin-top:22px;
-}
-
-.hello{
-  font-size:14px;
-  color:rgba(255,255,255,.78);
-  font-weight:800;
-}
-
-.title{
-  margin-top:7px;
-  font-size:29px;
-  line-height:1.08;
-  font-weight:900;
-  letter-spacing:-.8px;
-}
-
-.title span{
-  color:#B9F6D3;
-}
-
-.subtitle{
-  margin-top:9px;
-  color:rgba(255,255,255,.78);
-  font-size:14px;
-  line-height:1.45;
-}
-
-.main{
-  padding:0 14px;
-}
-
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-}
-
+.brand strong{display:block;font-size:19px;font-weight:900}
+.brand span{display:block;margin-top:3px;font-size:12px;color:rgba(255,255,255,.75);font-weight:700}
+.badge{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.12);font-size:12px;font-weight:900;color:#B9F6D3}
+.hero{margin-top:22px}
+.hello{font-size:14px;color:rgba(255,255,255,.78);font-weight:800}
+.title{margin-top:7px;font-size:29px;line-height:1.08;font-weight:900;letter-spacing:-.8px}
+.title span{color:#B9F6D3}
+.subtitle{margin-top:9px;color:rgba(255,255,255,.78);font-size:14px;line-height:1.45}
+.main{padding:0 14px}
+.screen{display:none}
+.screen.active{display:block}
 .card{
-  background:var(--white);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:16px;
-  box-shadow:0 12px 28px rgba(16,42,67,.12);
-  margin-bottom:14px;
+background:#fff;border:1px solid var(--border);border-radius:24px;padding:16px;
+box-shadow:0 12px 28px rgba(16,42,67,.12);margin-bottom:14px
 }
-
-.bigAction{
-  margin-top:-6px;
-  background:linear-gradient(135deg,var(--blue),var(--violet));
-  color:white;
-  border:0;
-  width:100%;
-  text-align:left;
-  border-radius:24px;
-  padding:19px 18px;
-  box-shadow:0 14px 30px rgba(47,128,237,.28);
-  cursor:pointer;
+.big{
+margin-top:-6px;width:100%;border:0;border-radius:24px;padding:19px 18px;text-align:left;color:#fff;
+background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 14px 30px rgba(47,128,237,.28);cursor:pointer
 }
-
-.bigAction small{
-  display:block;
-  font-size:12px;
-  opacity:.78;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.8px;
-}
-
-.bigAction strong{
-  display:block;
-  margin-top:7px;
-  font-size:22px;
-  font-weight:900;
-}
-
-.bigAction span{
-  display:block;
-  margin-top:5px;
-  font-size:14px;
-  opacity:.86;
-}
-
-.sectionTitle{
-  margin:2px 2px 10px;
-  color:var(--navy);
-  font-size:13px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.8px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
+.big small{display:block;font-size:12px;opacity:.78;font-weight:900;text-transform:uppercase;letter-spacing:.8px}
+.big strong{display:block;margin-top:7px;font-size:22px;font-weight:900}
+.big span{display:block;margin-top:5px;font-size:14px;opacity:.86}
+.section{margin:2px 2px 10px;color:var(--navy);font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .quick{
-  background:#F7FAFD;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:14px 12px;
-  cursor:pointer;
-  min-height:104px;
-  text-align:left;
+background:#F7FAFD;border:1px solid var(--border);border-radius:18px;padding:14px 12px;cursor:pointer;
+min-height:104px;text-align:left
 }
-
-.quick b{
-  display:block;
-  font-size:25px;
-  margin-bottom:8px;
-}
-
-.quick strong{
-  display:block;
-  font-size:15px;
-  color:var(--navy);
-  font-weight:900;
-}
-
-.quick span{
-  display:block;
-  margin-top:4px;
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.3;
-}
-
-.notice{
-  background:#FFF8E8;
-  border:1px solid #F8E1A0;
-  color:#785A10;
-  border-radius:18px;
-  padding:13px;
-  font-size:13px;
-  line-height:1.4;
-}
-
-.smallNotice{
-  margin-top:12px;
-}
-
-.chatBox{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  min-height:390px;
-}
-
-.messages{
-  height:330px;
-  overflow-y:auto;
-  background:#F7FAFD;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:12px;
-}
-
-.msg{
-  max-width:92%;
-  margin-bottom:10px;
-  padding:11px 13px;
-  border-radius:16px;
-  font-size:14px;
-  line-height:1.45;
-}
-
-.msg.bot{
-  background:white;
-  border:1px solid var(--border);
-  color:var(--text);
-}
-
-.msg.user{
-  margin-left:auto;
-  background:linear-gradient(135deg,var(--blue),var(--violet));
-  color:white;
-}
-
-.assistantResult{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:13px;
-  margin-top:8px;
-}
-
-.resultBlock{
-  margin-bottom:12px;
-}
-
-.resultBlock:last-child{
-  margin-bottom:0;
-}
-
-.resultBlock strong{
-  color:var(--navy);
-  font-size:14px;
-}
-
-.resultBlock p,
-.resultBlock li{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.45;
-  margin-top:5px;
-}
-
-.resultBlock ul{
-  padding-left:18px;
-}
-
-.urgency{
-  display:inline-block;
-  border-radius:999px;
-  padding:5px 9px;
-  font-size:12px;
-  font-weight:900;
-  margin-top:5px;
-}
-
-.urgency.low{
-  background:rgba(57,217,138,.14);
-  color:#059669;
-}
-
-.urgency.medium{
-  background:rgba(245,158,11,.15);
-  color:#B45309;
-}
-
-.urgency.high{
-  background:rgba(239,68,68,.14);
-  color:#B91C1C;
-}
-
-.pills{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  padding-bottom:2px;
-}
-
+.quick b{display:block;font-size:25px;margin-bottom:8px}
+.quick strong{display:block;font-size:15px;color:var(--navy);font-weight:900}
+.quick span{display:block;margin-top:4px;font-size:12px;color:var(--muted);line-height:1.3}
+.notice{background:#FFF8E8;border:1px solid #F8E1A0;color:#785A10;border-radius:18px;padding:13px;font-size:13px;line-height:1.4}
+.chat{display:flex;flex-direction:column;gap:12px;min-height:390px}
+.pills{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
 .pill{
-  flex-shrink:0;
-  border:1px solid var(--border);
-  background:white;
-  color:var(--navy);
-  border-radius:999px;
-  padding:8px 11px;
-  font-size:12px;
-  font-weight:800;
-  cursor:pointer;
+flex-shrink:0;border:1px solid var(--border);background:#fff;color:var(--navy);
+border-radius:999px;padding:8px 11px;font-size:12px;font-weight:800;cursor:pointer
 }
-
-.inputArea{
-  display:flex;
-  gap:9px;
-  align-items:flex-end;
+.messages{
+height:330px;overflow-y:auto;background:#F7FAFD;border:1px solid var(--border);
+border-radius:20px;padding:12px
 }
-
+.msg{max-width:92%;margin-bottom:10px;padding:11px 13px;border-radius:16px;font-size:14px;line-height:1.45}
+.msg.bot{background:#fff;border:1px solid var(--border)}
+.msg.user{margin-left:auto;background:linear-gradient(135deg,var(--blue),var(--violet));color:#fff}
+.inputRow{display:flex;gap:9px;align-items:flex-end}
 textarea{
-  width:100%;
-  min-height:52px;
-  max-height:120px;
-  resize:none;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:13px;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:14px;
-  outline:none;
-  color:var(--text);
-  background:white;
+width:100%;min-height:52px;max-height:120px;resize:none;border:1px solid var(--border);
+border-radius:18px;padding:13px;font-family:Arial,Helvetica,sans-serif;font-size:14px;outline:none
 }
-
-textarea:focus{
-  border-color:var(--blue);
-}
-
+textarea:focus{border-color:var(--blue)}
 .send{
-  width:52px;
-  height:52px;
-  border:0;
-  border-radius:18px;
-  background:linear-gradient(135deg,var(--blue),var(--violet));
-  color:white;
-  font-size:22px;
-  font-weight:900;
-  cursor:pointer;
-  flex-shrink:0;
+width:52px;height:52px;border:0;border-radius:18px;background:linear-gradient(135deg,var(--blue),var(--violet));
+color:#fff;font-size:22px;font-weight:900;cursor:pointer;flex-shrink:0
 }
-
+.result{background:#fff;border:1px solid var(--border);border-radius:16px;padding:13px;margin-top:8px}
+.block{margin-bottom:12px}
+.block:last-child{margin-bottom:0}
+.block strong{color:var(--navy);font-size:14px}
+.block p,.block li{color:var(--muted);font-size:13px;line-height:1.45;margin-top:5px}
+.block ul{padding-left:18px}
+.urg{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;margin-top:5px}
+.low{background:rgba(57,217,138,.14);color:#059669}
+.medium{background:rgba(245,158,11,.15);color:#B45309}
+.high{background:rgba(239,68,68,.14);color:#B91C1C}
 .model{
-  border:1px solid var(--border);
-  background:#F7FAFD;
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:10px;
+border:1px solid var(--border);background:#F7FAFD;border-radius:18px;padding:14px;margin-bottom:10px
 }
-
-.modelTop{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.modelTop{display:flex;align-items:center;gap:10px}
+.ico{
+width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid var(--border);font-size:22px
 }
-
-.modelIcon{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  background:white;
-  border:1px solid var(--border);
-  font-size:22px;
+.model strong{color:var(--navy);font-size:15px}
+.model p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.4}
+.btn{
+margin-top:11px;border:0;border-radius:14px;background:var(--navy);color:#fff;
+padding:11px 13px;font-weight:900;cursor:pointer;font-size:13px
 }
-
-.model strong{
-  color:var(--navy);
-  font-size:15px;
-}
-
-.model p{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.4;
-}
-
-.model button,
-.miniBtn{
-  margin-top:11px;
-  border:0;
-  border-radius:14px;
-  background:var(--navy);
-  color:white;
-  padding:11px 13px;
-  font-weight:900;
-  cursor:pointer;
-  font-size:13px;
-}
-
-.miniBtn.light{
-  background:#E9F0F8;
-  color:var(--navy);
-}
-
-.reminderForm{
-  display:grid;
-  gap:9px;
-}
-
+.btn.light{background:#E9F0F8;color:var(--navy)}
+.form{display:grid;gap:9px}
 .input{
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:12px;
-  font-size:14px;
-  outline:none;
-  background:white;
+width:100%;border:1px solid var(--border);border-radius:16px;padding:12px;font-size:14px;outline:none;background:#fff
 }
-
-.reminderItem{
-  border:1px solid var(--border);
-  background:#F7FAFD;
-  border-radius:17px;
-  padding:13px;
-  margin-top:10px;
-  display:flex;
-  gap:11px;
-  align-items:flex-start;
+.reminder{
+border:1px solid var(--border);background:#F7FAFD;border-radius:17px;padding:13px;margin-top:10px;
+display:flex;gap:11px;align-items:flex-start
 }
-
-.dot{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  margin-top:4px;
-  background:var(--mint);
-  flex-shrink:0;
-}
-
-.dot.medium{
-  background:var(--warning);
-}
-
-.dot.high{
-  background:var(--danger);
-}
-
-.reminderText{
-  flex:1;
-}
-
-.reminderItem strong{
-  color:var(--navy);
-  font-size:14px;
-}
-
-.reminderItem p{
-  margin-top:3px;
-  color:var(--muted);
-  font-size:12px;
-}
-
+.dot{width:11px;height:11px;border-radius:50%;margin-top:4px;background:var(--mint);flex-shrink:0}
+.dot.medium{background:var(--orange)}
+.dot.high{background:var(--red)}
+.reminder strong{color:var(--navy);font-size:14px}
+.reminder p{margin-top:3px;color:var(--muted);font-size:12px}
 .nav{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  background:white;
-  border-top:1px solid var(--border);
-  box-shadow:0 -8px 24px rgba(16,42,67,.08);
-  z-index:20;
+position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--border);
+box-shadow:0 -8px 24px rgba(16,42,67,.08);z-index:20
 }
-
-.navInner{
-  max-width:520px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  padding:8px 8px 12px;
-}
-
-.navBtn{
-  border:0;
-  background:transparent;
-  color:var(--muted);
-  font-size:11px;
-  font-weight:900;
-  cursor:pointer;
-  padding:6px 2px;
-}
-
-.navBtn b{
-  display:block;
-  font-size:22px;
-  line-height:1;
-  margin-bottom:3px;
-}
-
-.navBtn.active{
-  color:var(--blue);
-}
-
+.navIn{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px 12px}
+.navBtn{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:900;cursor:pointer;padding:6px 2px}
+.navBtn b{display:block;font-size:22px;line-height:1;margin-bottom:3px}
+.navBtn.active{color:var(--blue)}
 .toast{
-  position:fixed;
-  left:50%;
-  bottom:84px;
-  transform:translateX(-50%);
-  max-width:90%;
-  background:var(--navy);
-  color:white;
-  border-radius:999px;
-  padding:11px 14px;
-  font-size:13px;
-  font-weight:900;
-  opacity:0;
-  pointer-events:none;
-  transition:.2s;
-  z-index:50;
-  box-shadow:0 12px 28px rgba(0,0,0,.18);
+position:fixed;left:50%;bottom:84px;transform:translateX(-50%);max-width:90%;
+background:var(--navy);color:#fff;border-radius:999px;padding:11px 14px;font-size:13px;
+font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:50
 }
-
-.toast.show{
-  opacity:1;
-}
-
-@media(max-width:370px){
-  .title{
-    font-size:25px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .messages{
-    height:300px;
-  }
-}
+.toast.show{opacity:1}
+@media(max-width:370px){.title{font-size:25px}.grid{grid-template-columns:1fr}.messages{height:300px}}
 </style>
 </head>
 
 <body>
 
 <div class="app">
-
-  <header class="header">
-    <div class="top">
-      <div class="brand">
-        <div class="logo">📄</div>
-        <div class="brandText">
-          <strong>Mes Démarches Zen</strong>
-          <span>Votre assistant administratif simple</span>
-        </div>
-      </div>
-      <div class="badge">Simple</div>
-    </div>
-
-    <div class="hero">
-      <div class="hello">Bonjour 👋</div>
-      <div class="title">
-        Vos courriers,<br>
-        <span>sans stress.</span>
-      </div>
-      <div class="subtitle">
-        Comprendre vos démarches, préparer une réponse et ne rien oublier.
+<header class="header">
+  <div class="top">
+    <div class="brand">
+      <div class="logo">📄</div>
+      <div>
+        <strong>Mes Démarches Zen</strong>
+        <span>Votre assistant administratif simple</span>
       </div>
     </div>
-  </header>
+    <div class="badge">Simple</div>
+  </div>
+  <div class="hero">
+    <div class="hello">Bonjour 👋</div>
+    <div class="title">Vos courriers,<br><span>sans stress.</span></div>
+    <div class="subtitle">Comprendre vos démarches, préparer une réponse et ne rien oublier.</div>
+  </div>
+</header>
 
-  <main class="main">
+<main class="main">
 
-    <section id="screen-home" class="screen active">
+<section id="home" class="screen active">
+  <button class="big" data-screen="assistant">
+    <small>Action principale</small>
+    <strong>J’ai reçu un courrier →</strong>
+    <span>Expliquez-le, l’assistant vous guide étape par étape.</span>
+  </button>
 
-      <button class="bigAction" type="button" data-screen="assistant">
-        <small>Action principale</small>
-        <strong>J’ai reçu un courrier →</strong>
-        <span>Expliquez-le, l’assistant vous guide étape par étape.</span>
+  <div class="card">
+    <div class="section">Accès rapide</div>
+    <div class="grid">
+      <button class="quick" data-ask="J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.">
+        <b>🏥</b><strong>CPAM</strong><span>Arrêt maladie, remboursement, ALD, courrier reçu.</span>
       </button>
+      <button class="quick" data-ask="J’ai reçu un courrier CAF. Aide-moi à comprendre et à répondre.">
+        <b>👨‍👩‍👧</b><strong>CAF</strong><span>APL, allocations, déclaration, changement de situation.</span>
+      </button>
+      <button class="quick" data-ask="J’ai reçu un courrier de France Travail. Aide-moi à savoir quoi faire.">
+        <b>💼</b><strong>France Travail</strong><span>Rendez-vous, actualisation, justificatifs, indemnisation.</span>
+      </button>
+      <button class="quick" data-ask="J’ai une démarche urgente. Aide-moi à organiser les actions à faire.">
+        <b>⏰</b><strong>Urgent</strong><span>Date limite, relance, mise en demeure, réponse rapide.</span>
+      </button>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="sectionTitle">Accès rapide</div>
-        <div class="grid">
+  <div class="card">
+    <div class="section">À retenir</div>
+    <div class="notice">Cette application aide à comprendre et préparer vos démarches. Elle ne remplace pas un avocat, un conseiller officiel ou une administration.</div>
+  </div>
+</section>
 
-          <button class="quick" type="button" data-ask="J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.">
-            <b>🏥</b>
-            <strong>CPAM</strong>
-            <span>Arrêt maladie, remboursement, ALD, courrier reçu.</span>
-          </button>
-
-          <button class="quick" type="button" data-ask="J’ai reçu un courrier CAF. Aide-moi à comprendre et à répondre.">
-            <b>👨‍👩‍👧</b>
-            <strong>CAF</strong>
-            <span>APL, allocations, déclaration, changement de situation.</span>
-          </button>
-
-          <button class="quick" type="button" data-ask="J’ai reçu un courrier de France Travail. Aide-moi à savoir quoi faire.">
-            <b>💼</b>
-            <strong>France Travail</strong>
-            <span>Rendez-vous, actualisation, justificatifs, indemnisation.</span>
-          </button>
-
-          <button class="quick" type="button" data-ask="J’ai une démarche urgente. Aide-moi à organiser les actions à faire.">
-            <b>⏰</b>
-            <strong>Urgent</strong>
-            <span>Date limite, relance, mise en demeure, réponse rapide.</span>
-          </button>
-
+<section id="assistant" class="screen">
+  <div class="card">
+    <div class="section">Assistant démarches</div>
+    <div class="chat">
+      <div class="pills">
+        <button class="pill" data-fill="J’ai reçu un courrier CPAM">Courrier CPAM</button>
+        <button class="pill" data-fill="J’ai reçu une mise en demeure">Mise en demeure</button>
+        <button class="pill" data-fill="Je dois répondre à France Travail">France Travail</button>
+        <button class="pill" data-fill="Aide-moi à faire une lettre de recours">Recours</button>
+      </div>
+      <div class="messages" id="messages">
+        <div class="msg bot">
+          Bonjour 👋<br><br>
+          Décrivez votre courrier ou votre démarche. Je vais vous donner un résumé simple, le niveau d’urgence, les actions à faire et un modèle de réponse.
         </div>
       </div>
-
-      <div class="card">
-        <div class="sectionTitle">À retenir</div>
-        <div class="notice">
-          Cette application aide à comprendre et préparer vos démarches.  
-          Elle ne remplace pas un avocat, un conseiller officiel ou une administration.
-        </div>
+      <div class="inputRow">
+        <textarea id="text" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..."></textarea>
+        <button class="send" id="send">↑</button>
       </div>
+    </div>
+  </div>
+</section>
 
-    </section>
+<section id="models" class="screen">
+  <div class="card">
+    <div class="section">Modèles prêts</div>
 
-    <section id="screen-assistant" class="screen">
-      <div class="card">
-        <div class="sectionTitle">Assistant démarches</div>
+    <div class="model">
+      <div class="modelTop"><div class="ico">🏥</div><strong>Réponse CPAM</strong></div>
+      <p>Demande de remboursement, justificatifs, arrêt maladie, dossier incomplet.</p>
+      <button class="btn" data-ask="Prépare-moi un modèle de lettre pour répondre à la CPAM.">Utiliser</button>
+    </div>
 
-        <div class="chatBox">
+    <div class="model">
+      <div class="modelTop"><div class="ico">👨‍👩‍👧</div><strong>Réponse CAF</strong></div>
+      <p>Changement de situation, document demandé, contestation ou demande de délai.</p>
+      <button class="btn" data-ask="Prépare-moi un modèle de lettre pour répondre à la CAF.">Utiliser</button>
+    </div>
 
-          <div class="pills">
-            <button class="pill" type="button" data-fill="J’ai reçu un courrier CPAM">Courrier CPAM</button>
-            <button class="pill" type="button" data-fill="J’ai reçu une mise en demeure">Mise en demeure</button>
-            <button class="pill" type="button" data-fill="Je dois répondre à France Travail">France Travail</button>
-            <button class="pill" type="button" data-fill="Aide-moi à faire une lettre de recours">Recours</button>
-          </div>
+    <div class="model">
+      <div class="modelTop"><div class="ico">💼</div><strong>France Travail</strong></div>
+      <p>Réponse à un rendez-vous, actualisation, justificatifs, demande d’explication.</p>
+      <button class="btn" data-ask="Prépare-moi un modèle de lettre pour France Travail.">Utiliser</button>
+    </div>
 
-          <div class="messages" id="messages">
-            <div class="msg bot">
-              Bonjour 👋<br><br>
-              Décrivez votre courrier ou votre démarche.  
-              Je vais vous donner un résumé simple, le niveau d’urgence, les actions à faire et un modèle de réponse.
-            </div>
-          </div>
+    <div class="model">
+      <div class="modelTop"><div class="ico">🏠</div><strong>Logement / Assurance</strong></div>
+      <p>Loyer, assurance habitation, sinistre, attestation ou relance.</p>
+      <button class="btn" data-ask="Prépare-moi un modèle de lettre pour un problème de logement ou assurance.">Utiliser</button>
+    </div>
 
-          <div class="inputArea">
-            <textarea id="userInput" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..."></textarea>
-            <button class="send" id="sendBtn" type="button">↑</button>
-          </div>
+    <div class="model">
+      <div class="modelTop"><div class="ico">💶</div><strong>Impôts</strong></div>
+      <p>Demande de délai, erreur, justificatif, contestation simple.</p>
+      <button class="btn" data-ask="Prépare-moi un modèle de lettre pour les impôts.">Utiliser</button>
+    </div>
 
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
-    <section id="screen-models" class="screen">
-      <div class="card">
-        <div class="sectionTitle">Modèles prêts</div>
+<section id="reminders" class="screen">
+  <div class="card">
+    <div class="section">Mes rappels</div>
+    <div class="form">
+      <input id="rTitle" class="input" placeholder="Titre du rappel">
+      <input id="rDate" class="input" type="date">
+      <select id="rLevel" class="input">
+        <option value="low">Normal</option>
+        <option value="medium">Important</option>
+        <option value="high">Urgent</option>
+      </select>
+      <button class="btn" id="addReminder">Ajouter le rappel</button>
+    </div>
+    <div id="reminderList"></div>
+  </div>
+</section>
 
-        <div class="model">
-          <div class="modelTop">
-            <div class="modelIcon">🏥</div>
-            <strong>Réponse CPAM</strong>
-          </div>
-          <p>Demande de remboursement, justificatifs, arrêt maladie, dossier incomplet.</p>
-          <button type="button" data-ask="Prépare-moi un modèle de lettre pour répondre à la CPAM.">Utiliser</button>
-        </div>
-
-        <div class="model">
-          <div class="modelTop">
-            <div class="modelIcon">👨‍👩‍👧</div>
-            <strong>Réponse CAF</strong>
-          </div>
-          <p>Changement de situation, document demandé, contestation ou demande de délai.</p>
-          <button type="button" data-ask="Prépare-moi un modèle de lettre pour répondre à la CAF.">Utiliser</button>
-        </div>
-
-        <div class="model">
-          <div class="modelTop">
-            <div class="modelIcon">💼</div>
-            <strong>France Travail</strong>
-          </div>
-          <p>Réponse à un rendez-vous, actualisation, justificatifs, demande d’explication.</p>
-          <button type="button" data-ask="Prépare-moi un modèle de lettre pour France Travail.">Utiliser</button>
-        </div>
-
-        <div class="model">
-          <div class="modelTop">
-            <div class="modelIcon">🏠</div>
-            <strong>Logement / Assurance</strong>
-          </div>
-          <p>Loyer, assurance habitation, sinistre, attestation ou relance.</p>
-          <button type="button" data-ask="Prépare-moi un modèle de lettre pour un problème de logement ou assurance.">Utiliser</button>
-        </div>
-
-        <div class="model">
-          <div class="modelTop">
-            <div class="modelIcon">💶</div>
-            <strong>Impôts</strong>
-          </div>
-          <p>Demande de délai, erreur, justificatif, contestation simple.</p>
-          <button type="button" data-ask="Prépare-moi un modèle de lettre pour les impôts.">Utiliser</button>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="screen-reminders" class="screen">
-      <div class="card">
-        <div class="sectionTitle">Mes rappels</div>
-
-        <div class="reminderForm">
-          <input id="reminderTitle" class="input" placeholder="Titre du rappel">
-          <input id="reminderDate" class="input" type="date">
-          <select id="reminderLevel" class="input">
-            <option value="low">Normal</option>
-            <option value="medium">Important</option>
-            <option value="high">Urgent</option>
-          </select>
-          <button class="miniBtn" id="addReminderBtn" type="button">Ajouter le rappel</button>
-        </div>
-
-        <div id="remindersList"></div>
-      </div>
-    </section>
-
-  </main>
-
+</main>
 </div>
 
 <nav class="nav">
-  <div class="navInner">
-    <button id="nav-home" class="navBtn active" type="button" data-screen="home"><b>⌂</b>Accueil</button>
-    <button id="nav-assistant" class="navBtn" type="button" data-screen="assistant"><b>💬</b>Assistant</button>
-    <button id="nav-models" class="navBtn" type="button" data-screen="models"><b>📝</b>Modèles</button>
-    <button id="nav-reminders" class="navBtn" type="button" data-screen="reminders"><b>🔔</b>Rappels</button>
+  <div class="navIn">
+    <button class="navBtn active" data-screen="home"><b>⌂</b>Accueil</button>
+    <button class="navBtn" data-screen="assistant"><b>💬</b>Assistant</button>
+    <button class="navBtn" data-screen="models"><b>📝</b>Modèles</button>
+    <button class="navBtn" data-screen="reminders"><b>🔔</b>Rappels</button>
   </div>
 </nav>
 
 <div id="toast" class="toast"></div>
 
 <script>
-var reminders = [];
-var lastModelText = "";
+var reminders=[];
+var lastModel="";
 
-function byId(id){
-  return document.getElementById(id);
+function q(s){return document.querySelector(s)}
+function qa(s){return document.querySelectorAll(s)}
+
+function toast(t){
+  var box=q("#toast");
+  box.textContent=t;
+  box.className="toast show";
+  setTimeout(function(){box.className="toast"},2000);
 }
 
-function showToast(text){
-  var t = byId("toast");
-  if(!t){ return; }
-
-  t.textContent = text;
-  t.className = "toast show";
-
-  setTimeout(function(){
-    t.className = "toast";
-  },2200);
+function save(){
+  try{localStorage.setItem("mdz_reminders",JSON.stringify(reminders))}catch(e){}
 }
 
-function saveReminders(){
-  try{
-    localStorage.setItem("mdz_reminders_v12",JSON.stringify(reminders));
-  }catch(e){}
+function load(){
+  try{reminders=JSON.parse(localStorage.getItem("mdz_reminders")||"[]")}catch(e){reminders=[]}
 }
 
-function loadReminders(){
-  try{
-    reminders = JSON.parse(localStorage.getItem("mdz_reminders_v12") || "[]");
-  }catch(e){
-    reminders = [];
-  }
-}
+function show(name){
+  qa(".screen").forEach(function(s){s.classList.remove("active")});
+  q("#"+name).classList.add("active");
 
-function setScreen(name){
-  var screens = ["home","assistant","models","reminders"];
-
-  for(var i=0;i<screens.length;i++){
-    var id = screens[i];
-    var screen = byId("screen-" + id);
-    var nav = byId("nav-" + id);
-
-    if(screen){
-      screen.className = id === name ? "screen active" : "screen";
-    }
-
-    if(nav){
-      nav.className = id === name ? "navBtn active" : "navBtn";
-    }
-  }
+  qa(".navBtn").forEach(function(b){
+    b.classList.toggle("active",b.getAttribute("data-screen")===name);
+  });
 
   window.scrollTo(0,0);
 }
 
-function autoGrow(field){
-  field.style.height = "52px";
-  field.style.height = field.scrollHeight + "px";
-}
-
-function setInput(text){
-  var input = byId("userInput");
-
-  if(!input){
-    return;
-  }
-
-  input.value = text;
-  autoGrow(input);
+function fill(t){
+  var input=q("#text");
+  input.value=t;
   input.focus();
 }
 
-function quickAsk(text){
-  setScreen("assistant");
-
+function ask(t){
+  show("assistant");
   setTimeout(function(){
-    setInput(text);
-    sendMessage();
+    fill(t);
+    send();
   },150);
 }
 
-function addMessage(content,type,html){
-  var box = byId("messages");
-
-  if(!box){
-    return;
-  }
-
-  var div = document.createElement("div");
-  div.className = "msg " + type;
-
-  if(html){
-    div.innerHTML = content;
-  }else{
-    div.textContent = content;
-  }
-
+function msg(content,type,html){
+  var box=q("#messages");
+  var div=document.createElement("div");
+  div.className="msg "+type;
+  if(html){div.innerHTML=content}else{div.textContent=content}
   box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+  box.scrollTop=box.scrollHeight;
 }
 
-function detectCategory(text){
-  var t = text.toLowerCase();
-
-  if(t.indexOf("cpam") >= 0 || t.indexOf("securite") >= 0 || t.indexOf("sécurité") >= 0 || t.indexOf("maladie") >= 0 || t.indexOf("arret") >= 0 || t.indexOf("arrêt") >= 0){
-    return "CPAM / Santé";
-  }
-
-  if(t.indexOf("caf") >= 0 || t.indexOf("apl") >= 0 || t.indexOf("rsa") >= 0 || t.indexOf("allocation") >= 0){
-    return "CAF / Allocations";
-  }
-
-  if(t.indexOf("france travail") >= 0 || t.indexOf("pole emploi") >= 0 || t.indexOf("pôle emploi") >= 0 || t.indexOf("actualisation") >= 0){
-    return "France Travail";
-  }
-
-  if(t.indexOf("impot") >= 0 || t.indexOf("impôt") >= 0 || t.indexOf("taxe") >= 0){
-    return "Impôts";
-  }
-
-  if(t.indexOf("loyer") >= 0 || t.indexOf("logement") >= 0 || t.indexOf("assurance") >= 0){
-    return "Logement / Assurance";
-  }
-
+function cat(t){
+  t=t.toLowerCase();
+  if(t.includes("cpam")||t.includes("maladie")||t.includes("arrêt")||t.includes("arret"))return "CPAM / Santé";
+  if(t.includes("caf")||t.includes("apl")||t.includes("rsa")||t.includes("allocation"))return "CAF / Allocations";
+  if(t.includes("france travail")||t.includes("pôle emploi")||t.includes("pole emploi"))return "France Travail";
+  if(t.includes("impôt")||t.includes("impot")||t.includes("taxe"))return "Impôts";
+  if(t.includes("logement")||t.includes("loyer")||t.includes("assurance"))return "Logement / Assurance";
   return "Démarche administrative";
 }
 
-function detectUrgency(text){
-  var t = text.toLowerCase();
-
-  if(t.indexOf("urgent") >= 0 || t.indexOf("mise en demeure") >= 0 || t.indexOf("dernier rappel") >= 0 || t.indexOf("48h") >= 0 || t.indexOf("avant le") >= 0){
-    return {
-      label:"Urgent",
-      cls:"high",
-      note:"Répondez rapidement et vérifiez la date limite."
-    };
+function urg(t){
+  t=t.toLowerCase();
+  if(t.includes("urgent")||t.includes("mise en demeure")||t.includes("dernier rappel")||t.includes("48h")||t.includes("avant le")){
+    return {label:"Urgent",c:"high",note:"Répondez rapidement et vérifiez la date limite."};
   }
-
-  if(t.indexOf("rappel") >= 0 || t.indexOf("justificatif") >= 0 || t.indexOf("document") >= 0 || t.indexOf("délai") >= 0 || t.indexOf("delai") >= 0){
-    return {
-      label:"Important",
-      cls:"medium",
-      note:"Préparez les documents demandés et notez une date de suivi."
-    };
+  if(t.includes("rappel")||t.includes("justificatif")||t.includes("document")||t.includes("délai")||t.includes("delai")){
+    return {label:"Important",c:"medium",note:"Préparez les documents demandés et notez une date de suivi."};
   }
-
-  return {
-    label:"Normal",
-    cls:"low",
-    note:"Prenez le temps de vérifier les informations et gardez une copie."
-  };
+  return {label:"Normal",c:"low",note:"Prenez le temps de vérifier les informations et gardez une copie."};
 }
 
-function buildAnswer(text){
-  var category = detectCategory(text);
-  var urgency = detectUrgency(text);
+function answer(t){
+  var c=cat(t),u=urg(t);
+  lastModel="Madame, Monsieur,\n\nJe fais suite à votre courrier concernant ma situation. Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.\n\nVous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.\n\nCordialement,\n[Votre prénom et nom]";
 
-  lastModelText =
-    "Madame, Monsieur,\n\n" +
-    "Je fais suite à votre courrier concernant ma situation. Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.\n\n" +
-    "Vous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.\n\n" +
-    "Cordialement,\n" +
-    "[Votre prénom et
+  return "<div class='result'>"+
+    "<div class='block'><strong>Résumé simple</strong><p>Votre demande semble concerner : <b>"+c+"</b>. L’objectif est de comprendre ce qui est demandé, répondre correctement et ne pas oublier une date.</p></div>"+
+    "<div class='block'><strong>Niveau d’urgence</strong><br><span class='urg "+u.c+"'>"+u.label+"</span><p>"+u.note+"</p></div>"+
+    "<div class='block'><strong>Actions à faire</strong><ul><li>Repérer la date limite.</li><li>Préparer les documents demandés.</li><li>Faire une photo ou une copie du courrier.</li><li>Envoyer une réponse claire et garder une preuve.</li></ul></div>"+
+    "<div class='block'><strong>Modèle de réponse</strong><p>Madame, Monsieur,<br><br>Je fais suite à votre courrier concernant ma situation. Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.<br><br>Vous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.<br><br>Cordialement,<br>[Votre prénom et nom]</p><button class='btn' id='copyModel'>Copier le modèle</button></div>"+
+  "</div>";
+}
+
+function send(){
+  var input=q("#text");
+  var t=input.value.trim();
+  if(!t){toast("Écrivez votre demande.");return}
+  msg(t,"user",false);
+  input.value="";
+  setTimeout(function(){msg(answer(t),"bot",true)},300);
+}
+
+function copy(t){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(t).then(function(){toast("Copié.")}).catch(function(){fallback(t)});
+  }else{fallback(t)}
+}
+
+function fallback(t){
+  var a=document.createElement("textarea");
+  a.value=t;
+  document.body.appendChild(a);
+  a.select();
+  document.execCommand("copy");
+  document.body.removeChild(a);
+  toast("Copié.");
+}
+
+function addReminder(){
+  var title=q("#rTitle").value.trim();
+  var date=q("#rDate").value;
+  var level=q("#rLevel").value;
+  if(!title||!date){toast("Ajoutez un titre et une date.");return}
+  reminders.unshift({title:title,date:date,level:level});
+  q("#rTitle").value="";
+  q("#rDate").value="";
+  q("#rLevel").value="low";
+  save();
+  renderReminders();
+  toast("Rappel ajouté.");
+}
+
+function fmt(d){
+  return new Date(d+"T00:00:00").toLocaleDateString("fr-FR",{day:"2-digit",month:"long",year:"numeric"});
+}
+
+function renderReminders(){
+  var box=q("#reminderList");
+  box.innerHTML="";
+  if(reminders.length===0){
+    box.innerHTML="<div class='notice' style='margin-top:12px'>Aucun rappel pour le moment.</div>";
+    return;
+  }
+  reminders.forEach(function(r,i){
+    var label=r.level==="high"?"Urgent":r.level==="medium"?"Important":"Normal";
+    var div=document.createElement("div");
+    div.className="reminder";
+    div.innerHTML="<div class='dot "+r.level+"'></div><div><strong>"+r.title+"</strong><p>Date : "+fmt(r.date)+" · "+label+"</p><button class='btn light' data-del='"+i+"'>Supprimer</button></div>";
+    box.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+  load();
+  renderReminders();
+
+  document.body.addEventListener("click",function(e){
+    var b=e.target.closest("[data-screen]");
+    if(b){show(b.getAttribute("data-screen"));return}
+
+    var a=e.target.closest("[data-ask]");
+    if(a){ask(a.getAttribute("data-ask"));return}
+
+    var f=e.target.closest("[data-fill]");
+    if(f){fill(f.getAttribute("data-fill"));return}
+
+    if(e.target.id==="send"){send();return}
+    if(e.target.id==="addReminder"){addReminder();return}
+    if(e.target.id==="copyModel"){copy(lastModel);return}
+
+    var d=e.target.closest("[data-del]");
+    if(d){
+      reminders.splice(parseInt(d.getAttribute("data-del")),1);
+      save();
+      renderReminders();
+      toast("Rappel supprimé.");
+    }
+  });
+
+  q("#text").addEventListener("keydown",function(e){
+    if(e.key==="Enter"&&!e.shiftKey){
+      e.preventDefault();
+      send();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
