@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mes Démarches Zen</title>
+
+<meta name="theme-color" content="#102A43">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mes Démarches Zen">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --navy:#102A43;
+  --navy2:#163B5C;
+  --blue:#2F80ED;
+  --mint:#39D98A;
+  --violet:#8E6CFF;
+  --cream:#F7F9FC;
+  --white:#FFFFFF;
+  --text:#14213D;
+  --muted:#68778D;
+  --border:#DDE6F1;
+  --warning:#F59E0B;
+  --danger:#EF4444;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(57,217,138,.18),transparent 28%),
+    radial-gradient(circle at 90% 5%,rgba(142,108,255,.18),transparent 26%),
+    linear-gradient(180deg,#0D2438 0%,#102A43 34%,#F2F6FB 34%,#F2F6FB 100%);
+  color:var(--text);
+}
+
+.app{
+  max-width:520px;
+  margin:0 auto;
+  min-height:100vh;
+  padding-bottom:82px;
+}
+
+.header{
+  color:white;
+  padding:18px 16px 20px;
+}
+
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:linear-gradient(135deg,var(--mint),var(--blue));
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+
+.brandText strong{
+  display:block;
+  font-size:19px;
+  font-weight:900;
+  letter-spacing:-.3px;
+}
+
+.brandText span{
+  display:block;
+  margin-top:3px;
+  color:rgba(255,255,255,.76);
+  font-size:12px;
+  font-weight:700;
+}
+
+.badge{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  padding:8px 10px;
+  color:#B9F6D3;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.hero{
+  margin-top:22px;
+}
+
+.hello{
+  font-size:14px;
+  color:rgba(255,255,255,.78);
+  font-weight:800;
+}
+
+.title{
+  margin-top:7px;
+  font-size:29px;
+  line-height:1.08;
+  font-weight:900;
+  letter-spacing:-.8px;
+}
+
+.title span{
+  color:#B9F6D3;
+}
+
+.subtitle{
+  margin-top:9px;
+  color:rgba(255,255,255,.78);
+  font-size:14px;
+  line-height:1.45;
+}
+
+.main{
+  padding:0 14px;
+}
+
+.card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:16px;
+  box-shadow:0 12px 28px rgba(16,42,67,.12);
+  margin-bottom:14px;
+}
+
+.bigAction{
+  margin-top:-6px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:white;
+  border:0;
+  width:100%;
+  text-align:left;
+  border-radius:24px;
+  padding:19px 18px;
+  box-shadow:0 14px 30px rgba(47,128,237,.28);
+  cursor:pointer;
+}
+
+.bigAction small{
+  display:block;
+  font-size:12px;
+  opacity:.78;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.bigAction strong{
+  display:block;
+  margin-top:7px;
+  font-size:22px;
+  font-weight:900;
+}
+
+.bigAction span{
+  display:block;
+  margin-top:5px;
+  font-size:14px;
+  opacity:.86;
+}
+
+.sectionTitle{
+  margin:2px 2px 10px;
+  color:var(--navy);
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.quick{
+  background:#F7FAFD;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px 12px;
+  cursor:pointer;
+  min-height:104px;
+}
+
+.quick b{
+  display:block;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.quick strong{
+  display:block;
+  font-size:15px;
+  color:var(--navy);
+  font-weight:900;
+}
+
+.quick span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.3;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.chatBox{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height:390px;
+}
+
+.messages{
+  height:330px;
+  overflow-y:auto;
+  background:#F7FAFD;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:12px;
+}
+
+.msg{
+  max-width:92%;
+  margin-bottom:10px;
+  padding:11px 13px;
+  border-radius:16px;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.msg.bot{
+  background:white;
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.msg.user{
+  margin-left:auto;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:white;
+}
+
+.assistantResult{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:13px;
+  margin-top:8px;
+}
+
+.resultBlock{
+  margin-bottom:12px;
+}
+
+.resultBlock:last-child{
+  margin-bottom:0;
+}
+
+.resultBlock strong{
+  color:var(--navy);
+  font-size:14px;
+}
+
+.resultBlock p,
+.resultBlock li{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  margin-top:5px;
+}
+
+.resultBlock ul{
+  padding-left:18px;
+}
+
+.urgency{
+  display:inline-block;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:12px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.urgency.low{
+  background:rgba(57,217,138,.14);
+  color:#059669;
+}
+
+.urgency.medium{
+  background:rgba(245,158,11,.15);
+  color:#B45309;
+}
+
+.urgency.high{
+  background:rgba(239,68,68,.14);
+  color:#B91C1C;
+}
+
+.inputArea{
+  display:flex;
+  gap:9px;
+  align-items:flex-end;
+}
+
+textarea{
+  width:100%;
+  min-height:54px;
+  max-height:120px;
+  resize:none;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:13px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:14px;
+  outline:none;
+  color:var(--text);
+  background:white;
+}
+
+textarea:focus{
+  border-color:var(--blue);
+}
+
+.send{
+  width:54px;
+  height:54px;
+  border:0;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:white;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.pills{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:2px;
+}
+
+.pill{
+  flex-shrink:0;
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.model{
+  border:1px solid var(--border);
+  background:#F7FAFD;
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:10px;
+}
+
+.modelTop{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.modelIcon{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:white;
+  border:1px solid var(--border);
+  font-size:22px;
+}
+
+.model strong{
+  color:var(--navy);
+  font-size:15px;
+}
+
+.model p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+
+.model button,
+.smallBtn{
+  margin-top:11px;
+  border:0;
+  border-radius:14px;
+  background:var(--navy);
+  color:white;
+  padding:11px 13px;
+  font-weight:900;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.smallBtn.secondary{
+  background:#E9F0F8;
+  color:var(--navy);
+}
+
+.reminderForm{
+  display:grid;
+  gap:9px;
+}
+
+.input{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:12px;
+  font-size:14px;
+  outline:none;
+  background:white;
+}
+
+.reminderItem{
+  border:1px solid var(--border);
+  background:#F7FAFD;
+  border-radius:17px;
+  padding:13px;
+  margin-top:10px;
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+}
+
+.dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  margin-top:4px;
+  background:var(--mint);
+  flex-shrink:0;
+}
+
+.dot.medium{
+  background:var(--warning);
+}
+
+.dot.high{
+  background:var(--danger);
+}
+
+.reminderItem strong{
+  color:var(--navy);
+  font-size:14px;
+}
+
+.reminderItem p{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.notice{
+  background:#FFF8E8;
+  border:1px solid #F8E1A0;
+  color:#785A10;
+  border-radius:18px;
+  padding:13px;
+  font-size:13px;
+  line-height:1.4;
+}
+
+.nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:white;
+  border-top:1px solid var(--border);
+  box-shadow:0 -8px 24px rgba(16,42,67,.08);
+  z-index:20;
+}
+
+.navInner{
+  max-width:520px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:8px 8px 12px;
+}
+
+.navBtn{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+  padding:6px 2px;
+}
+
+.navBtn b{
+  display:block;
+  font-size:22px;
+  line-height:1;
+  margin-bottom:3px;
+}
+
+.navBtn.active{
+  color:var(--blue);
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:84px;
+  transform:translateX(-50%);
+  max-width:90%;
+  background:var(--navy);
+  color:white;
+  border-radius:999px;
+  padding:11px 14px;
+  font-size:13px;
+  font-weight:900;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  z-index:50;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+
+.toast.show{
+  opacity:1;
+}
+
+@media(max-width:370px){
+  .title{
+    font-size:25px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .messages{
+    height:300px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <div class="top">
+      <div class="brand">
+        <div class="logo">📄</div>
+        <div class="brandText">
+          <strong>Mes Démarches Zen</strong>
+          <span>Votre assistant administratif simple</span>
+        </div>
+      </div>
+      <div class="badge">Simple</div>
+    </div>
+
+    <div class="hero">
+      <div class="hello">Bonjour 👋</div>
+      <div class="title">
+        Vos courriers,<br>
+        <span>sans stress.</span>
+      </div>
+      <div class="subtitle">
+        Comprendre vos démarches, préparer une réponse et ne rien oublier.
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section id="home" class="screen active">
+
+      <button class="bigAction" onclick="openScreen('assistant')">
+        <small>Action principale</small>
+        <strong>J’ai reçu un courrier →</strong>
+        <span>Expliquez-le, l’assistant vous guide étape par étape.</span>
+      </button>
+
+      <div class="card">
+        <div class="sectionTitle">Accès rapide</div>
+        <div class="grid">
+          <div class="quick" onclick="quickAsk('J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.')">
+            <b>🏥</b>
+            <strong>CPAM</strong>
+            <span>Arrêt maladie, remboursement, ALD, courrier reçu.</span>
+          </div>
+
+          <div class="quick" onclick="quickAsk('J’ai reçu un courrier CAF. Aide-moi à comprendre et à répondre.')">
+            <b>👨‍👩‍👧</b>
+            <strong>CAF</strong>
+            <span>APL, allocations, déclaration, changement de situation.</span>
+          </div>
+
+          <div class="quick" onclick="quickAsk('J’ai reçu un courrier de France Travail. Aide-moi à savoir quoi faire.')">
+            <b>💼</b>
+            <strong>France Travail</strong>
+            <span>Rendez-vous, actualisation, justificatifs, indemnisation.</span>
+          </div>
+
+          <div class="quick" onclick="quickAsk('J’ai une démarche urgente. Aide-moi à organiser les actions à faire.')">
+            <b>⏰</b>
+            <strong>Urgent</strong>
+            <span>Date limite, relance, mise en demeure, réponse rapide.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionTitle">À retenir</div>
+        <div class="notice">
+          Cette application aide à comprendre et préparer vos démarches.  
+          Elle ne remplace pas un avocat, un conseiller officiel ou une administration.
+        </div>
+      </div>
+
+    </section>
+
+    <section id="assistant" class="screen">
+      <div class="card">
+        <div class="sectionTitle">Assistant démarches</div>
+
+        <div class="chatBox">
+          <div class="pills">
+            <button class="pill" onclick="setText('J’ai reçu un courrier CPAM')">Courrier CPAM</button>
+            <button class="pill" onclick="setText('J’ai reçu une mise en demeure')">Mise en demeure</button>
+            <button class="pill" onclick="setText('Je dois répondre à France Travail')">France Travail</button>
+            <button class="pill" onclick="setText('Aide-moi à faire une lettre de recours')">Recours</button>
+          </div>
+
+          <div class="messages" id="messages">
+            <div class="msg bot">
+              Bonjour 👋<br><br>
+              Décrivez votre courrier ou votre démarche.  
+              Je vais vous donner un résumé simple, le niveau d’urgence, les actions à faire et un modèle de réponse.
+            </div>
+          </div>
+
+          <div class="inputArea">
+            <textarea id="userInput" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..." oninput="autoGrow(this)"></textarea>
+            <button class="send" onclick="sendMessage()">↑</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="models" class="screen">
+      <div class="card">
+        <div class="sectionTitle">Modèles prêts</div>
+
+        <div class="model">
+          <div class="modelTop">
+            <div class="modelIcon">🏥</div>
+            <strong>Réponse CPAM</strong>
+          </div>
+          <p>Demande de remboursement, justificatifs, arrêt maladie, dossier incomplet.</p>
+          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour répondre à la CPAM.')">Utiliser</button>
+        </div>
+
+        <div class="model">
+          <div class="modelTop">
+            <div class="modelIcon">👨‍👩‍👧</div>
+            <strong>Réponse CAF</strong>
+          </div>
+          <p>Changement de situation, document demandé, contestation ou demande de délai.</p>
+          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour répondre à la CAF.')">Utiliser</button>
+        </div>
+
+        <div class="model">
+          <div class="modelTop">
+            <div class="modelIcon">💼</div>
+            <strong>France Travail</strong>
+          </div>
+          <p>Réponse à un rendez-vous, actualisation, justificatifs, demande d’explication.</p>
+          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour France Travail.')">Utiliser</button>
+        </div>
+
+        <div class="model">
+          <div class="modelTop">
+            <div class="modelIcon">🏠</div>
+            <strong>Logement / Assurance</strong>
+          </div>
+          <p>Loyer, assurance habitation, sinistre, attestation ou relance.</p>
+          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour un problème de logement ou assurance.')">Utiliser</button>
+        </div>
+
+        <div class="model">
+          <div class="modelTop">
+            <div class="modelIcon">💶</div>
+            <strong>Impôts</strong>
+          </div>
+          <p>Demande de délai, erreur, justificatif, contestation simple.</p>
+          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour les impôts.')">Utiliser</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reminders" class="screen">
+      <div class="card">
+        <div class="sectionTitle">Mes rappels</div>
+
+        <div class="reminderForm">
+          <input id="reminderTitle" class="input" placeholder="Titre du rappel">
+          <input id="reminderDate" class="input" type="date">
+          <select id="reminderLevel" class="input">
+            <option value="low">Normal</option>
+            <option value="medium">Important</option>
+            <option value="high">Urgent</option>
+          </select>
+          <button class="smallBtn" onclick="addReminder()">Ajouter le rappel</button>
+        </div>
+
+        <div id="remindersList"></div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<nav class="nav">
+  <div class="navInner">
+    <button id="navHome" class="navBtn active" onclick="openScreen('home')"><b>⌂</b>Accueil</button>
+    <button id="navAssistant" class="navBtn" onclick="openScreen('assistant')"><b>💬</b>Assistant</button>
+    <button id="navModels" class="navBtn" onclick="openScreen('models')"><b>📝</b>Modèles</button>
+    <button id="navReminders" class="navBtn" onclick="openScreen('reminders')"><b>🔔</b>Rappels</button>
+  </div>
+</nav>
+
+<div id="toast" class="toast"></div>
+
+<script>
+var currentScreen = "home";
+var reminders = [];
+
+try{
+  reminders = JSON.parse(localStorage.getItem("mdz_reminders") || "[]");
+}catch(e){
+  reminders = [];
+}
+
+function el(id){
+  return document.getElementById(id);
+}
+
+function toast(text){
+  var t = el("toast");
+  t.textContent = text;
+  t.className = "toast show";
+  setTimeout(function(){
+    t.className = "toast";
+  },2200);
+}
+
+function openScreen(screen){
+  currentScreen = screen;
+
+  ["home","assistant","models","reminders"].forEach(function(s){
+    el(s).className = s === screen ? "screen active" : "screen";
+  });
+
+  el("navHome").className = screen === "home" ? "navBtn active" : "navBtn";
+  el("navAssistant").className = screen === "assistant" ? "navBtn active" : "navBtn";
+  el("navModels").className = screen === "models" ? "navBtn active" : "navBtn";
+  el("navReminders").className = screen === "reminders" ? "navBtn active" : "navBtn";
+
+  window.scrollTo(0,0);
+}
+
+function autoGrow(field){
+  field.style.height = "54px";
+  field.style.height = field.scrollHeight + "px";
+}
+
+function setText(text){
+  el("userInput").value = text;
+  autoGrow(el("userInput"));
+}
+
+function quickAsk(text){
+  openScreen("assistant");
+  setTimeout(function(){
+    el("userInput").value = text;
+    autoGrow(el("userInput"));
+    sendMessage();
+  },200);
+}
+
+function sendMessage(){
+  var input = el("userInput");
+  var text = input.value.trim();
+
+  if(!text){
+    toast("Écrivez votre demande.");
+    return;
+  }
+
+  addMessage(text,"user");
+
+  input.value = "";
+  input.style.height = "54px";
+
+  setTimeout(function(){
+    var answer = buildAnswer(text);
+    addMessage(answer,"bot",true);
+  },500);
+}
+
+function addMessage(content,type,isHtml){
+  var box = el("messages");
+  var msg = document.createElement("div");
+  msg.className = "msg " + type;
+
+  if(isHtml){
+    msg.innerHTML = content;
+  }else{
+    msg.textContent = content;
+  }
+
+  box.appendChild(msg);
+  box.scrollTop = box.scrollHeight;
+}
+
+function detectCategory(text){
+  var t = text.toLowerCase();
+
+  if(t.indexOf("cpam") !== -1 || t.indexOf("sécurité") !== -1 || t.indexOf("maladie") !== -1 || t.indexOf("arrêt") !== -1){
+    return "CPAM / Santé";
+  }
+
+  if(t.indexOf("caf") !== -1 || t.indexOf("apl") !== -1 || t.indexOf("rsa") !== -1 || t.indexOf("allocation") !== -1){
+    return "CAF / Allocations";
+  }
+
+  if(t.indexOf("france travail") !== -1 || t.indexOf("pôle emploi") !== -1 || t.indexOf("emploi") !== -1 || t.indexOf("actualisation") !== -1){
+    return "France Travail";
+  }
+
+  if(t.indexOf("impôt") !== -1 || t.indexOf("impots") !== -1 || t.indexOf("taxe") !== -1){
+    return "Impôts";
+  }
+
+  if(t.indexOf("loyer") !== -1 || t.indexOf("logement") !== -1 || t.indexOf("assurance") !== -1){
+    return "Logement / Assurance";
+  }
+
+  return "Démarche administrative";
+}
+
+function detectUrgency(text){
+  var t = text.toLowerCase();
+
+  if(t.indexOf("urgent") !== -1 || t.indexOf("mise en demeure") !== -1 || t.indexOf("dernier rappel") !== -1 || t.indexOf("avant le") !== -1 || t.indexOf("48h") !== -1){
+    return {
+      label:"Urgent",
+      className:"high",
+      text:"Répondez rapidement et vérifiez la date limite."
+    };
+  }
+
+  if(t.indexOf("rappel") !== -1 || t.indexOf("justificatif") !== -1 || t.indexOf("document") !== -1 || t.indexOf("délai") !== -1){
+    return {
+      label:"Important",
+      className:"medium",
+      text:"Préparez les documents demandés et notez une date de suivi."
+    };
+  }
+
+  return {
+    label:"Normal",
+    className:"low",
+    text:"Prenez le temps de vérifier les informations et de garder une copie."
+  };
+}
+
+function buildAnswer(text){
+  var category = detectCategory(text);
+  var urgency = detectUrgency(text);
+
+  var actions = [
+    "Relire le courrier et repérer la date limite.",
+    "Préparer les documents demandés.",
+    "Faire une copie ou photo du courrier.",
+    "Envoyer une réponse claire et garder une preuve d’envoi."
+  ];
+
+  var model =
+    "Madame, Monsieur,<br><br>" +
+    "Je fais suite à votre courrier concernant ma situation. " +
+    "Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.<br><br>" +
+    "Vous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.<br><br>" +
+    "Cordialement,<br>" +
+    "[Votre prénom et nom]";
+
+  return '' +
+    '<div class="assistantResult">' +
+      '<div class="resultBlock">' +
+        '<strong>Résumé simple</strong>' +
+        '<p>Votre demande semble concerner : <b>' + category + '</b>. L’objectif est de comprendre ce qui est demandé, répondre correctement et éviter d’oublier une date.</p>' +
+      '</div>' +
+
+      '<div class="resultBlock">' +
+        '<strong>Niveau d’urgence</strong><br>' +
+        '<span class="urgency ' + urgency.className + '">' + urgency.label + '</span>' +
+        '<p>' + urgency.text + '</p>' +
+      '</div>' +
+
+      '<div class="resultBlock">' +
+        '<strong>Actions à faire</strong>' +
+        '<ul>' +
+          actions.map(function(a){ return "<li>" + a + "</li>"; }).join("") +
+        '</ul>' +
+      '</div>' +
+
+      '<div class="resultBlock">' +
+        '<strong>Modèle de réponse</strong>' +
+        '<p id="lastModel">' + model + '</p>' +
+        '<button class="smallBtn secondary" onclick="copyLastModel()">Copier le modèle</button>' +
+      '</div>' +
+    '</div>';
+}
+
+function copyLastModel(){
+  var model = el("lastModel");
+
+  if(!model){
+    toast("Aucun modèle à copier.");
+    return;
+  }
+
+  var text = model.innerText || model.textContent;
+
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      toast("Modèle copié.");
+    }).catch(function(){
+      fallbackCopy(text);
+    });
+  }else{
+    fallbackCopy(text);
+  }
+}
+
+function fallbackCopy(text){
+  var area = document.createElement("textarea");
+  area.value = text;
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand("copy");
+  document.body.removeChild(area);
+  toast("Copié.");
+}
+
+function addReminder(){
+  var title = el("reminderTitle").value.trim();
+  var date = el("reminderDate").value;
+  var level = el("reminderLevel").value;
+
+  if(!title || !date){
+    toast("Ajoutez un titre et une date.");
+    return;
+  }
+
+  reminders.unshift({
+    title:title,
+    date:date,
+    level:level
+  });
+
+  saveReminders();
+
+  el("reminderTitle").value = "";
+  el("reminderDate").value = "";
+  el("reminderLevel").value = "low";
+
+  renderReminders();
+  toast("Rappel ajouté.");
+}
+
+function saveReminders(){
+  try{
+    localStorage.setItem("mdz_reminders",JSON.stringify(reminders));
+  }catch(e){}
+}
+
+function renderReminders(){
+  var box = el("remindersList");
+  box.innerHTML = "";
+
+  if(reminders.length === 0){
+    box.innerHTML = '<div class="notice" style="margin-top:12px;">Aucun rappel pour le moment.</div>';
+    return;
+  }
+
+  reminders.forEach(function(item,index){
+    var div = document.createElement("div");
+    div.className = "reminderItem";
+
+    var label = item.level === "high" ? "Urgent" : item.level === "medium" ? "Important" : "Normal";
+
+    div.innerHTML =
+      '<div class="dot ' + item.level + '"></div>' +
+      '<div style="flex:1">' +
+        '<strong>' + item.title + '</strong>' +
+        '<p>Date : ' + formatDate(item.date) + ' · ' + label + '</p>' +
+        '<button class="smallBtn secondary" onclick="deleteReminder(' + index + ')">Supprimer</button>' +
+      '</div>';
+
+    box.appendChild(div);
+  });
+}
+
+function deleteReminder(index){
+  reminders.splice(index,1);
+  saveReminders();
+  renderReminders();
+  toast("Rappel supprimé.");
+}
+
+function formatDate(date){
+  var d = new Date(date + "T00:00:00");
+  return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"long",year:"numeric"});
+}
+
+function init(){
+  renderReminders();
+}
+
+init();
+</script>
+
+</body>
+</html>
