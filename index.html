@@ -20,11 +20,9 @@
 
 :root{
   --navy:#102A43;
-  --navy2:#163B5C;
   --blue:#2F80ED;
   --mint:#39D98A;
   --violet:#8E6CFF;
-  --cream:#F7F9FC;
   --white:#FFFFFF;
   --text:#14213D;
   --muted:#68778D;
@@ -213,6 +211,7 @@ body{
   padding:14px 12px;
   cursor:pointer;
   min-height:104px;
+  text-align:left;
 }
 
 .quick b{
@@ -244,6 +243,10 @@ body{
   padding:13px;
   font-size:13px;
   line-height:1.4;
+}
+
+.smallNotice{
+  margin-top:12px;
 }
 
 .chatBox{
@@ -367,7 +370,7 @@ body{
 
 textarea{
   width:100%;
-  min-height:54px;
+  min-height:52px;
   max-height:120px;
   resize:none;
   border:1px solid var(--border);
@@ -385,8 +388,8 @@ textarea:focus{
 }
 
 .send{
-  width:54px;
-  height:54px;
+  width:52px;
+  height:52px;
   border:0;
   border-radius:18px;
   background:linear-gradient(135deg,var(--blue),var(--violet));
@@ -435,7 +438,7 @@ textarea:focus{
 }
 
 .model button,
-.smallBtn{
+.miniBtn{
   margin-top:11px;
   border:0;
   border-radius:14px;
@@ -447,7 +450,7 @@ textarea:focus{
   font-size:13px;
 }
 
-.smallBtn.secondary{
+.miniBtn.light{
   background:#E9F0F8;
   color:var(--navy);
 }
@@ -493,6 +496,10 @@ textarea:focus{
 
 .dot.high{
   background:var(--danger);
+}
+
+.reminderText{
+  flex:1;
 }
 
 .reminderItem strong{
@@ -615,9 +622,9 @@ textarea:focus{
 
   <main class="main">
 
-    <section id="home" class="screen active">
+    <section id="screen-home" class="screen active">
 
-      <button class="bigAction" onclick="openScreen('assistant')">
+      <button class="bigAction" type="button" data-screen="assistant">
         <small>Action principale</small>
         <strong>J’ai reçu un courrier →</strong>
         <span>Expliquez-le, l’assistant vous guide étape par étape.</span>
@@ -627,29 +634,29 @@ textarea:focus{
         <div class="sectionTitle">Accès rapide</div>
         <div class="grid">
 
-          <div class="quick" onclick="quickAsk('J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.')">
+          <button class="quick" type="button" data-ask="J’ai reçu un courrier CPAM. Aide-moi à comprendre ce que je dois faire.">
             <b>🏥</b>
             <strong>CPAM</strong>
             <span>Arrêt maladie, remboursement, ALD, courrier reçu.</span>
-          </div>
+          </button>
 
-          <div class="quick" onclick="quickAsk('J’ai reçu un courrier CAF. Aide-moi à comprendre et à répondre.')">
+          <button class="quick" type="button" data-ask="J’ai reçu un courrier CAF. Aide-moi à comprendre et à répondre.">
             <b>👨‍👩‍👧</b>
             <strong>CAF</strong>
             <span>APL, allocations, déclaration, changement de situation.</span>
-          </div>
+          </button>
 
-          <div class="quick" onclick="quickAsk('J’ai reçu un courrier de France Travail. Aide-moi à savoir quoi faire.')">
+          <button class="quick" type="button" data-ask="J’ai reçu un courrier de France Travail. Aide-moi à savoir quoi faire.">
             <b>💼</b>
             <strong>France Travail</strong>
             <span>Rendez-vous, actualisation, justificatifs, indemnisation.</span>
-          </div>
+          </button>
 
-          <div class="quick" onclick="quickAsk('J’ai une démarche urgente. Aide-moi à organiser les actions à faire.')">
+          <button class="quick" type="button" data-ask="J’ai une démarche urgente. Aide-moi à organiser les actions à faire.">
             <b>⏰</b>
             <strong>Urgent</strong>
             <span>Date limite, relance, mise en demeure, réponse rapide.</span>
-          </div>
+          </button>
 
         </div>
       </div>
@@ -664,17 +671,17 @@ textarea:focus{
 
     </section>
 
-    <section id="assistant" class="screen">
+    <section id="screen-assistant" class="screen">
       <div class="card">
         <div class="sectionTitle">Assistant démarches</div>
 
         <div class="chatBox">
 
           <div class="pills">
-            <button class="pill" onclick="setText('J’ai reçu un courrier CPAM')">Courrier CPAM</button>
-            <button class="pill" onclick="setText('J’ai reçu une mise en demeure')">Mise en demeure</button>
-            <button class="pill" onclick="setText('Je dois répondre à France Travail')">France Travail</button>
-            <button class="pill" onclick="setText('Aide-moi à faire une lettre de recours')">Recours</button>
+            <button class="pill" type="button" data-fill="J’ai reçu un courrier CPAM">Courrier CPAM</button>
+            <button class="pill" type="button" data-fill="J’ai reçu une mise en demeure">Mise en demeure</button>
+            <button class="pill" type="button" data-fill="Je dois répondre à France Travail">France Travail</button>
+            <button class="pill" type="button" data-fill="Aide-moi à faire une lettre de recours">Recours</button>
           </div>
 
           <div class="messages" id="messages">
@@ -686,15 +693,15 @@ textarea:focus{
           </div>
 
           <div class="inputArea">
-            <textarea id="userInput" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..." oninput="autoGrow(this)"></textarea>
-            <button class="send" onclick="sendMessage()">↑</button>
+            <textarea id="userInput" placeholder="Exemple : J’ai reçu un courrier de la CPAM qui me demande des justificatifs..."></textarea>
+            <button class="send" id="sendBtn" type="button">↑</button>
           </div>
 
         </div>
       </div>
     </section>
 
-    <section id="models" class="screen">
+    <section id="screen-models" class="screen">
       <div class="card">
         <div class="sectionTitle">Modèles prêts</div>
 
@@ -704,7 +711,7 @@ textarea:focus{
             <strong>Réponse CPAM</strong>
           </div>
           <p>Demande de remboursement, justificatifs, arrêt maladie, dossier incomplet.</p>
-          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour répondre à la CPAM.')">Utiliser</button>
+          <button type="button" data-ask="Prépare-moi un modèle de lettre pour répondre à la CPAM.">Utiliser</button>
         </div>
 
         <div class="model">
@@ -713,7 +720,7 @@ textarea:focus{
             <strong>Réponse CAF</strong>
           </div>
           <p>Changement de situation, document demandé, contestation ou demande de délai.</p>
-          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour répondre à la CAF.')">Utiliser</button>
+          <button type="button" data-ask="Prépare-moi un modèle de lettre pour répondre à la CAF.">Utiliser</button>
         </div>
 
         <div class="model">
@@ -722,7 +729,7 @@ textarea:focus{
             <strong>France Travail</strong>
           </div>
           <p>Réponse à un rendez-vous, actualisation, justificatifs, demande d’explication.</p>
-          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour France Travail.')">Utiliser</button>
+          <button type="button" data-ask="Prépare-moi un modèle de lettre pour France Travail.">Utiliser</button>
         </div>
 
         <div class="model">
@@ -731,7 +738,7 @@ textarea:focus{
             <strong>Logement / Assurance</strong>
           </div>
           <p>Loyer, assurance habitation, sinistre, attestation ou relance.</p>
-          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour un problème de logement ou assurance.')">Utiliser</button>
+          <button type="button" data-ask="Prépare-moi un modèle de lettre pour un problème de logement ou assurance.">Utiliser</button>
         </div>
 
         <div class="model">
@@ -740,13 +747,13 @@ textarea:focus{
             <strong>Impôts</strong>
           </div>
           <p>Demande de délai, erreur, justificatif, contestation simple.</p>
-          <button onclick="quickAsk('Prépare-moi un modèle de lettre pour les impôts.')">Utiliser</button>
+          <button type="button" data-ask="Prépare-moi un modèle de lettre pour les impôts.">Utiliser</button>
         </div>
 
       </div>
     </section>
 
-    <section id="reminders" class="screen">
+    <section id="screen-reminders" class="screen">
       <div class="card">
         <div class="sectionTitle">Mes rappels</div>
 
@@ -758,7 +765,7 @@ textarea:focus{
             <option value="medium">Important</option>
             <option value="high">Urgent</option>
           </select>
-          <button class="smallBtn" onclick="addReminder()">Ajouter le rappel</button>
+          <button class="miniBtn" id="addReminderBtn" type="button">Ajouter le rappel</button>
         </div>
 
         <div id="remindersList"></div>
@@ -771,10 +778,10 @@ textarea:focus{
 
 <nav class="nav">
   <div class="navInner">
-    <button id="navHome" class="navBtn active" onclick="openScreen('home')"><b>⌂</b>Accueil</button>
-    <button id="navAssistant" class="navBtn" onclick="openScreen('assistant')"><b>💬</b>Assistant</button>
-    <button id="navModels" class="navBtn" onclick="openScreen('models')"><b>📝</b>Modèles</button>
-    <button id="navReminders" class="navBtn" onclick="openScreen('reminders')"><b>🔔</b>Rappels</button>
+    <button id="nav-home" class="navBtn active" type="button" data-screen="home"><b>⌂</b>Accueil</button>
+    <button id="nav-assistant" class="navBtn" type="button" data-screen="assistant"><b>💬</b>Assistant</button>
+    <button id="nav-models" class="navBtn" type="button" data-screen="models"><b>📝</b>Modèles</button>
+    <button id="nav-reminders" class="navBtn" type="button" data-screen="reminders"><b>🔔</b>Rappels</button>
   </div>
 </nav>
 
@@ -782,114 +789,124 @@ textarea:focus{
 
 <script>
 var reminders = [];
+var lastModelText = "";
 
-try{
-  reminders = JSON.parse(localStorage.getItem("mdz_reminders") || "[]");
-}catch(e){
-  reminders = [];
-}
-
-function el(id){
+function byId(id){
   return document.getElementById(id);
 }
 
-function toast(text){
-  var t = el("toast");
+function showToast(text){
+  var t = byId("toast");
+  if(!t){ return; }
+
   t.textContent = text;
   t.className = "toast show";
+
   setTimeout(function(){
     t.className = "toast";
   },2200);
 }
 
-function openScreen(screen){
-  ["home","assistant","models","reminders"].forEach(function(s){
-    el(s).className = s === screen ? "screen active" : "screen";
-  });
+function saveReminders(){
+  try{
+    localStorage.setItem("mdz_reminders_v12",JSON.stringify(reminders));
+  }catch(e){}
+}
 
-  el("navHome").className = screen === "home" ? "navBtn active" : "navBtn";
-  el("navAssistant").className = screen === "assistant" ? "navBtn active" : "navBtn";
-  el("navModels").className = screen === "models" ? "navBtn active" : "navBtn";
-  el("navReminders").className = screen === "reminders" ? "navBtn active" : "navBtn";
+function loadReminders(){
+  try{
+    reminders = JSON.parse(localStorage.getItem("mdz_reminders_v12") || "[]");
+  }catch(e){
+    reminders = [];
+  }
+}
+
+function setScreen(name){
+  var screens = ["home","assistant","models","reminders"];
+
+  for(var i=0;i<screens.length;i++){
+    var id = screens[i];
+    var screen = byId("screen-" + id);
+    var nav = byId("nav-" + id);
+
+    if(screen){
+      screen.className = id === name ? "screen active" : "screen";
+    }
+
+    if(nav){
+      nav.className = id === name ? "navBtn active" : "navBtn";
+    }
+  }
 
   window.scrollTo(0,0);
 }
 
 function autoGrow(field){
-  field.style.height = "54px";
+  field.style.height = "52px";
   field.style.height = field.scrollHeight + "px";
 }
 
-function setText(text){
-  el("userInput").value = text;
-  autoGrow(el("userInput"));
-}
+function setInput(text){
+  var input = byId("userInput");
 
-function quickAsk(text){
-  openScreen("assistant");
-
-  setTimeout(function(){
-    el("userInput").value = text;
-    autoGrow(el("userInput"));
-    sendMessage();
-  },200);
-}
-
-function sendMessage(){
-  var input = el("userInput");
-  var text = input.value.trim();
-
-  if(!text){
-    toast("Écrivez votre demande.");
+  if(!input){
     return;
   }
 
-  addMessage(text,"user");
-
-  input.value = "";
-  input.style.height = "54px";
-
-  setTimeout(function(){
-    var answer = buildAnswer(text);
-    addMessage(answer,"bot",true);
-  },450);
+  input.value = text;
+  autoGrow(input);
+  input.focus();
 }
 
-function addMessage(content,type,isHtml){
-  var box = el("messages");
-  var msg = document.createElement("div");
-  msg.className = "msg " + type;
+function quickAsk(text){
+  setScreen("assistant");
 
-  if(isHtml){
-    msg.innerHTML = content;
-  }else{
-    msg.textContent = content;
+  setTimeout(function(){
+    setInput(text);
+    sendMessage();
+  },150);
+}
+
+function addMessage(content,type,html){
+  var box = byId("messages");
+
+  if(!box){
+    return;
   }
 
-  box.appendChild(msg);
+  var div = document.createElement("div");
+  div.className = "msg " + type;
+
+  if(html){
+    div.innerHTML = content;
+  }else{
+    div.textContent = content;
+  }
+
+  box.appendChild(div);
   box.scrollTop = box.scrollHeight;
 }
 
 function detectCategory(text){
   var t = text.toLowerCase();
 
-  if(t.indexOf("cpam") !== -1 || t.indexOf("sécurité") !== -1 || t.indexOf("maladie") !== -1 || t.indexOf("arrêt") !== -1){
+  if(t.indexOf("cpam") >= 0 || t.indexOf("securite") >= 0 || t.indexOf("sécurité") >= 0 || t.indexOf("maladie") >= 0 || t.indexOf("arret") >= 0 || t.indexOf("arrêt") >= 0){
     return "CPAM / Santé";
   }
 
-  if(t.indexOf("caf") !== -1 || t.indexOf("apl") !== -1 || t.indexOf("rsa") !== -1 || t.indexOf("allocation") !== -1){
+  if(t.indexOf("caf") >= 0 || t.indexOf("apl") >= 0 || t.indexOf("rsa") >= 0 || t.indexOf("allocation") >= 0){
     return "CAF / Allocations";
   }
 
-  if(t.indexOf("france travail") !== -1 || t.indexOf("pôle emploi") !== -1 || t.indexOf("emploi") !== -1 || t.indexOf("actualisation") !== -1){
+  if(t.indexOf("france travail") >= 0 || t.indexOf("pole emploi") >= 0 || t.indexOf("pôle emploi") >= 0 || t.indexOf("actualisation") >= 0){
     return "France Travail";
   }
 
-  if(t.indexOf("impôt") !== -1 || t.indexOf("impots") !== -1 || t.indexOf("taxe") !== -1){
+  if(t.indexOf("impot") >= 0 || t.indexOf("impôt") >= 0 || t.indexOf("taxe") >= 0){
     return "Impôts";
   }
 
-  if(t.indexOf("loyer") !== -1 || t.indexOf("logement") !== -1 || t.indexOf("assurance") !== -1){
+  if(t.indexOf("loyer") >= 0 || t.indexOf("logement") >= 0 || t.indexOf("assurance") >= 0){
     return "Logement / Assurance";
   }
 
@@ -899,26 +916,26 @@ function detectCategory(text){
 function detectUrgency(text){
   var t = text.toLowerCase();
 
-  if(t.indexOf("urgent") !== -1 || t.indexOf("mise en demeure") !== -1 || t.indexOf("dernier rappel") !== -1 || t.indexOf("avant le") !== -1 || t.indexOf("48h") !== -1){
+  if(t.indexOf("urgent") >= 0 || t.indexOf("mise en demeure") >= 0 || t.indexOf("dernier rappel") >= 0 || t.indexOf("48h") >= 0 || t.indexOf("avant le") >= 0){
     return {
       label:"Urgent",
-      className:"high",
-      text:"Répondez rapidement et vérifiez la date limite."
+      cls:"high",
+      note:"Répondez rapidement et vérifiez la date limite."
     };
   }
 
-  if(t.indexOf("rappel") !== -1 || t.indexOf("justificatif") !== -1 || t.indexOf("document") !== -1 || t.indexOf("délai") !== -1){
+  if(t.indexOf("rappel") >= 0 || t.indexOf("justificatif") >= 0 || t.indexOf("document") >= 0 || t.indexOf("délai") >= 0 || t.indexOf("delai") >= 0){
     return {
       label:"Important",
-      className:"medium",
-      text:"Préparez les documents demandés et notez une date de suivi."
+      cls:"medium",
+      note:"Préparez les documents demandés et notez une date de suivi."
     };
   }
 
   return {
     label:"Normal",
-    className:"low",
-    text:"Prenez le temps de vérifier les informations et de garder une copie."
+    cls:"low",
+    note:"Prenez le temps de vérifier les informations et gardez une copie."
   };
 }
 
@@ -926,14 +943,9 @@ function buildAnswer(text){
   var category = detectCategory(text);
   var urgency = detectUrgency(text);
 
-  var actions = [
-    "Relire le courrier et repérer la date limite.",
-    "Préparer les documents demandés.",
-    "Faire une copie ou une photo du courrier.",
-    "Envoyer une réponse claire et garder une preuve d’envoi."
-  ];
-
-  var model =
-    "Madame, Monsieur,<br><br>" +
-    "Je fais suite à votre courrier concernant ma situation. " +
-    "Je souhaite obtenir des pr
+  lastModelText =
+    "Madame, Monsieur,\n\n" +
+    "Je fais suite à votre courrier concernant ma situation. Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.\n\n" +
+    "Vous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.\n\n" +
+    "Cordialement,\n" +
+    "[Votre prénom et
