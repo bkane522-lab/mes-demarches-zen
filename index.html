@@ -1,493 +1,1334 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Mes Démarches Zen</title>
-<meta name="theme-color" content="#0F2942">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
---navy:#0F2942;--blue:#2563EB;--mint:#22C98A;--bg:#F3F6FA;--card:#fff;
---soft:#EEF3F8;--text:#102033;--muted:#667085;--border:#D9E2EC;
---orange:#F59E0B;--red:#DC2626;
-}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.app{max-width:520px;margin:auto;min-height:100vh;padding-bottom:82px}
-.header{background:var(--navy);color:white;padding:16px;border-radius:0 0 24px 24px;box-shadow:0 10px 25px rgba(15,41,66,.22)}
-.brandRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:46px;height:46px;border-radius:14px;background:white;color:var(--navy);display:grid;place-items:center;font-size:24px}
-.brand strong{display:block;font-size:18px;font-weight:900}
-.brand span{display:block;margin-top:3px;font-size:12px;color:rgba(255,255,255,.75);font-weight:700}
-.badge{padding:8px 10px;border-radius:999px;background:rgba(34,201,138,.14);border:1px solid rgba(34,201,138,.35);color:#B9F8DD;font-size:11px;font-weight:900}
-.hero{margin-top:18px}
-.hero small{display:block;color:#B9F8DD;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.8px}
-.hero h1{margin-top:7px;font-size:28px;line-height:1.08;letter-spacing:-.8px}
-.hero p{margin-top:9px;color:rgba(255,255,255,.78);font-size:14px;line-height:1.42}
-.main{padding:14px}
-.screen{display:none}
-.screen.active{display:block}
-.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:16px;box-shadow:0 10px 26px rgba(15,41,66,.08);margin-bottom:14px}
-.section{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--navy);margin-bottom:8px}
-.sub{font-size:13px;color:var(--muted);line-height:1.4;margin-bottom:12px}
-.primary{width:100%;border:0;background:var(--navy);color:white;border-radius:18px;padding:17px 16px;text-align:left;cursor:pointer;box-shadow:0 10px 24px rgba(15,41,66,.22);margin-bottom:14px}
-.primary small{display:block;color:#B9F8DD;font-size:11px;text-transform:uppercase;font-weight:900;letter-spacing:.8px}
-.primary strong{display:block;margin-top:6px;font-size:21px;font-weight:900}
-.primary span{display:block;margin-top:5px;color:rgba(255,255,255,.78);font-size:13px;line-height:1.35}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.action{border:1px solid var(--border);background:var(--soft);border-radius:17px;padding:14px;text-align:left;cursor:pointer;min-height:96px}
-.action b{display:block;font-size:23px;margin-bottom:8px}
-.action strong{display:block;font-size:14px;font-weight:900;color:var(--navy)}
-.action span{display:block;margin-top:4px;font-size:12px;color:var(--muted);line-height:1.35}
-.notice{background:#FFF8E8;border:1px solid #F6DA90;color:#75540D;border-radius:16px;padding:12px;font-size:13px;line-height:1.4;margin-bottom:14px}
-.info{display:flex;gap:10px;background:var(--soft);border:1px solid var(--border);border-radius:15px;padding:12px;margin-top:9px}
-.info b{font-size:19px}
-.info strong{font-size:13px;color:var(--navy)}
-.info p{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.35}
-.chatCard{padding:0;overflow:hidden}
-.chatHead{padding:15px 16px;border-bottom:1px solid var(--border);background:#FBFCFE}
-.chatHead strong{display:block;color:var(--navy);font-size:16px;font-weight:900}
-.chatHead span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
-.pills{display:flex;gap:8px;overflow-x:auto;padding:12px 14px;background:white;border-bottom:1px solid var(--border)}
-.pill{border:1px solid var(--border);background:white;color:var(--navy);border-radius:999px;padding:8px 11px;font-size:12px;font-weight:900;white-space:nowrap;cursor:pointer}
-.messages{height:390px;overflow-y:auto;background:#F7FAFC;padding:13px}
-.msg{max-width:92%;margin-bottom:11px;padding:12px 13px;border-radius:16px;font-size:14px;line-height:1.45}
-.msg.bot{background:white;border:1px solid var(--border)}
-.msg.user{margin-left:auto;background:var(--navy);color:white}
-.inputArea{display:flex;gap:9px;align-items:flex-end;padding:12px;border-top:1px solid var(--border);background:white}
-textarea{width:100%;min-height:52px;max-height:125px;resize:none;border:1px solid var(--border);border-radius:16px;padding:13px;font-family:Arial,Helvetica,sans-serif;font-size:14px;outline:none;color:var(--text)}
-textarea:focus{border-color:var(--blue)}
-.send{width:52px;height:52px;flex-shrink:0;border:0;border-radius:16px;background:var(--blue);color:white;font-size:21px;font-weight:900;cursor:pointer}
-.result{background:white;border:1px solid var(--border);border-radius:16px;padding:13px;margin-top:7px}
-.block{margin-bottom:13px}
-.block:last-child{margin-bottom:0}
-.block strong{color:var(--navy);font-size:14px}
-.block p,.block li{color:var(--muted);font-size:13px;line-height:1.45;margin-top:5px}
-.block ul{padding-left:18px}
-.tag{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;margin-top:6px}
-.low{background:rgba(34,201,138,.15);color:#047857}
-.medium{background:rgba(245,158,11,.16);color:#B45309}
-.high{background:rgba(220,38,38,.12);color:#B91C1C}
-.btn{border:0;border-radius:13px;background:var(--navy);color:white;padding:11px 13px;font-weight:900;font-size:13px;cursor:pointer;margin-top:10px}
-.btn.light{background:#E8EEF6;color:var(--navy)}
-.model{border:1px solid var(--border);background:#FBFCFE;border-radius:18px;padding:14px;margin-bottom:10px}
-.modelTop{display:flex;gap:10px;align-items:center}
-.icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--soft);border:1px solid var(--border);font-size:22px}
-.model strong{font-size:15px;color:var(--navy)}
-.model p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.4}
-.form{display:grid;gap:10px;margin-top:12px}
-.input{width:100%;border:1px solid var(--border);border-radius:15px;padding:12px;font-size:14px;outline:none;background:white}
-.reminder{border:1px solid var(--border);background:#FBFCFE;border-radius:17px;padding:13px;margin-top:10px;display:flex;gap:11px}
-.dot{width:11px;height:11px;border-radius:50%;background:var(--mint);margin-top:4px;flex-shrink:0}
-.dot.medium{background:var(--orange)}
-.dot.high{background:var(--red)}
-.reminder strong{font-size:14px;color:var(--navy)}
-.reminder p{margin-top:3px;color:var(--muted);font-size:12px}
-.nav{position:fixed;left:0;right:0;bottom:0;background:white;border-top:1px solid var(--border);box-shadow:0 -8px 24px rgba(15,41,66,.08);z-index:30}
-.navIn{max-width:520px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px 12px}
-.navBtn{border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:900;cursor:pointer;padding:6px 2px}
-.navBtn b{display:block;font-size:22px;margin-bottom:3px;line-height:1}
-.navBtn.active{color:var(--blue)}
-.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--navy);color:white;border-radius:999px;padding:11px 14px;font-size:13px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:50}
-.toast.show{opacity:1}
-@media(max-width:370px){.hero h1{font-size:24px}.grid{grid-template-columns:1fr}.messages{height:340px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes Démarches Zen - V3 IA Senior</title>
+
+  <style>
+    :root {
+      --navy: #0f2d46;
+      --navy-2: #123b5c;
+      --blue: #2563eb;
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --soft: #eef3f9;
+      --text: #102235;
+      --muted: #64748b;
+      --green: #16a34a;
+      --green-soft: #dcfce7;
+      --orange: #f59e0b;
+      --orange-soft: #fff7ed;
+      --red: #dc2626;
+      --border: #d8e1ee;
+      --shadow: 0 10px 30px rgba(15, 45, 70, 0.08);
+      --radius: 24px;
+      --bottom-nav-height: 86px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+      font-size: 18px;
+    }
+
+    .app {
+      max-width: 720px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: calc(var(--bottom-nav-height) + 24px);
+      background: linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
+    }
+
+    .header {
+      background: var(--navy);
+      color: white;
+      padding: 28px 24px 34px;
+      border-radius: 0 0 32px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .brand-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      background: white;
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      flex: 0 0 auto;
+    }
+
+    .brand-title {
+      font-size: 27px;
+      font-weight: 850;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-top: 4px;
+    }
+
+    .premium-pill {
+      margin-left: auto;
+      padding: 8px 14px;
+      background: rgba(20, 184, 166, 0.16);
+      color: #bbf7d0;
+      border: 1px solid rgba(187, 247, 208, 0.25);
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .hero-label {
+      color: #bbf7d0;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      line-height: 1.12;
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text {
+      color: #dbeafe;
+      margin: 16px 0 0;
+      font-size: 20px;
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .primary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .big-action {
+      width: 100%;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 24px;
+      padding: 24px;
+      text-align: left;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
+
+    .big-action .small {
+      display: block;
+      color: #bbf7d0;
+      font-size: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .big-action .title {
+      display: block;
+      font-size: 31px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .big-action .desc {
+      display: block;
+      margin-top: 10px;
+      color: #dbeafe;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .quick-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quick-btn {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 20px;
+      padding: 19px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(15, 45, 70, 0.04);
+      min-height: 76px;
+    }
+
+    .quick-btn:active, .big-action:active, .btn:active {
+      transform: scale(0.99);
+    }
+
+    .quick-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      flex: 0 0 auto;
+    }
+
+    .quick-title {
+      font-weight: 850;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .quick-desc {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    .notice {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #713f12;
+      padding: 18px;
+      border-radius: 20px;
+      font-size: 17px;
+      margin-top: 16px;
+    }
+
+    .section-title {
+      font-size: 25px;
+      margin: 0 0 12px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .back-btn {
+      border: none;
+      background: transparent;
+      color: var(--blue);
+      font-weight: 850;
+      padding: 8px 0 16px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .input-label {
+      font-weight: 850;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 19px;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--text);
+      background: white;
+      outline: none;
+      min-height: 58px;
+    }
+
+    textarea {
+      min-height: 170px;
+      resize: vertical;
+    }
+
+    textarea:focus, input:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 18px;
+      padding: 17px 20px;
+      font-weight: 900;
+      cursor: pointer;
+      min-height: 58px;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      width: 100%;
+      font-size: 20px;
+    }
+
+    .btn-dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-light {
+      background: var(--soft);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .result-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(15, 45, 70, 0.05);
+    }
+
+    .result-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .badge-normal {
+      color: #166534;
+      background: var(--green-soft);
+    }
+
+    .badge-urgent {
+      color: #9a3412;
+      background: var(--orange-soft);
+    }
+
+    .badge-danger {
+      color: #991b1b;
+      background: #fee2e2;
+    }
+
+    .model-list {
+      display: grid;
+      gap: 13px;
+    }
+
+    .model-item {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 18px;
+      padding: 17px;
+      cursor: pointer;
+    }
+
+    .model-item-title {
+      font-weight: 900;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .model-item-desc {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .reminder-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .reminder-title {
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .reminder-date {
+      color: var(--blue);
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .empty {
+      background: var(--soft);
+      border: 1px dashed var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 100%;
+      max-width: 720px;
+      height: var(--bottom-nav-height);
+      background: white;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      box-shadow: 0 -8px 24px rgba(15, 45, 70, 0.08);
+      z-index: 20;
+    }
+
+    .nav-btn {
+      border: none;
+      background: white;
+      color: #64748b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      cursor: pointer;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .nav-btn .nav-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .nav-btn.active {
+      color: var(--blue);
+    }
+
+    .premium-box {
+      background: linear-gradient(135deg, #0f2d46, #164e63);
+      color: white;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .premium-box h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    .premium-box p {
+      color: #dbeafe;
+      margin: 0 0 16px;
+    }
+
+    .premium-list {
+      margin: 0;
+      padding-left: 22px;
+      color: #f8fafc;
+      font-size: 17px;
+    }
+
+    .premium-list li {
+      margin-bottom: 7px;
+    }
+
+    .toggle-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .chip.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .copy-message {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      color: #166534;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .copy-message.show {
+      display: block;
+    }
+
+    .small-muted {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .senior-mode {
+      font-size: 20px;
+    }
+
+    .senior-mode .quick-title {
+      font-size: 24px;
+    }
+
+    .senior-mode .quick-desc {
+      font-size: 18px;
+    }
+
+    .senior-mode .section-text {
+      font-size: 20px;
+    }
+
+    .senior-mode .nav-btn {
+      font-size: 15px;
+    }
+
+    .senior-mode .nav-btn .nav-icon {
+      font-size: 30px;
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .brand-title {
+        font-size: 24px;
+      }
+
+      .big-action .title {
+        font-size: 28px;
+      }
+
+      .content {
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="app">
+  <div class="app" id="app">
 
-<header class="header">
-  <div class="brandRow">
-    <div class="brand">
-      <div class="logo">📄</div>
-      <div>
-        <strong>Mes Démarches Zen</strong>
-        <span>Assistant administratif simple</span>
+    <header class="header">
+      <div class="brand-row">
+        <div class="brand-icon">📄</div>
+        <div>
+          <div class="brand-title">Mes Démarches Zen</div>
+          <div class="brand-subtitle">Assistant IA simple</div>
+        </div>
+        <div class="premium-pill" id="premiumBadge">Gratuit</div>
       </div>
-    </div>
-    <div class="badge">Pro V2</div>
-  </div>
 
-  <div class="hero">
-    <small>Clair · Simple · Rassurant</small>
-    <h1>Comprendre vos courriers, sans stress.</h1>
-    <p>Un assistant pour résumer, préparer une réponse et suivre vos démarches.</p>
-  </div>
-</header>
+      <div class="hero-label">Simple • Lisible • Rassurant</div>
+      <h1 class="hero-title">Comprendre vos courriers, sans stress.</h1>
+      <p class="hero-text">
+        Une aide claire pour savoir quoi faire et préparer une réponse.
+      </p>
+    </header>
 
-<main class="main">
+    <main class="content">
 
-<section id="home" class="screen active">
-  <button class="primary" data-screen="assistant">
-    <small>Commencer</small>
-    <strong>J’ai reçu un courrier</strong>
-    <span>Écrivez ce que vous avez reçu. L’assistant vous explique quoi faire.</span>
-  </button>
+      <!-- ACCUEIL -->
+      <section class="screen active" id="home">
+        <button class="big-action" onclick="openScreen('assistant')">
+          <span class="small">Commencer</span>
+          <span class="title">J’ai reçu un courrier</span>
+          <span class="desc">L’assistant vous explique ce que cela veut dire.</span>
+        </button>
 
-  <div class="card">
-    <div class="section">Actions principales</div>
-    <div class="sub">Choisissez la situation qui correspond le mieux.</div>
+        <div class="quick-list">
+          <button class="quick-btn" onclick="openScreen('assistant')">
+            <span class="quick-icon">✉️</span>
+            <span>
+              <span class="quick-title">Comprendre un courrier</span>
+              <span class="quick-desc">Résumé simple, urgence, actions.</span>
+            </span>
+          </button>
 
-    <div class="grid">
-      <button class="action" data-ask="J’ai reçu un courrier administratif. Aide-moi à comprendre ce que je dois faire.">
-        <b>📩</b><strong>Comprendre un courrier</strong><span>Résumé simple, urgence, étapes.</span>
+          <button class="quick-btn" onclick="openScreen('models')">
+            <span class="quick-icon">✍️</span>
+            <span>
+              <span class="quick-title">Préparer une réponse</span>
+              <span class="quick-desc">Modèles prêts à copier.</span>
+            </span>
+          </button>
+
+          <button class="quick-btn" onclick="openScreen('reminders')">
+            <span class="quick-icon">🔔</span>
+            <span>
+              <span class="quick-title">Ajouter un rappel</span>
+              <span class="quick-desc">Ne pas oublier une date importante.</span>
+            </span>
+          </button>
+        </div>
+
+        <div class="notice">
+          Cette application aide à comprendre et à rédiger. Elle ne remplace pas un avocat, une administration ou un conseiller officiel.
+        </div>
+
+        <div class="primary-card" style="margin-top:18px;">
+          <h2 class="section-title">Mode senior</h2>
+          <p class="section-text">
+            Activez un affichage encore plus lisible avec des textes plus grands.
+          </p>
+          <button class="btn btn-light" onclick="toggleSeniorMode()">Activer / désactiver le mode senior</button>
+        </div>
+      </section>
+
+      <!-- ASSISTANT -->
+      <section class="screen" id="assistant">
+        <button class="back-btn" onclick="openScreen('home')">← Retour</button>
+
+        <div class="primary-card">
+          <h2 class="section-title">Assistant IA</h2>
+          <p class="section-text">
+            Copiez ou écrivez le contenu du courrier reçu. L’app vous donnera une explication simple.
+          </p>
+
+          <div class="form-group">
+            <label class="input-label" for="letterText">Votre courrier ou votre problème</label>
+            <textarea id="letterText" placeholder="Exemple : J’ai reçu un refus de remboursement de transport de la CPAM..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="organism">De qui vient le courrier ?</label>
+            <select id="organism">
+              <option value="administration">Administration / autre</option>
+              <option value="cpam">CPAM / Santé</option>
+              <option value="caf">CAF / aides</option>
+              <option value="banque">Banque</option>
+              <option value="assurance">Assurance</option>
+              <option value="logement">Logement</option>
+              <option value="impots">Impôts</option>
+              <option value="employeur">Employeur</option>
+              <option value="transport">Transport</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="input-label">Ce que vous voulez faire</label>
+            <div class="toggle-row" id="intentChips">
+              <button class="chip active" onclick="selectIntent('comprendre', this)">Comprendre</button>
+              <button class="chip" onclick="selectIntent('repondre', this)">Répondre</button>
+              <button class="chip" onclick="selectIntent('contester', this)">Contester</button>
+              <button class="chip" onclick="selectIntent('delai', this)">Demander un délai</button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="analyseLetter()">Analyser mon courrier</button>
+
+          <p class="small-muted" id="freeCounterText" style="margin-top:12px;"></p>
+        </div>
+
+        <div id="assistantResult"></div>
+      </section>
+
+      <!-- MODELES -->
+      <section class="screen" id="models">
+        <button class="back-btn" onclick="openScreen('home')">← Retour</button>
+
+        <div class="primary-card">
+          <h2 class="section-title">Modèles simples</h2>
+          <p class="section-text">
+            Choisissez un modèle, puis copiez-le pour l’adapter à votre situation.
+          </p>
+
+          <div class="model-list" id="modelList"></div>
+        </div>
+      </section>
+
+      <!-- RAPPELS -->
+      <section class="screen" id="reminders">
+        <button class="back-btn" onclick="openScreen('home')">← Retour</button>
+
+        <div class="primary-card">
+          <h2 class="section-title">Créer un rappel</h2>
+          <p class="section-text">
+            Notez une date importante pour ne pas oublier votre démarche.
+          </p>
+
+          <div class="form-group">
+            <label class="input-label" for="reminderTitle">Titre du rappel</label>
+            <input id="reminderTitle" placeholder="Exemple : Envoyer mon courrier CPAM" />
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="reminderDate">Date</label>
+            <input id="reminderDate" type="date" />
+          </div>
+
+          <div class="form-group">
+            <label class="input-label" for="reminderNote">Note</label>
+            <textarea id="reminderNote" placeholder="Exemple : Joindre les justificatifs et garder une copie."></textarea>
+          </div>
+
+          <button class="btn btn-primary" onclick="addReminder()">Ajouter le rappel</button>
+        </div>
+
+        <div class="primary-card">
+          <h2 class="section-title">Mes rappels</h2>
+          <div id="reminderList"></div>
+        </div>
+      </section>
+
+      <!-- PREMIUM -->
+      <section class="screen" id="premium">
+        <button class="back-btn" onclick="openScreen('home')">← Retour</button>
+
+        <div class="premium-box">
+          <h3>Mes Démarches Zen Premium</h3>
+          <p>
+            Version pensée pour aller plus loin avec plus de confort.
+          </p>
+          <ul class="premium-list">
+            <li>Analyses IA illimitées</li>
+            <li>Réponses plus personnalisées</li>
+            <li>Export PDF des courriers</li>
+            <li>Historique des démarches</li>
+            <li>Rappels illimités</li>
+            <li>Mode senior avancé</li>
+          </ul>
+
+          <div class="button-row">
+            <button class="btn btn-green" onclick="activatePremium()">Activer Premium test</button>
+            <button class="btn btn-light" onclick="deactivatePremium()">Revenir en gratuit</button>
+          </div>
+        </div>
+
+        <div class="notice">
+          Pour l’instant, le Premium est simulé pour préparer le futur modèle économique.
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" onclick="openScreen('home')" data-screen="home">
+        <span class="nav-icon">🏠</span>
+        Accueil
       </button>
-
-      <button class="action" data-ask="Aide-moi à rédiger une réponse claire à une administration.">
-        <b>✍️</b><strong>Préparer une réponse</strong><span>Modèle prêt à copier.</span>
+      <button class="nav-btn" onclick="openScreen('assistant')" data-screen="assistant">
+        <span class="nav-icon">💬</span>
+        Assistant
       </button>
-
-      <button class="action" data-screen="models">
-        <b>📝</b><strong>Modèles</strong><span>CPAM, CAF, impôts, logement.</span>
+      <button class="nav-btn" onclick="openScreen('models')" data-screen="models">
+        <span class="nav-icon">📝</span>
+        Modèles
       </button>
-
-      <button class="action" data-screen="reminders">
-        <b>🔔</b><strong>Créer un rappel</strong><span>Ne pas oublier une date.</span>
+      <button class="nav-btn" onclick="openScreen('reminders')" data-screen="reminders">
+        <span class="nav-icon">🔔</span>
+        Rappels
       </button>
-    </div>
+    </nav>
   </div>
 
-  <div class="card">
-    <div class="section">Pourquoi c’est utile</div>
-    <div class="info"><b>✅</b><div><strong>Comprendre vite</strong><p>Le courrier est résumé avec des mots simples.</p></div></div>
-    <div class="info"><b>📌</b><div><strong>Savoir quoi faire</strong><p>L’app donne une checklist claire et pratique.</p></div></div>
-    <div class="info"><b>⚠️</b><div><strong>Éviter les oublis</strong><p>Ajoutez un rappel pour une date limite.</p></div></div>
-  </div>
+  <script>
+    let selectedIntent = "comprendre";
 
-  <div class="notice">
-    Cette application aide à préparer vos démarches. Elle ne remplace pas un avocat, une administration ou un conseiller officiel.
-  </div>
-</section>
+    const FREE_LIMIT = 3;
 
-<section id="assistant" class="screen">
-  <div class="card chatCard">
-    <div class="chatHead">
-      <strong>Assistant démarches</strong>
-      <span>Décrivez votre situation. Réponse guidée et modèle à copier.</span>
-    </div>
+    const models = [
+      {
+        title: "Demander des explications",
+        desc: "Pour demander des précisions à un organisme.",
+        text:
+`Madame, Monsieur,
 
-    <div class="pills">
-      <button class="pill" data-fill="J’ai reçu un courrier CPAM">CPAM</button>
-      <button class="pill" data-fill="J’ai reçu un refus de remboursement transport">Refus transport</button>
-      <button class="pill" data-fill="Je dois répondre à France Travail">France Travail</button>
-      <button class="pill" data-fill="Aide-moi à faire un recours">Recours</button>
-      <button class="pill" data-fill="J’ai reçu une mise en demeure">Mise en demeure</button>
-    </div>
+Je fais suite à votre courrier concernant mon dossier.
 
-    <div class="messages" id="messages">
-      <div class="msg bot">
-        Bonjour 👋<br><br>
-        Expliquez votre courrier ou votre démarche. Je vais vous donner :
-        <br>• un résumé simple ;
-        <br>• le niveau d’urgence ;
-        <br>• les actions à faire ;
-        <br>• un modèle de réponse.
-      </div>
-    </div>
+Je souhaite obtenir des explications complémentaires afin de mieux comprendre votre décision et les démarches à effectuer.
 
-    <div class="inputArea">
-      <textarea id="text" placeholder="Exemple : J’ai reçu un refus de remboursement de transport..."></textarea>
-      <button class="send" id="send">↑</button>
-    </div>
-  </div>
-</section>
+Je vous remercie de bien vouloir m’indiquer les documents nécessaires et les délais à respecter.
 
-<section id="models" class="screen">
-  <div class="card">
-    <div class="section">Modèles de réponses</div>
-    <div class="sub">Choisissez un modèle. L’assistant prépare une réponse adaptée.</div>
-  </div>
+Cordialement,
 
-  <div class="model">
-    <div class="modelTop"><div class="icon">🏥</div><strong>CPAM / Santé</strong></div>
-    <p>Arrêt maladie, remboursement, ALD, transport médical, justificatifs.</p>
-    <button class="btn" data-ask="Prépare-moi un modèle de lettre pour répondre à la CPAM.">Utiliser</button>
-  </div>
+[Votre prénom et nom]`
+      },
+      {
+        title: "Envoyer des justificatifs",
+        desc: "Pour transmettre des documents demandés.",
+        text:
+`Madame, Monsieur,
 
-  <div class="model">
-    <div class="modelTop"><div class="icon">👨‍👩‍👧</div><strong>CAF</strong></div>
-    <p>APL, allocations, déclaration, changement de situation, document demandé.</p>
-    <button class="btn" data-ask="Prépare-moi un modèle de lettre pour répondre à la CAF.">Utiliser</button>
-  </div>
+Je fais suite à votre demande de justificatifs.
 
-  <div class="model">
-    <div class="modelTop"><div class="icon">💼</div><strong>France Travail</strong></div>
-    <p>Rendez-vous, actualisation, justificatifs, indemnisation, recours.</p>
-    <button class="btn" data-ask="Prépare-moi un modèle de lettre pour France Travail.">Utiliser</button>
-  </div>
+Vous trouverez ci-joint les documents nécessaires au traitement de mon dossier.
 
-  <div class="model">
-    <div class="modelTop"><div class="icon">🏠</div><strong>Logement / Assurance</strong></div>
-    <p>Loyer, assurance habitation, sinistre, attestation ou relance.</p>
-    <button class="btn" data-ask="Prépare-moi un modèle de lettre pour un problème de logement ou assurance.">Utiliser</button>
-  </div>
+Je reste disponible si d’autres éléments sont nécessaires.
 
-  <div class="model">
-    <div class="modelTop"><div class="icon">💶</div><strong>Impôts</strong></div>
-    <p>Demande de délai, erreur, justificatif, contestation simple.</p>
-    <button class="btn" data-ask="Prépare-moi un modèle de lettre pour les impôts.">Utiliser</button>
-  </div>
-</section>
+Cordialement,
 
-<section id="reminders" class="screen">
-  <div class="card">
-    <div class="section">Mes rappels</div>
-    <div class="sub">Ajoutez une date limite pour ne rien oublier.</div>
+[Votre prénom et nom]`
+      },
+      {
+        title: "Contester une décision",
+        desc: "Pour demander un réexamen d’un refus.",
+        text:
+`Madame, Monsieur,
 
-    <div class="form">
-      <input id="rTitle" class="input" placeholder="Titre du rappel">
-      <input id="rDate" class="input" type="date">
-      <select id="rLevel" class="input">
-        <option value="low">Normal</option>
-        <option value="medium">Important</option>
-        <option value="high">Urgent</option>
-      </select>
-      <button class="btn" id="addReminder">Ajouter le rappel</button>
-    </div>
+Je fais suite à votre décision concernant mon dossier.
 
-    <div id="reminderList"></div>
-  </div>
-</section>
+Je souhaite contester cette décision et demander un réexamen de ma situation.
 
-</main>
-</div>
+Je vous transmets les éléments utiles afin que mon dossier puisse être étudié à nouveau.
 
-<nav class="nav">
-  <div class="navIn">
-    <button class="navBtn active" data-screen="home"><b>⌂</b>Accueil</button>
-    <button class="navBtn" data-screen="assistant"><b>💬</b>Assistant</button>
-    <button class="navBtn" data-screen="models"><b>📝</b>Modèles</button>
-    <button class="navBtn" data-screen="reminders"><b>🔔</b>Rappels</button>
-  </div>
-</nav>
+Cordialement,
 
-<div id="toast" class="toast"></div>
+[Votre prénom et nom]`
+      },
+      {
+        title: "Demander un délai",
+        desc: "Pour demander plus de temps avant de répondre.",
+        text:
+`Madame, Monsieur,
 
-<script>
-var reminders=[];
-var lastModel="";
+Je fais suite à votre courrier.
 
-function q(s){return document.querySelector(s)}
-function qa(s){return document.querySelectorAll(s)}
+Je souhaite vous demander un délai supplémentaire afin de réunir les documents nécessaires et vous répondre correctement.
 
-function toast(t){
-  var box=q("#toast");
-  box.textContent=t;
-  box.className="toast show";
-  setTimeout(function(){box.className="toast"},2200);
-}
+Je vous remercie par avance pour votre compréhension.
 
-function show(screen){
-  qa(".screen").forEach(function(s){s.classList.remove("active")});
-  q("#"+screen).classList.add("active");
-  qa(".navBtn").forEach(function(b){
-    b.classList.toggle("active",b.getAttribute("data-screen")===screen);
-  });
-  window.scrollTo(0,0);
-}
+Cordialement,
 
-function fill(t){
-  var input=q("#text");
-  input.value=t;
-  input.focus();
-}
+[Votre prénom et nom]`
+      },
+      {
+        title: "Relancer un organisme",
+        desc: "Pour demander où en est votre dossier.",
+        text:
+`Madame, Monsieur,
 
-function ask(t){
-  show("assistant");
-  setTimeout(function(){
-    fill(t);
-    send();
-  },150);
-}
+Je me permets de vous contacter au sujet de mon dossier.
 
-function msg(content,type,html){
-  var box=q("#messages");
-  var div=document.createElement("div");
-  div.className="msg "+type;
-  if(html){div.innerHTML=content}else{div.textContent=content}
-  box.appendChild(div);
-  box.scrollTop=box.scrollHeight;
-}
+Sauf erreur de ma part, je n’ai pas encore reçu de réponse à ma précédente demande.
 
-function category(t){
-  t=t.toLowerCase();
-  if(t.includes("transport")||t.includes("remboursement")||t.includes("indemnisation"))return "Remboursement / Transport";
-  if(t.includes("refus")||t.includes("recours")||t.includes("contest"))return "Refus / Recours";
-  if(t.includes("cpam")||t.includes("maladie")||t.includes("arrêt")||t.includes("arret"))return "CPAM / Santé";
-  if(t.includes("caf")||t.includes("apl")||t.includes("rsa")||t.includes("allocation"))return "CAF / Allocations";
-  if(t.includes("france travail")||t.includes("pôle emploi")||t.includes("pole emploi"))return "France Travail";
-  if(t.includes("impôt")||t.includes("impot")||t.includes("taxe"))return "Impôts";
-  if(t.includes("logement")||t.includes("loyer")||t.includes("assurance"))return "Logement / Assurance";
-  return "Démarche administrative";
-}
+Pouvez-vous m’indiquer l’état d’avancement de mon dossier ?
 
-function urgency(t){
-  t=t.toLowerCase();
-  if(t.includes("mise en demeure")||t.includes("dernier rappel")||t.includes("urgent")||t.includes("48h")||t.includes("avant le")){
-    return {label:"Urgent",c:"high",note:"Répondez rapidement et vérifiez la date limite."};
-  }
-  if(t.includes("refus")||t.includes("recours")||t.includes("rappel")||t.includes("justificatif")||t.includes("document")){
-    return {label:"Important",c:"medium",note:"Préparez les justificatifs et gardez une preuve d’envoi."};
-  }
-  return {label:"Normal",c:"low",note:"Prenez le temps de vérifier les informations et gardez une copie."};
-}
+Cordialement,
 
-function modelText(cat){
-  if(cat==="Remboursement / Transport"){
-    return "Madame, Monsieur,\n\nJe fais suite à votre décision concernant le refus de remboursement de transport.\n\nJe souhaite obtenir les motifs précis de ce refus et demander un réexamen de mon dossier. Je peux transmettre les justificatifs nécessaires : convocation, prescription médicale, attestation ou facture.\n\nJe vous remercie de bien vouloir m’indiquer les éléments manquants ou la démarche à suivre.\n\nCordialement,\n[Votre prénom et nom]";
-  }
+[Votre prénom et nom]`
+      }
+    ];
 
-  if(cat==="Refus / Recours"){
-    return "Madame, Monsieur,\n\nJe fais suite à votre décision de refus concernant mon dossier.\n\nJe souhaite contester cette décision ou demander un réexamen, car certains éléments peuvent nécessiter une précision. Vous trouverez ci-joint les justificatifs utiles.\n\nJe vous remercie de bien vouloir m’indiquer les motifs exacts du refus et les possibilités de recours.\n\nCordialement,\n[Votre prénom et nom]";
-  }
+    function openScreen(id) {
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
 
-  return "Madame, Monsieur,\n\nJe fais suite à votre courrier concernant ma situation. Je souhaite obtenir des précisions et vous transmettre les éléments nécessaires au traitement de mon dossier.\n\nVous trouverez ci-joint les documents utiles. Je reste disponible pour toute information complémentaire.\n\nCordialement,\n[Votre prénom et nom]";
-}
+      document.getElementById(id).classList.add("active");
 
-function answer(t){
-  var c=category(t);
-  var u=urgency(t);
-  lastModel=modelText(c);
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.screen === id);
+      });
 
-  var actions="";
-  if(c==="Remboursement / Transport"){
-    actions="<li>Vérifier s’il faut une prescription médicale de transport.</li><li>Préparer la convocation, le justificatif de rendez-vous ou la facture.</li><li>Demander par écrit le motif précis du refus.</li>";
-  }else if(c==="Refus / Recours"){
-    actions="<li>Demander les motifs exacts de la décision.</li><li>Préparer les pièces justificatives.</li><li>Respecter le délai de recours indiqué sur le courrier.</li>";
-  }else{
-    actions="<li>Repérer la date limite du courrier.</li><li>Préparer les documents demandés.</li><li>Faire une copie ou une photo du courrier.</li>";
-  }
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-  return "<div class='result'>"+
-  "<div class='block'><strong>Résumé simple</strong><p>Votre demande semble concerner : <b>"+c+"</b>. L’objectif est de comprendre la décision, préparer les justificatifs et répondre clairement.</p></div>"+
-  "<div class='block'><strong>Niveau d’urgence</strong><br><span class='tag "+u.c+"'>"+u.label+"</span><p>"+u.note+"</p></div>"+
-  "<div class='block'><strong>Actions à faire</strong><ul>"+actions+"<li>Garder une preuve d’envoi.</li></ul></div>"+
-  "<div class='block'><strong>Modèle de réponse</strong><p>"+lastModel.replace(/\n/g,"<br>")+"</p><button class='btn' id='copyModel'>Copier le modèle</button></div>"+
-  "</div>";
-}
+      if (id === "models") renderModels();
+      if (id === "reminders") renderReminders();
+      updateFreeCounter();
+    }
 
-function send(){
-  var input=q("#text");
-  var t=input.value.trim();
+    function selectIntent(intent, btn) {
+      selectedIntent = intent;
 
-  if(!t){
-    toast("Écrivez votre demande.");
-    return;
-  }
+      document.querySelectorAll("#intentChips .chip").forEach(chip => {
+        chip.classList.remove("active");
+      });
 
-  msg(t,"user",false);
-  input.value="";
+      btn.classList.add("active");
+    }
 
-  setTimeout(function(){
-    msg(answer(t),"bot",true);
-  },350);
-}
+    function getUsageCount() {
+      return Number(localStorage.getItem("mdz_usage_count") || "0");
+    }
 
-function copyText(t){
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(t).then(function(){toast("Copié.")}).catch(function(){fallback(t)});
-  }else{
-    fallback(t);
-  }
-}
+    function setUsageCount(value) {
+      localStorage.setItem("mdz_usage_count", String(value));
+    }
 
-function fallback(t){
-  var a=document.createElement("textarea");
-  a.value=t;
-  document.body.appendChild(a);
-  a.select();
-  document.execCommand("copy");
-  document.body.removeChild(a);
-  toast("Copié.");
-}
+    function isPremium() {
+      return localStorage.getItem("mdz_premium") === "true";
+    }
 
-function save(){
-  try{localStorage.setItem("mdz_reminders_v2",JSON.stringify(reminders))}catch(e){}
-}
+    function updatePremiumBadge() {
+      const badge = document.getElementById("premiumBadge");
+      badge.textContent = isPremium() ? "Premium" : "Gratuit";
+    }
 
-function load(){
-  try{reminders=JSON.parse(localStorage.getItem("mdz_reminders_v2")||"[]")}catch(e){reminders=[]}
-}
+    function updateFreeCounter() {
+      const el = document.getElementById("freeCounterText");
+      if (!el) return;
 
-function addReminder(){
-  var title=q("#rTitle").value.trim();
-  var date=q("#rDate").value;
-  var level=q("#rLevel").value;
+      if (isPremium()) {
+        el.textContent = "Premium actif : analyses illimitées en mode test.";
+        return;
+      }
 
-  if(!title||!date){
-    toast("Ajoutez un titre et une date.");
-    return;
-  }
+      const remaining = Math.max(0, FREE_LIMIT - getUsageCount());
+      el.textContent = "Version gratuite : " + remaining + " analyse(s) restante(s).";
+    }
 
-  reminders.unshift({title:title,date:date,level:level});
-  q("#rTitle").value="";
-  q("#rDate").value="";
-  q("#rLevel").value="low";
+    function analyseLetter() {
+      const text = document.getElementById("letterText").value.trim();
+      const organism = document.getElementById("organism").value;
 
-  save();
-  renderReminders();
-  toast("Rappel ajouté.");
-}
+      if (!text) {
+        alert("Écrivez d’abord le contenu du courrier ou votre problème.");
+        return;
+      }
 
-function formatDate(d){
-  return new Date(d+"T00:00:00").toLocaleDateString("fr-FR",{day:"2-digit",month:"long",year:"numeric"});
-}
+      if (!isPremium() && getUsageCount() >= FREE_LIMIT) {
+        document.getElementById("assistantResult").innerHTML = `
+          <div class="primary-card">
+            <h2 class="section-title">Limite gratuite atteinte</h2>
+            <p class="section-text">
+              Vous avez utilisé vos ${FREE_LIMIT} analyses gratuites.
+              Passez en Premium pour continuer.
+            </p>
+            <button class="btn btn-primary" onclick="openScreen('premium')">Voir Premium</button>
+          </div>
+        `;
+        return;
+      }
 
-function renderReminders(){
-  var box=q("#reminderList");
-  box.innerHTML="";
+      if (!isPremium()) {
+        setUsageCount(getUsageCount() + 1);
+      }
 
-  if(reminders.length===0){
-    box.innerHTML="<div class='notice' style='margin-top:12px'>Aucun rappel pour le moment.</div>";
-    return;
-  }
+      const result = generateSmartResult(text, organism, selectedIntent);
+      renderResult(result);
+      updateFreeCounter();
+    }
 
-  reminders.forEach(function(r,i){
-    var label=r.level==="high"?"Urgent":r.level==="medium"?"Important":"Normal";
-    var div=document.createElement("div");
-    div.className="reminder";
-    div.innerHTML="<div class='dot "+r.level+"'></div><div><strong>"+r.title+"</strong><p>Date : "+formatDate(r.date)+" · "+label+"</p><button class='btn light' data-del='"+i+"'>Supprimer</button></div>";
-    box.appendChild(div);
-  });
-}
+    function generateSmartResult(text, organism, intent) {
+      const lower = text.toLowerCase();
 
-document.addEventListener("DOMContentLoaded",function(){
-  load();
-  renderReminders();
+      let urgency = "normal";
+      let urgencyLabel = "Normal";
+      let urgencyText = "Prenez le temps de vérifier les informations et gardez une copie.";
 
-  document.body.addEventListener("click",function(e){
-    var s=e.target.closest("[data-screen]");
-    if(s){show(s.getAttribute("data-screen"));return}
+      const urgentWords = ["date limite", "avant le", "sous 8 jours", "sous huit jours", "mise en demeure", "dernier rappel", "recouvrement", "huissier", "impayé", "radiation", "suspension"];
+      const dangerWords = ["tribunal", "expulsion", "saisie", "convocation", "contentieux"];
 
-    var a=e.target.closest("[data-ask]");
-    if(a){ask(a.getAttribute("data-ask"));return}
+      if (urgentWords.some(word => lower.includes(word))) {
+        urgency = "urgent";
+        urgencyLabel = "À vérifier rapidement";
+        urgencyText = "Ce courrier semble contenir une date ou un élément important. Vérifiez le délai de réponse.";
+      }
 
-    var f=e.target.closest("[data-fill]");
-    if(f){fill(f.getAttribute("data-fill"));return}
+      if (dangerWords.some(word => lower.includes(word))) {
+        urgency = "danger";
+        urgencyLabel = "Important";
+        urgencyText = "Ce courrier peut être sensible. Il est préférable de demander conseil à l’organisme ou à un professionnel.";
+      }
 
-    if(e.target.id==="send"){send();return}
-    if(e.target.id==="copyModel"){copyText(lastModel);return}
-    if(e.target.id==="addReminder"){addReminder();return}
+      const organismName = getOrganismName(organism);
+      const intentText = getIntentText(intent);
 
-    var d=e.target.closest("[data-del]");
-    if(d){
-      reminders.splice(parseInt(d.getAttribute("data-del")),1);
-      save();
+      let summary = `Votre demande semble concerner ${organismName}. L’objectif est de ${intentText}, en gardant une trace écrite.`;
+
+      if (lower.includes("refus")) {
+        summary = `Le courrier semble parler d’un refus ou d’une décision négative. Il faut comprendre le motif, vérifier le délai et préparer une réponse claire.`;
+      }
+
+      if (lower.includes("remboursement")) {
+        summary = `Le courrier semble concerner un remboursement. Il faut vérifier le motif, les justificatifs demandés et la date limite éventuelle.`;
+      }
+
+      if (lower.includes("document") || lower.includes("justificatif")) {
+        summary = `On semble vous demander un document ou un justificatif. Il faut préparer les pièces demandées et garder une preuve d’envoi.`;
+      }
+
+      const actions = [
+        "Repérer la date du courrier et une éventuelle date limite.",
+        "Faire une photo ou une copie du courrier.",
+        "Préparer les documents demandés.",
+        "Répondre par écrit et garder une preuve d’envoi."
+      ];
+
+      if (intent === "contester") {
+        actions.push("Expliquer calmement pourquoi vous contestez la décision.");
+      }
+
+      if (intent === "delai") {
+        actions.push("Demander un délai supplémentaire si vous avez besoin de temps.");
+      }
+
+      const response = buildResponseModel(organismName, intent);
+
+      return {
+        summary,
+        urgency,
+        urgencyLabel,
+        urgencyText,
+        actions,
+        response
+      };
+    }
+
+    function getOrganismName(value) {
+      const names = {
+        administration: "une démarche administrative",
+        cpam: "la CPAM ou un sujet de santé",
+        caf: "la CAF ou une aide",
+        banque: "une banque",
+        assurance: "une assurance",
+        logement: "un sujet de logement",
+        impots: "les impôts",
+        employeur: "un employeur",
+        transport: "un sujet de transport"
+      };
+
+      return names[value] || "une démarche administrative";
+    }
+
+    function getIntentText(value) {
+      const texts = {
+        comprendre: "comprendre ce qui est demandé",
+        repondre: "préparer une réponse",
+        contester: "contester une décision",
+        delai: "demander un délai"
+      };
+
+      return texts[value] || "comprendre ce qui est demandé";
+    }
+
+    function buildResponseModel(organismName, intent) {
+      if (intent === "contester") {
+        return `Madame, Monsieur,
+
+Je fais suite à votre courrier concernant mon dossier.
+
+Je souhaite contester cette décision et demander un réexamen de ma situation.
+
+Je vous transmets les éléments utiles afin de mieux expliquer ma demande.
+
+Je vous remercie par avance pour l’étude de mon dossier.
+
+Cordialement,
+
+[Votre prénom et nom]`;
+      }
+
+      if (intent === "delai") {
+        return `Madame, Monsieur,
+
+Je fais suite à votre courrier concernant mon dossier.
+
+Je souhaite vous demander un délai supplémentaire afin de réunir les documents nécessaires et vous répondre correctement.
+
+Je vous remercie par avance pour votre compréhension.
+
+Cordialement,
+
+[Votre prénom et nom]`;
+      }
+
+      if (intent === "repondre") {
+        return `Madame, Monsieur,
+
+Je fais suite à votre courrier concernant mon dossier.
+
+Je vous transmets les informations nécessaires au traitement de ma demande.
+
+Vous trouverez ci-joint les documents utiles.
+
+Je reste disponible pour toute information complémentaire.
+
+Cordialement,
+
+[Votre prénom et nom]`;
+      }
+
+      return `Madame, Monsieur,
+
+Je fais suite à votre courrier concernant mon dossier.
+
+Je souhaite obtenir des précisions afin de mieux comprendre votre demande et les démarches à effectuer.
+
+Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à respecter ?
+
+Cordialement,
+
+[Votre prénom et nom]`;
+    }
+
+    function renderResult(result) {
+      const badgeClass =
+        result.urgency === "danger" ? "badge-danger" :
+        result.urgency === "urgent" ? "badge-urgent" :
+        "badge-normal";
+
+      const actionsHtml = result.actions.map(action => `<li>${action}</li>`).join("");
+
+      document.getElementById("assistantResult").innerHTML = `
+        <div class="primary-card">
+          <h2 class="section-title">Résultat simple</h2>
+
+          <div class="result-card">
+            <div class="result-title">📌 Résumé</div>
+            <p>${result.summary}</p>
+          </div>
+
+          <div class="result-card">
+            <div class="result-title">⏰ Niveau d’urgence</div>
+            <span class="badge ${badgeClass}">${result.urgencyLabel}</span>
+            <p>${result.urgencyText}</p>
+          </div>
+
+          <div class="result-card">
+            <div class="result-title">✅ Actions à faire</div>
+            <ul>${actionsHtml}</ul>
+          </div>
+
+          <div class="result-card">
+            <div class="result-title">✍️ Modèle de réponse</div>
+            <p style="white-space: pre-line;" id="generatedResponse">${result.response}</p>
+
+            <div class="button-row">
+              <button class="btn btn-dark" onclick="copyText('generatedResponse')">Copier la réponse</button>
+              <button class="btn btn-light" onclick="openScreen('reminders')">Créer un rappel</button>
+              <button class="btn btn-light" onclick="openScreen('premium')">Options Premium</button>
+            </div>
+
+            <div class="copy-message" id="copyMessage">Texte copié.</div>
+          </div>
+
+          <div class="notice">
+            Vérifiez toujours les informations importantes auprès de l’organisme concerné.
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModels() {
+      const list = document.getElementById("modelList");
+      list.innerHTML = models.map((model, index) => `
+        <div class="model-item" onclick="showModel(${index})">
+          <div class="model-item-title">${model.title}</div>
+          <div class="model-item-desc">${model.desc}</div>
+        </div>
+      `).join("");
+    }
+
+    function showModel(index) {
+      const model = models[index];
+
+      document.getElementById("modelList").innerHTML = `
+        <div class="result-card">
+          <div class="result-title">📝 ${model.title}</div>
+          <p style="white-space: pre-line;" id="modelText">${model.text}</p>
+          <div class="button-row">
+            <button class="btn btn-dark" onclick="copyText('modelText')">Copier le modèle</button>
+            <button class="btn btn-light" onclick="renderModels()">Retour aux modèles</button>
+          </div>
+          <div class="copy-message" id="copyMessage">Texte copié.</div>
+        </div>
+      `;
+    }
+
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById("copyMessage");
+        if (msg) {
+          msg.classList.add("show");
+          setTimeout(() => msg.classList.remove("show"), 1800);
+        }
+      }).catch(() => {
+        alert("Impossible de copier automatiquement. Sélectionnez le texte manuellement.");
+      });
+    }
+
+    function getReminders() {
+      return JSON.parse(localStorage.getItem("mdz_reminders") || "[]");
+    }
+
+    function saveReminders(reminders) {
+      localStorage.setItem("mdz_reminders", JSON.stringify(reminders));
+    }
+
+    function addReminder() {
+      const title = document.getElementById("reminderTitle").value.trim();
+      const date = document.getElementById("reminderDate").value;
+      const note = document.getElementById("reminderNote").value.trim();
+
+      if (!title || !date) {
+        alert("Ajoutez au minimum un titre et une date.");
+        return;
+      }
+
+      const reminders = getReminders();
+
+      reminders.push({
+        id: Date.now(),
+        title,
+        date,
+        note
+      });
+
+      saveReminders(reminders);
+
+      document.getElementById("reminderTitle").value = "";
+      document.getElementById("reminderDate").value = "";
+      document.getElementById("reminderNote").value = "";
+
       renderReminders();
-      toast("Rappel supprimé.");
     }
-  });
 
-  q("#text").addEventListener("keydown",function(e){
-    if(e.key==="Enter"&&!e.shiftKey){
-      e.preventDefault();
-      send();
+    function renderReminders() {
+      const list = document.getElementById("reminderList");
+      const reminders = getReminders();
+
+      if (reminders.length === 0) {
+        list.innerHTML = `<div class="empty">Aucun rappel pour le moment.</div>`;
+        return;
+      }
+
+      reminders.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      list.innerHTML = reminders.map(reminder => `
+        <div class="reminder-item">
+          <div class="reminder-title">${reminder.title}</div>
+          <div class="reminder-date">${formatDate(reminder.date)}</div>
+          ${reminder.note ? `<p>${reminder.note}</p>` : ""}
+          <button class="btn btn-light" onclick="deleteReminder(${reminder.id})">Supprimer</button>
+        </div>
+      `).join("");
     }
-  });
-});
-</script>
 
+    function deleteReminder(id) {
+      const reminders = getReminders().filter(item => item.id !== id);
+      saveReminders(reminders);
+      renderReminders();
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return "";
+      const date = new Date(dateString + "T00:00:00");
+      return date.toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    function activatePremium() {
+      localStorage.setItem("mdz_premium", "true");
+      updatePremiumBadge();
+      updateFreeCounter();
+      alert("Premium test activé.");
+      openScreen("home");
+    }
+
+    function deactivatePremium() {
+      localStorage.setItem("mdz_premium", "false");
+      updatePremiumBadge();
+      updateFreeCounter();
+      alert("Retour en version gratuite.");
+      openScreen("home");
+    }
+
+    function toggleSeniorMode() {
+      const app = document.getElementById("app");
+      app.classList.toggle("senior-mode");
+
+      localStorage.setItem("mdz_senior_mode", app.classList.contains("senior-mode") ? "true" : "false");
+    }
+
+    function restoreSeniorMode() {
+      if (localStorage.getItem("mdz_senior_mode") === "true") {
+        document.getElementById("app").classList.add("senior-mode");
+      }
+    }
+
+    restoreSeniorMode();
+    renderModels();
+    renderReminders();
+    updatePremiumBadge();
+    updateFreeCounter();
+  </script>
 </body>
 </html>
