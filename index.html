@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.1</title>
+  <title>Mes Démarches Zen - V3.2</title>
 
   <style>
     :root {
       --navy: #0f2d46;
-      --navy2: #123b5c;
       --blue: #2563eb;
       --bg: #f3f6fb;
       --card: #ffffff;
@@ -20,8 +19,8 @@
       --greenSoft: #dcfce7;
       --orange: #f59e0b;
       --orangeSoft: #fff7ed;
-      --red: #dc2626;
       --redSoft: #fee2e2;
+      --red: #991b1b;
       --shadow: 0 8px 24px rgba(15, 45, 70, 0.08);
       --radius: 22px;
       --navHeight: 82px;
@@ -34,10 +33,10 @@
     body {
       margin: 0;
       background: var(--bg);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 17px;
-      line-height: 1.45;
+      line-height: 1.42;
     }
 
     button,
@@ -52,15 +51,15 @@
       max-width: 720px;
       margin: 0 auto;
       min-height: 100vh;
+      padding-bottom: calc(var(--navHeight) + 20px);
       background: linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
-      padding-bottom: calc(var(--navHeight) + 22px);
     }
 
     .topbar {
       background: var(--navy);
       color: white;
-      padding: 18px 18px 20px;
-      border-radius: 0 0 26px 26px;
+      padding: 16px 18px 18px;
+      border-radius: 0 0 24px 24px;
       box-shadow: var(--shadow);
     }
 
@@ -71,74 +70,73 @@
     }
 
     .logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      background: #ffffff;
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      background: white;
       color: var(--navy);
       display: grid;
       place-items: center;
-      font-size: 30px;
+      font-size: 29px;
       flex: 0 0 auto;
     }
 
     .brand h1 {
       margin: 0;
-      font-size: 24px;
-      line-height: 1.05;
-      font-weight: 900;
+      font-size: 23px;
+      line-height: 1.08;
+      font-weight: 950;
       letter-spacing: -0.02em;
     }
 
     .brand p {
-      margin: 3px 0 0;
+      margin: 2px 0 0;
       color: #cbd5e1;
-      font-size: 16px;
+      font-size: 15px;
     }
 
-    .badge {
+    .premium-badge {
       margin-left: auto;
-      border: 1px solid rgba(187, 247, 208, 0.26);
+      border: 1px solid rgba(187, 247, 208, 0.25);
       background: rgba(20, 184, 166, 0.14);
       color: #bbf7d0;
       border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 14px;
-      font-weight: 900;
-      white-space: nowrap;
+      padding: 7px 11px;
+      font-weight: 950;
+      font-size: 13px;
       cursor: pointer;
+      white-space: nowrap;
     }
 
-    .home-hero {
-      margin-top: 16px;
+    .hero {
+      margin-top: 14px;
     }
 
-    .home-hero .label {
+    .hero .label {
       color: #bbf7d0;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-weight: 900;
-      font-size: 14px;
+      font-weight: 950;
+      font-size: 13px;
       margin-bottom: 6px;
     }
 
-    .home-hero h2 {
+    .hero h2 {
       margin: 0;
-      color: #ffffff;
-      font-size: 32px;
+      font-size: 29px;
       line-height: 1.12;
       font-weight: 950;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
     }
 
-    .home-hero p {
-      margin: 12px 0 0;
+    .hero p {
+      margin: 10px 0 0;
       color: #dbeafe;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .content {
-      padding: 16px;
+      padding: 14px;
     }
 
     .screen {
@@ -153,25 +151,21 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 16px;
       box-shadow: var(--shadow);
-      margin-bottom: 14px;
-    }
-
-    .card.compact {
-      padding: 15px;
+      margin-bottom: 13px;
     }
 
     .main-action {
       width: 100%;
+      border: none;
       background: var(--navy);
       color: white;
-      border: none;
-      border-radius: 24px;
-      padding: 20px;
+      border-radius: 22px;
+      padding: 18px;
       text-align: left;
       box-shadow: var(--shadow);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       cursor: pointer;
     }
 
@@ -180,14 +174,14 @@
       color: #bbf7d0;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-weight: 900;
-      font-size: 14px;
+      font-weight: 950;
+      font-size: 13px;
       margin-bottom: 5px;
     }
 
     .main-action strong {
       display: block;
-      font-size: 28px;
+      font-size: 27px;
       line-height: 1.1;
       font-weight: 950;
       letter-spacing: -0.03em;
@@ -195,97 +189,97 @@
 
     .main-action span {
       display: block;
+      margin-top: 6px;
       color: #dbeafe;
-      margin-top: 7px;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .quick-list {
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .quick-btn {
       width: 100%;
       border: 1px solid var(--border);
       background: white;
-      border-radius: 20px;
-      padding: 14px;
+      border-radius: 19px;
+      padding: 13px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       text-align: left;
-      cursor: pointer;
       box-shadow: 0 4px 14px rgba(15, 45, 70, 0.04);
-      min-height: 72px;
+      cursor: pointer;
+      min-height: 68px;
     }
 
     .quick-icon {
-      width: 46px;
-      height: 46px;
+      width: 43px;
+      height: 43px;
       border-radius: 14px;
       background: var(--soft);
       display: grid;
       place-items: center;
-      font-size: 25px;
+      font-size: 24px;
       flex: 0 0 auto;
     }
 
     .quick-title {
       display: block;
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 950;
       line-height: 1.12;
     }
 
     .quick-desc {
       display: block;
-      font-size: 15px;
       color: var(--muted);
-      margin-top: 3px;
+      font-size: 14px;
+      margin-top: 2px;
     }
 
-    .notice {
+    .soft-note {
       background: #fffbeb;
       border: 1px solid #fde68a;
       color: #713f12;
-      border-radius: 18px;
-      padding: 14px;
-      font-size: 15px;
-      margin-top: 14px;
+      border-radius: 17px;
+      padding: 12px;
+      font-size: 14px;
+      margin-top: 12px;
     }
 
     .title {
-      margin: 0 0 8px;
-      font-size: 27px;
+      margin: 0 0 7px;
+      font-size: 26px;
       font-weight: 950;
       letter-spacing: -0.03em;
     }
 
     .subtitle {
-      margin: 0 0 15px;
+      margin: 0 0 13px;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .back {
       border: none;
       background: transparent;
       color: var(--blue);
-      font-weight: 900;
-      padding: 6px 0 12px;
+      font-weight: 950;
+      padding: 5px 0 11px;
       cursor: pointer;
+    }
+
+    .field {
+      margin-bottom: 12px;
     }
 
     label {
       display: block;
-      font-weight: 900;
-      margin-bottom: 7px;
-      font-size: 17px;
-    }
-
-    .field {
-      margin-bottom: 14px;
+      margin-bottom: 6px;
+      font-weight: 950;
+      font-size: 16px;
     }
 
     input,
@@ -293,16 +287,16 @@
     select {
       width: 100%;
       border: 2px solid var(--border);
-      border-radius: 17px;
-      padding: 14px;
+      border-radius: 16px;
+      padding: 13px;
+      min-height: 52px;
+      outline: none;
       background: white;
       color: var(--text);
-      outline: none;
-      min-height: 55px;
     }
 
     textarea {
-      min-height: 135px;
+      min-height: 112px;
       resize: vertical;
     }
 
@@ -310,23 +304,29 @@
     textarea:focus,
     select:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
     .btn {
       border: none;
-      border-radius: 17px;
-      padding: 15px 18px;
+      border-radius: 16px;
+      padding: 14px 16px;
+      min-height: 52px;
       font-weight: 950;
       cursor: pointer;
-      min-height: 54px;
     }
 
     .btn-primary {
       background: var(--blue);
       color: white;
       width: 100%;
-      font-size: 19px;
+      font-size: 18px;
     }
 
     .btn-dark {
@@ -347,31 +347,31 @@
 
     .btn-red {
       background: var(--redSoft);
-      color: #991b1b;
+      color: var(--red);
       border: 1px solid #fecaca;
     }
 
     .btn-row {
       display: grid;
-      gap: 10px;
-      margin-top: 12px;
+      gap: 9px;
+      margin-top: 10px;
     }
 
     .chips {
       display: flex;
-      gap: 9px;
       flex-wrap: wrap;
+      gap: 8px;
     }
 
     .chip {
       border: 1px solid var(--border);
       background: white;
-      border-radius: 999px;
-      padding: 9px 12px;
-      font-weight: 900;
       color: var(--text);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-weight: 950;
+      font-size: 14px;
       cursor: pointer;
-      font-size: 15px;
     }
 
     .chip.active {
@@ -380,111 +380,83 @@
       border-color: var(--navy);
     }
 
-    .result-head {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .mini-card {
-      border: 1px solid var(--border);
+    .result-card {
       background: white;
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 14px;
       margin-bottom: 10px;
     }
 
-    .mini-title {
+    .result-title {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 950;
-      margin-bottom: 7px;
-    }
-
-    .urgency-pill {
-      display: inline-flex;
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-weight: 950;
-      font-size: 14px;
       margin-bottom: 6px;
     }
 
-    .normal {
+    .result-line {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 950;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .pill.normal {
       color: #166534;
       background: var(--greenSoft);
     }
 
-    .urgent {
+    .pill.urgent {
       color: #9a3412;
       background: var(--orangeSoft);
     }
 
-    .danger {
-      color: #991b1b;
+    .pill.danger {
+      color: var(--red);
       background: var(--redSoft);
     }
 
+    .actions-list {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .actions-list li {
+      margin-bottom: 4px;
+    }
+
     details {
-      border: 1px solid var(--border);
       background: white;
+      border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 14px;
+      padding: 13px;
       margin-top: 10px;
     }
 
     summary {
       cursor: pointer;
+      font-size: 18px;
       font-weight: 950;
-      font-size: 19px;
     }
 
     .letter-preview {
       white-space: pre-line;
       background: #fbfdff;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
+      border-radius: 15px;
+      padding: 13px;
       margin-top: 12px;
       font-size: 16px;
-    }
-
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .plan {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-    }
-
-    .plan h3 {
-      margin: 0 0 8px;
-      font-size: 21px;
-    }
-
-    .plan ul {
-      margin: 0;
-      padding-left: 20px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .plan li {
-      margin-bottom: 6px;
-    }
-
-    .premium-plan {
-      border-color: rgba(37, 99, 235, 0.35);
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
     }
 
     .model-item,
@@ -492,8 +464,8 @@
       border: 1px solid var(--border);
       background: white;
       border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 10px;
+      padding: 13px;
+      margin-bottom: 9px;
     }
 
     .model-item {
@@ -503,13 +475,13 @@
     .model-item strong,
     .reminder-item strong {
       display: block;
-      font-size: 19px;
-      margin-bottom: 4px;
+      font-size: 18px;
+      margin-bottom: 3px;
     }
 
     .muted {
       color: var(--muted);
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .date-blue {
@@ -522,24 +494,102 @@
       border: 1px dashed var(--border);
       background: var(--soft);
       border-radius: 18px;
-      padding: 14px;
+      padding: 13px;
       text-align: center;
       color: var(--muted);
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .plan {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 13px;
+    }
+
+    .plan h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .plan ul {
+      margin: 0;
+      padding-left: 19px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .plan li {
+      margin-bottom: 5px;
+    }
+
+    .premium-plan {
+      border-color: rgba(37, 99, 235, 0.35);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+    }
+
+    .pdf-page {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .pdf-header {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .pdf-header h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 24px;
+    }
+
+    .pdf-meta {
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    .pdf-letter {
+      white-space: pre-line;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .pdf-footer {
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .toast {
       display: none;
       position: fixed;
       left: 50%;
-      bottom: calc(var(--navHeight) + 16px);
+      bottom: calc(var(--navHeight) + 14px);
       transform: translateX(-50%);
-      max-width: 640px;
-      width: calc(100% - 32px);
+      width: calc(100% - 30px);
+      max-width: 650px;
       background: var(--navy);
       color: white;
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-weight: 900;
+      border-radius: 17px;
+      padding: 13px 15px;
+      font-weight: 950;
       box-shadow: 0 12px 30px rgba(15,45,70,0.22);
       z-index: 50;
     }
@@ -560,7 +610,7 @@
       border-top: 1px solid var(--border);
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      box-shadow: 0 -8px 24px rgba(15, 45, 70, 0.08);
+      box-shadow: 0 -8px 24px rgba(15,45,70,0.08);
       z-index: 40;
     }
 
@@ -574,12 +624,12 @@
       justify-content: center;
       font-weight: 950;
       gap: 3px;
-      cursor: pointer;
       font-size: 13px;
+      cursor: pointer;
     }
 
     .nav-icon {
-      font-size: 25px;
+      font-size: 24px;
       line-height: 1;
     }
 
@@ -592,39 +642,71 @@
     }
 
     .senior-mode .quick-title {
-      font-size: 22px;
+      font-size: 21px;
     }
 
     .senior-mode .quick-desc,
     .senior-mode .muted,
-    .senior-mode .notice {
-      font-size: 16px;
+    .senior-mode .soft-note {
+      font-size: 15px;
     }
 
     @media (max-width: 420px) {
-      .content {
-        padding: 14px;
-      }
-
-      .home-hero h2 {
-        font-size: 29px;
+      .hero h2 {
+        font-size: 27px;
       }
 
       .main-action strong {
-        font-size: 26px;
+        font-size: 25px;
       }
 
+      .brand h1 {
+        font-size: 21px;
+      }
+
+      .grid-2,
       .compare {
         grid-template-columns: 1fr;
       }
 
-      .brand h1 {
-        font-size: 22px;
+      .content {
+        padding: 13px;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
       }
 
-      .badge {
-        font-size: 13px;
-        padding: 7px 10px;
+      .topbar,
+      .bottom-nav,
+      .back,
+      .no-print,
+      .toast,
+      .screen:not(#pdf) {
+        display: none !important;
+      }
+
+      .app {
+        max-width: none;
+        padding: 0;
+        background: white;
+      }
+
+      .content {
+        padding: 0;
+      }
+
+      #pdf {
+        display: block !important;
+      }
+
+      .pdf-page {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 35px;
       }
     }
   </style>
@@ -639,10 +721,10 @@
           <h1>Mes Démarches Zen</h1>
           <p>Assistant IA simple</p>
         </div>
-        <button class="badge" id="premiumBadge" onclick="openScreen('premium')">Gratuit</button>
+        <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Gratuit</button>
       </div>
 
-      <div class="home-hero" id="homeHero">
+      <div class="hero" id="homeHero">
         <div class="label">Simple • lisible • rassurant</div>
         <h2>Comprendre vos courriers, sans stress.</h2>
         <p>Une aide claire pour savoir quoi faire et préparer une réponse.</p>
@@ -650,12 +732,11 @@
     </header>
 
     <main class="content">
-      <!-- ACCUEIL -->
       <section class="screen active" id="home">
         <button class="main-action" onclick="openScreen('assistant')">
           <small>Commencer</small>
           <strong>J’ai reçu un courrier</strong>
-          <span>L’assistant vous explique ce que cela veut dire.</span>
+          <span>L’assistant vous aide à comprendre et répondre.</span>
         </button>
 
         <div class="quick-list">
@@ -663,7 +744,7 @@
             <span class="quick-icon">✉️</span>
             <span>
               <span class="quick-title">Comprendre un courrier</span>
-              <span class="quick-desc">Résumé, urgence, actions.</span>
+              <span class="quick-desc">Résumé court et actions.</span>
             </span>
           </button>
 
@@ -679,53 +760,84 @@
             <span class="quick-icon">🔔</span>
             <span>
               <span class="quick-title">Ajouter un rappel</span>
-              <span class="quick-desc">Notification et vibration.</span>
+              <span class="quick-desc">Date, heure, notification.</span>
             </span>
           </button>
         </div>
 
-        <div class="notice">
-          Aide à la compréhension et à la rédaction. Ne remplace pas un avocat, une administration ou un conseiller officiel.
+        <div class="soft-note">
+          Courrier préparé pour vous aider à répondre clairement.
         </div>
 
-        <div class="card compact">
-          <h2 class="title">Gratuit ou Premium</h2>
-          <p class="subtitle">La version gratuite aide à démarrer. Le Premium ajoute le PDF, l’historique et les fonctions avancées.</p>
-          <button class="btn btn-light" onclick="openScreen('premium')">Voir la différence</button>
+        <div class="card">
+          <h2 class="title">Premium</h2>
+          <p class="subtitle">PDF prêt à imprimer, historique, réponses plus avancées et rappels renforcés.</p>
+          <button class="btn btn-light" onclick="openScreen('premium')">Voir Gratuit / Premium</button>
         </div>
       </section>
 
-      <!-- ASSISTANT -->
       <section class="screen" id="assistant">
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
-        <div class="card compact">
+        <div class="card">
           <h2 class="title">Assistant IA</h2>
-          <p class="subtitle">Écrivez ou collez votre courrier. L’app prépare une réponse adaptée.</p>
+          <p class="subtitle">Collez le courrier. Choisissez la situation. L’app prépare une fiche courte.</p>
 
           <div class="field">
-            <label for="letterText">Votre courrier ou votre problème</label>
-            <textarea id="letterText" placeholder="Exemple : J’ai reçu un refus de remboursement de transport par la CPAM..."></textarea>
+            <label for="letterText">Votre courrier</label>
+            <textarea id="letterText" placeholder="Collez ici le texte du courrier reçu..."></textarea>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="organism">Organisme</label>
+              <select id="organism">
+                <option value="administration">Administration</option>
+                <option value="cpam">CPAM / Santé</option>
+                <option value="caf">CAF / aides</option>
+                <option value="banque">Banque</option>
+                <option value="assurance">Assurance</option>
+                <option value="logement">Logement</option>
+                <option value="impots">Impôts</option>
+                <option value="employeur">Employeur</option>
+                <option value="transport">Transport</option>
+                <option value="ecole">École</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="issueSelect">Situation</label>
+              <select id="issueSelect">
+                <option value="auto">Détection automatique</option>
+                <option value="refus">Refus / décision négative</option>
+                <option value="remboursement">Remboursement</option>
+                <option value="justificatif">Document demandé</option>
+                <option value="paiement">Dette / trop-perçu / somme</option>
+                <option value="convocation">Convocation</option>
+                <option value="delai">Date limite / délai</option>
+                <option value="general">Autre demande</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="toneSelect">Ton</label>
+              <select id="toneSelect">
+                <option value="simple">Simple</option>
+                <option value="poli">Poli</option>
+                <option value="ferme">Ferme</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="detailText">Détail utile</label>
+              <input id="detailText" placeholder="N° dossier, date, montant..." />
+            </div>
           </div>
 
           <div class="field">
-            <label for="organism">De qui vient le courrier ?</label>
-            <select id="organism">
-              <option value="administration">Administration / autre</option>
-              <option value="cpam">CPAM / Santé</option>
-              <option value="caf">CAF / aides</option>
-              <option value="banque">Banque</option>
-              <option value="assurance">Assurance</option>
-              <option value="logement">Logement</option>
-              <option value="impots">Impôts</option>
-              <option value="employeur">Employeur</option>
-              <option value="transport">Transport</option>
-              <option value="ecole">École</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Ce que vous voulez faire</label>
+            <label>Action souhaitée</label>
             <div class="chips" id="intentChips">
               <button class="chip active" onclick="selectIntent('comprendre', this)">Comprendre</button>
               <button class="chip" onclick="selectIntent('repondre', this)">Répondre</button>
@@ -734,76 +846,75 @@
             </div>
           </div>
 
-          <button class="btn btn-primary" onclick="analyseLetter()">Analyser mon courrier</button>
-          <p class="muted" id="freeCounterText" style="margin-top:10px;"></p>
+          <button class="btn btn-primary" onclick="analyseLetter()">Analyser</button>
+          <p class="muted" id="freeCounterText" style="margin-top:9px;"></p>
         </div>
 
         <div id="assistantResult"></div>
       </section>
 
-      <!-- MODELES -->
       <section class="screen" id="models">
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
-        <div class="card compact">
-          <h2 class="title">Modèles de réponse</h2>
-          <p class="subtitle">Choisissez un modèle selon votre situation.</p>
+        <div class="card">
+          <h2 class="title">Modèles</h2>
+          <p class="subtitle">Choisissez une situation pour obtenir une réponse adaptée.</p>
           <div id="modelList"></div>
         </div>
       </section>
 
-      <!-- RAPPELS -->
       <section class="screen" id="reminders">
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
-        <div class="card compact">
-          <h2 class="title">Créer un rappel</h2>
-          <p class="subtitle">Ajoutez une date et une heure. L’app peut vibrer et afficher une notification.</p>
+        <div class="card">
+          <h2 class="title">Rappel</h2>
+          <p class="subtitle">Ajoutez une date et une heure. L’app peut afficher une alerte si elle est ouverte.</p>
 
           <div class="field">
             <label for="reminderTitle">Titre</label>
             <input id="reminderTitle" placeholder="Exemple : Répondre à la CPAM" />
           </div>
 
-          <div class="field">
-            <label for="reminderDate">Date</label>
-            <input id="reminderDate" type="date" />
-          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="reminderDate">Date</label>
+              <input id="reminderDate" type="date" />
+            </div>
 
-          <div class="field">
-            <label for="reminderTime">Heure</label>
-            <input id="reminderTime" type="time" />
+            <div class="field">
+              <label for="reminderTime">Heure</label>
+              <input id="reminderTime" type="time" />
+            </div>
           </div>
 
           <div class="field">
             <label for="reminderNote">Note</label>
-            <textarea id="reminderNote" placeholder="Exemple : Joindre les justificatifs et garder une copie."></textarea>
+            <input id="reminderNote" placeholder="Justificatifs, copie, preuve d’envoi..." />
           </div>
 
           <div class="btn-row">
-            <button class="btn btn-primary" onclick="addReminder()">Ajouter le rappel</button>
+            <button class="btn btn-primary" onclick="addReminder()">Ajouter</button>
             <button class="btn btn-light" onclick="requestNotifications()">Activer les notifications</button>
-            <button class="btn btn-light" onclick="testAlert()">Tester vibration / notification</button>
+            <button class="btn btn-light" onclick="testAlert()">Tester l’alerte</button>
           </div>
 
-          <div class="notice">
-            Les notifications dépendent du téléphone et du navigateur. Pour une alarme 100 % fiable même app fermée, il faudra plus tard une version APK/PWA avancée.
+          <div class="soft-note">
+            Les notifications web dépendent du téléphone. L’app affiche aussi une alerte interne.
           </div>
         </div>
 
-        <div class="card compact">
+        <div class="card">
           <h2 class="title">Mes rappels</h2>
           <div id="reminderList"></div>
         </div>
       </section>
 
-      <!-- PREMIUM -->
       <section class="screen" id="premium">
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
-        <div class="card compact">
-          <h2 class="title">Gratuit vs Premium</h2>
-          <p class="subtitle">Le Premium doit montrer une vraie différence : PDF, historique, réponses plus précises, rappels avancés.</p>
+        <div class="card">
+          <h2 class="title">Gratuit / Premium</h2>
+          <p class="subtitle">Le Premium doit apporter un vrai confort : PDF, historique, réponses avancées.</p>
 
           <div class="compare">
             <div class="plan">
@@ -813,7 +924,6 @@
                 <li>Copier la réponse</li>
                 <li>Modèles simples</li>
                 <li>Rappels simples</li>
-                <li>Pas d’aperçu PDF complet</li>
               </ul>
             </div>
 
@@ -821,10 +931,10 @@
               <h3>Premium</h3>
               <ul>
                 <li>Analyses illimitées</li>
-                <li>Réponses plus personnalisées</li>
                 <li>PDF prêt à imprimer</li>
-                <li>Historique des démarches</li>
-                <li>Rappels avec notification</li>
+                <li>Objet automatique</li>
+                <li>Historique futur</li>
+                <li>Réponses plus avancées</li>
               </ul>
             </div>
           </div>
@@ -832,11 +942,36 @@
           <div class="btn-row">
             <button class="btn btn-green" onclick="activatePremium()">Activer Premium test</button>
             <button class="btn btn-light" onclick="deactivatePremium()">Revenir en gratuit</button>
-            <button class="btn btn-light" onclick="toggleSeniorMode()">Mode senior : texte plus grand</button>
+            <button class="btn btn-light" onclick="toggleSeniorMode()">Mode senior</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="pdf">
+        <button class="back no-print" onclick="openScreen('assistant')">← Retour</button>
+
+        <div class="card no-print">
+          <h2 class="title">Aperçu PDF</h2>
+          <p class="subtitle">Votre courrier est prêt à imprimer ou enregistrer en PDF.</p>
+          <button class="btn btn-primary" onclick="window.print()">Télécharger / imprimer en PDF</button>
+        </div>
+
+        <div class="pdf-page" id="pdfPage">
+          <div class="pdf-header">
+            <h2>Mes Démarches Zen</h2>
+            <p>Courrier préparé pour vous aider à répondre clairement.</p>
           </div>
 
-          <div class="notice">
-            Pour le moment, le paiement est simulé. Plus tard, on pourra brancher Stripe, Google Play Billing ou une autre solution.
+          <div class="pdf-meta">
+            <strong>Objet :</strong> <span id="pdfSubject"></span><br>
+            <strong>Destinataire :</strong> <span id="pdfRecipient"></span><br>
+            <strong>Date :</strong> <span id="pdfDate"></span>
+          </div>
+
+          <div class="pdf-letter" id="pdfLetter"></div>
+
+          <div class="pdf-footer">
+            Document préparé avec Mes Démarches Zen.
           </div>
         </div>
       </section>
@@ -847,14 +982,17 @@
         <span class="nav-icon">🏠</span>
         Accueil
       </button>
+
       <button class="nav-btn" onclick="openScreen('assistant')" data-screen="assistant">
         <span class="nav-icon">💬</span>
         Assistant
       </button>
+
       <button class="nav-btn" onclick="openScreen('models')" data-screen="models">
         <span class="nav-icon">📝</span>
         Modèles
       </button>
+
       <button class="nav-btn" onclick="openScreen('reminders')" data-screen="reminders">
         <span class="nav-icon">🔔</span>
         Rappels
@@ -867,71 +1005,34 @@
   <script>
     const FREE_LIMIT = 3;
     let selectedIntent = "comprendre";
-    let lastGeneratedResponse = "";
-    let lastGeneratedSummary = "";
+    let lastGenerated = null;
 
     const models = [
-      {
-        title: "CPAM - Demander un remboursement",
-        desc: "Transport, soins, justificatifs, remboursement.",
-        organism: "cpam",
-        intent: "repondre"
-      },
-      {
-        title: "CAF - Envoyer des justificatifs",
-        desc: "Aide, situation familiale, document manquant.",
-        organism: "caf",
-        intent: "repondre"
-      },
-      {
-        title: "Banque - Contester des frais",
-        desc: "Frais bancaires, prélèvement, demande d’explication.",
-        organism: "banque",
-        intent: "contester"
-      },
-      {
-        title: "Assurance - Demander une prise en charge",
-        desc: "Sinistre, garantie, indemnisation.",
-        organism: "assurance",
-        intent: "repondre"
-      },
-      {
-        title: "Logement - Demander une réparation",
-        desc: "Bailleur, travaux, problème dans le logement.",
-        organism: "logement",
-        intent: "repondre"
-      },
-      {
-        title: "Employeur - Demander un document",
-        desc: "Attestation, bulletin, certificat, document manquant.",
-        organism: "employeur",
-        intent: "repondre"
-      },
-      {
-        title: "Demander un délai",
-        desc: "Demander plus de temps pour répondre.",
-        organism: "administration",
-        intent: "delai"
-      }
+      { title: "CPAM - Remboursement", desc: "Transport, soins, prise en charge.", organism: "cpam", issue: "remboursement", intent: "repondre" },
+      { title: "CPAM - Contester un refus", desc: "Demander un réexamen.", organism: "cpam", issue: "refus", intent: "contester" },
+      { title: "CAF - Envoyer un document", desc: "Justificatif ou complément.", organism: "caf", issue: "justificatif", intent: "repondre" },
+      { title: "Banque - Contester des frais", desc: "Frais, prélèvement, explication.", organism: "banque", issue: "paiement", intent: "contester" },
+      { title: "Assurance - Prise en charge", desc: "Sinistre, garantie, indemnisation.", organism: "assurance", issue: "remboursement", intent: "repondre" },
+      { title: "Employeur - Document manquant", desc: "Attestation, bulletin, certificat.", organism: "employeur", issue: "justificatif", intent: "repondre" },
+      { title: "Demander un délai", desc: "Plus de temps pour répondre.", organism: "administration", issue: "delai", intent: "delai" }
     ];
 
     function openScreen(id) {
-      document.querySelectorAll(".screen").forEach(screen => screen.classList.remove("active"));
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
 
       document.querySelectorAll(".nav-btn").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.screen === id);
       });
 
-      const hero = document.getElementById("homeHero");
-      hero.style.display = id === "home" ? "block" : "none";
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      document.getElementById("homeHero").style.display = id === "home" ? "block" : "none";
 
       if (id === "models") renderModels();
       if (id === "reminders") renderReminders();
+
       updatePremiumBadge();
       updateFreeCounter();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function toast(message) {
@@ -943,41 +1044,40 @@
 
     function selectIntent(intent, btn) {
       selectedIntent = intent;
-      document.querySelectorAll("#intentChips .chip").forEach(chip => chip.classList.remove("active"));
+      document.querySelectorAll("#intentChips .chip").forEach(c => c.classList.remove("active"));
       btn.classList.add("active");
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz31_premium") === "true";
+      return localStorage.getItem("mdz32_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz31_premium", "true");
+      localStorage.setItem("mdz32_premium", "true");
+      toast("Premium test activé.");
       updatePremiumBadge();
       updateFreeCounter();
-      toast("Premium test activé.");
       openScreen("home");
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz31_premium", "false");
+      localStorage.setItem("mdz32_premium", "false");
+      toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
-      toast("Retour en version gratuite.");
       openScreen("home");
     }
 
     function updatePremiumBadge() {
-      const badge = document.getElementById("premiumBadge");
-      badge.textContent = isPremium() ? "Premium" : "Gratuit";
+      document.getElementById("premiumBadge").textContent = isPremium() ? "Premium" : "Gratuit";
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz31_usage_count") || "0");
+      return Number(localStorage.getItem("mdz32_usage") || "0");
     }
 
-    function setUsageCount(value) {
-      localStorage.setItem("mdz31_usage_count", String(value));
+    function setUsageCount(v) {
+      localStorage.setItem("mdz32_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -986,27 +1086,29 @@
 
       if (isPremium()) {
         el.textContent = "Premium actif : analyses illimitées en mode test.";
-        return;
+      } else {
+        const remaining = Math.max(0, FREE_LIMIT - getUsageCount());
+        el.textContent = "Version gratuite : " + remaining + " analyse(s) restante(s).";
       }
-
-      const remaining = Math.max(0, FREE_LIMIT - getUsageCount());
-      el.textContent = "Version gratuite : " + remaining + " analyse(s) restante(s).";
     }
 
     function analyseLetter() {
       const text = document.getElementById("letterText").value.trim();
       const organism = document.getElementById("organism").value;
+      const selectedIssue = document.getElementById("issueSelect").value;
+      const tone = document.getElementById("toneSelect").value;
+      const detail = document.getElementById("detailText").value.trim();
 
       if (!text) {
-        toast("Écrivez d’abord le contenu du courrier.");
+        toast("Collez ou écrivez d’abord le courrier.");
         return;
       }
 
       if (!isPremium() && getUsageCount() >= FREE_LIMIT) {
         document.getElementById("assistantResult").innerHTML = `
-          <div class="card compact">
+          <div class="card">
             <h2 class="title">Limite gratuite atteinte</h2>
-            <p class="subtitle">Vous avez utilisé vos ${FREE_LIMIT} analyses gratuites.</p>
+            <p class="subtitle">Passez en Premium test pour continuer.</p>
             <button class="btn btn-primary" onclick="openScreen('premium')">Voir Premium</button>
           </div>
         `;
@@ -1017,498 +1119,333 @@
         setUsageCount(getUsageCount() + 1);
       }
 
-      const result = generateResult(text, organism, selectedIntent);
-      lastGeneratedResponse = result.response;
-      lastGeneratedSummary = result.summary;
+      const result = generateResult(text, organism, selectedIssue, selectedIntent, tone, detail);
+      lastGenerated = result;
       renderResult(result);
       updateFreeCounter();
-    }
 
-    function detectIssue(text) {
-      const lower = text.toLowerCase();
-
-      if (hasAny(lower, ["mise en demeure", "dernier rappel", "recouvrement", "huissier", "contentieux", "saisie"])) return "grave";
-      if (hasAny(lower, ["refus", "rejet", "refusé", "défavorable", "non accordé"])) return "refus";
-      if (hasAny(lower, ["remboursement", "rembourser", "indemnisation", "prise en charge"])) return "remboursement";
-      if (hasAny(lower, ["justificatif", "document", "pièce", "attestation", "complément"])) return "justificatif";
-      if (hasAny(lower, ["trop-perçu", "trop perçu", "dette", "impayé", "solde à payer"])) return "paiement";
-      if (hasAny(lower, ["convocation", "rendez-vous", "présenter"])) return "convocation";
-      if (hasAny(lower, ["date limite", "avant le", "sous 8 jours", "sous huit jours", "délai"])) return "delai";
-      return "general";
+      setTimeout(() => {
+        document.getElementById("assistantResult").scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
 
     function hasAny(text, words) {
-      return words.some(word => text.includes(word));
+      return words.some(w => text.includes(w));
     }
 
-    function getOrganismLabel(organism) {
-      const labels = {
-        administration: "une administration",
-        cpam: "la CPAM",
-        caf: "la CAF",
-        banque: "votre banque",
-        assurance: "votre assurance",
-        logement: "votre bailleur ou un organisme de logement",
-        impots: "les impôts",
-        employeur: "votre employeur",
-        transport: "un service de transport",
-        ecole: "l’école ou un établissement scolaire"
+    function detectIssue(text, selectedIssue) {
+      if (selectedIssue !== "auto") return selectedIssue;
+
+      const lower = text.toLowerCase();
+
+      if (hasAny(lower, ["si vous n'êtes pas le destinataire", "si vous n’êtes pas le destinataire", "détruire ce message", "ne pas divulguer", "confidentiel"])) {
+        return "signature_auto";
+      }
+
+      if (hasAny(lower, ["mise en demeure", "dernier rappel", "recouvrement", "huissier", "saisie", "contentieux", "expulsion"])) return "grave";
+      if (hasAny(lower, ["refus", "rejet", "défavorable", "non accordé", "refusé"])) return "refus";
+      if (hasAny(lower, ["remboursement", "rembourser", "indemnisation", "prise en charge"])) return "remboursement";
+      if (hasAny(lower, ["justificatif", "document", "pièce", "attestation", "complément"])) return "justificatif";
+      if (hasAny(lower, ["trop-perçu", "trop perçu", "dette", "impayé", "solde à payer", "montant"])) return "paiement";
+      if (hasAny(lower, ["convocation", "rendez-vous", "présenter"])) return "convocation";
+      if (hasAny(lower, ["date limite", "avant le", "sous 8 jours", "délai"])) return "delai";
+
+      return "general";
+    }
+
+    function recipientLabel(organism) {
+      const map = {
+        administration: "Administration",
+        cpam: "CPAM",
+        caf: "CAF",
+        banque: "Banque",
+        assurance: "Assurance",
+        logement: "Bailleur / logement",
+        impots: "Service des impôts",
+        employeur: "Employeur",
+        transport: "Service transport",
+        ecole: "Établissement scolaire"
       };
-      return labels[organism] || "une administration";
+      return map[organism] || "Administration";
     }
 
-    function generateResult(text, organism, intent) {
-      const issue = detectIssue(text);
-      const org = getOrganismLabel(organism);
+    function buildSubject(organism, issue, intent) {
+      if (issue === "signature_auto") return "Demande à compléter";
+      if (intent === "delai" || issue === "delai") return "Demande de délai supplémentaire";
+      if (intent === "contester" || issue === "refus") return "Demande de réexamen de mon dossier";
+      if (issue === "remboursement") return "Demande de suivi de remboursement";
+      if (issue === "justificatif") return "Transmission de justificatifs";
+      if (issue === "paiement") return "Demande d’explication concernant une somme";
+      if (issue === "convocation") return "Demande de précision concernant une convocation";
+      return "Demande d’explications concernant mon dossier";
+    }
 
-      let urgency = "normal";
-      let urgencyLabel = "Normal";
-      let urgencyText = "Prenez le temps de vérifier les informations et gardez une copie.";
-
-      if (issue === "delai" || issue === "paiement") {
-        urgency = "urgent";
-        urgencyLabel = "À vérifier rapidement";
-        urgencyText = "Il peut y avoir une date ou une somme à traiter. Vérifiez le délai indiqué dans le courrier.";
+    function buildSummary(organism, issue) {
+      if (issue === "signature_auto") {
+        return "Le texte collé ressemble surtout à une mention automatique de confidentialité. Il manque peut-être le vrai contenu du courrier.";
       }
 
+      const org = recipientLabel(organism);
+
+      const summaries = {
+        refus: "Il semble y avoir une décision négative. Il faut demander le motif et préparer une réponse claire.",
+        remboursement: "Le courrier semble concerner un remboursement ou une prise en charge. Il faut vérifier les dates et les justificatifs.",
+        justificatif: "L’organisme semble demander un document. Il faut envoyer la pièce demandée et garder une preuve.",
+        paiement: "Le courrier semble parler d’une somme à payer ou à vérifier. Il faut demander le détail.",
+        convocation: "Le courrier semble annoncer un rendez-vous ou une convocation. Il faut vérifier la date et les documents à apporter.",
+        delai: "Il semble y avoir une date limite. Il faut répondre rapidement ou demander un délai.",
+        grave: "Le courrier semble important. Il faut agir avec prudence et garder une trace écrite.",
+        general: "Le courrier concerne votre dossier auprès de " + org + ". Il faut identifier la demande exacte."
+      };
+
+      return summaries[issue] || summaries.general;
+    }
+
+    function buildUrgency(issue) {
       if (issue === "grave") {
-        urgency = "danger";
-        urgencyLabel = "Important";
-        urgencyText = "Ce courrier peut avoir des conséquences importantes. Contactez l’organisme ou un professionnel si besoin.";
+        return {
+          level: "Important",
+          cls: "danger",
+          text: "Répondez par écrit et gardez une preuve."
+        };
       }
 
-      const summary = buildSummary(organism, issue, intent);
-      const actions = buildActions(organism, issue, intent);
-      const response = buildResponse(organism, issue, intent);
+      if (issue === "delai" || issue === "paiement" || issue === "refus") {
+        return {
+          level: "À traiter",
+          cls: "urgent",
+          text: "Vérifiez la date limite et préparez les pièces."
+        };
+      }
 
       return {
-        organism,
-        issue,
-        org,
-        summary,
-        actions,
-        urgency,
-        urgencyLabel,
-        urgencyText,
-        response
+        level: "Normal",
+        cls: "normal",
+        text: "Prenez le temps de répondre correctement."
       };
-    }
-
-    function buildSummary(organism, issue, intent) {
-      const summaries = {
-        cpam: {
-          refus: "Le courrier semble concerner un refus ou une décision négative de la CPAM. Il faut comprendre le motif, vérifier les délais et préparer une réponse avec les justificatifs.",
-          remboursement: "Le courrier semble concerner un remboursement ou une prise en charge CPAM. Il faut vérifier la prescription, les justificatifs et la période concernée.",
-          justificatif: "La CPAM semble demander un document complémentaire. Il faut envoyer la pièce demandée et garder une preuve d’envoi.",
-          general: "Le courrier concerne probablement votre dossier CPAM. Il faut vérifier ce qui est demandé et répondre clairement."
-        },
-        caf: {
-          refus: "Le courrier semble concerner une décision CAF défavorable. Il faut vérifier le motif, les ressources ou justificatifs demandés.",
-          paiement: "Le courrier semble parler d’un paiement, d’une dette ou d’un trop-perçu CAF. Il faut vérifier le montant, la période et les possibilités de réponse.",
-          justificatif: "La CAF semble demander des justificatifs. Il faut envoyer les documents demandés et conserver une copie.",
-          general: "Le courrier concerne probablement votre dossier CAF ou une aide. Il faut identifier la demande exacte."
-        },
-        banque: {
-          paiement: "Le courrier semble concerner un paiement, des frais ou un prélèvement bancaire. Il faut demander le détail et vérifier vos relevés.",
-          refus: "La banque semble refuser une demande ou une opération. Il faut demander une explication écrite et les motifs.",
-          general: "Le courrier concerne probablement une opération bancaire. Il faut vérifier les références, dates et montants."
-        },
-        assurance: {
-          refus: "L’assurance semble refuser une prise en charge ou une indemnisation. Il faut demander le motif précis et vérifier les garanties.",
-          remboursement: "Le courrier semble concerner une indemnisation ou une prise en charge. Il faut vérifier les pièces demandées.",
-          general: "Le courrier concerne probablement votre contrat ou un sinistre. Il faut vérifier les garanties et les délais."
-        },
-        logement: {
-          paiement: "Le courrier semble concerner un loyer, une dette ou une somme demandée. Il faut vérifier les montants et demander un détail.",
-          general: "Le courrier concerne probablement votre logement. Il faut vérifier s’il s’agit de travaux, loyer, bail ou dépôt de garantie."
-        },
-        employeur: {
-          justificatif: "Le courrier semble concerner un document de travail : attestation, bulletin ou justificatif. Il faut demander un envoi clair.",
-          general: "Le courrier concerne probablement votre situation professionnelle. Il faut répondre par écrit et garder une trace."
-        },
-        transport: {
-          refus: "Le courrier semble concerner un refus lié au transport. Il faut vérifier le motif, la prescription et les justificatifs.",
-          remboursement: "Le courrier semble concerner un remboursement de transport. Il faut vérifier les dates, trajets et documents fournis.",
-          general: "Le courrier concerne probablement un dossier de transport. Il faut vérifier les dates, trajets et justificatifs."
-        },
-        administration: {
-          refus: "Le courrier semble annoncer un refus ou une décision négative. Il faut lire le motif et vérifier les voies de recours.",
-          justificatif: "L’organisme semble demander un document. Il faut préparer la pièce demandée et garder une preuve d’envoi.",
-          general: "Le courrier concerne une démarche administrative. Il faut identifier ce qui est demandé, le délai et les documents nécessaires."
-        }
-      };
-
-      const orgSummaries = summaries[organism] || summaries.administration;
-      return orgSummaries[issue] || orgSummaries.general || summaries.administration.general;
     }
 
     function buildActions(organism, issue, intent) {
+      if (issue === "signature_auto") {
+        return [
+          "Remonter plus haut dans l’email.",
+          "Copier le vrai contenu du message.",
+          "Relancer l’analyse avec le texte principal."
+        ];
+      }
+
       let actions = [
-        "Repérer la date du courrier et une éventuelle date limite.",
+        "Repérer la date limite.",
         "Faire une photo ou une copie du courrier.",
         "Garder une preuve de tout envoi."
       ];
 
-      if (organism === "cpam") {
-        actions.push("Vérifier la prescription, les dates et les justificatifs CPAM.");
-      }
+      if (organism === "cpam") actions.push("Vérifier prescription, dates et justificatifs.");
+      if (organism === "caf") actions.push("Vérifier ressources, période et documents demandés.");
+      if (organism === "banque") actions.push("Comparer avec vos relevés bancaires.");
+      if (organism === "assurance") actions.push("Vérifier les garanties du contrat.");
+      if (organism === "employeur") actions.push("Demander une réponse écrite.");
+      if (issue === "refus") actions.push("Demander le motif précis du refus.");
+      if (intent === "delai") actions.push("Demander un délai par écrit.");
 
-      if (organism === "caf") {
-        actions.push("Vérifier les ressources, la période concernée et les documents demandés.");
-      }
-
-      if (organism === "banque") {
-        actions.push("Comparer avec vos relevés bancaires et noter les montants exacts.");
-      }
-
-      if (organism === "assurance") {
-        actions.push("Relire les garanties du contrat et la liste des pièces demandées.");
-      }
-
-      if (organism === "logement") {
-        actions.push("Vérifier le bail, les quittances ou les échanges avec le bailleur.");
-      }
-
-      if (organism === "employeur") {
-        actions.push("Demander une réponse écrite et conserver une trace des échanges.");
-      }
-
-      if (issue === "refus") {
-        actions.push("Demander le motif précis du refus et les possibilités de recours.");
-      }
-
-      if (issue === "paiement") {
-        actions.push("Vérifier le montant, la période et demander un échéancier si besoin.");
-      }
-
-      if (intent === "contester") {
-        actions.push("Expliquer calmement pourquoi vous contestez la décision.");
-      }
-
-      if (intent === "delai") {
-        actions.push("Demander un délai supplémentaire par écrit.");
-      }
-
-      return actions.slice(0, 5);
+      return actions.slice(0, 3);
     }
 
-    function buildResponse(organism, issue, intent) {
-      const intro = "Madame, Monsieur,\n\n";
-      const end = "\n\nJe vous remercie par avance pour votre retour.\n\nCordialement,\n\n[Votre prénom et nom]";
-
-      if (intent === "delai") {
-        return intro +
-`Je fais suite à votre courrier concernant mon dossier.
-
-Je souhaite vous demander un délai supplémentaire afin de réunir les documents nécessaires et vous répondre correctement.
-
-Je vous remercie de bien vouloir m’indiquer si ce délai peut être accepté.` + end;
+    function buildResponse(organism, issue, intent, tone, detail) {
+      if (issue === "signature_auto") {
+        return "Le texte collé ne contient pas encore la demande principale.\n\nCopiez le contenu du courrier avant la mention de confidentialité, puis relancez l’analyse.";
       }
 
-      if (organism === "cpam") {
-        if (intent === "contester" || issue === "refus") {
-          return intro +
-`Je fais suite à votre courrier concernant mon dossier CPAM.
+      const org = recipientLabel(organism);
+      const subject = buildSubject(organism, issue, intent);
+      const detailLine = detail ? "\n\nRéférence / détail utile : " + detail : "";
 
-Je souhaite contester cette décision et demander un réexamen de ma situation.
+      let opening = "Madame, Monsieur,\n\n";
+      let ending = "\n\nCordialement,\n\n[Votre prénom et nom]";
 
-Sauf erreur de ma part, les éléments transmis justifient ma demande. Je vous remercie de bien vouloir m’indiquer précisément le motif du refus et les pièces complémentaires éventuellement nécessaires.
-
-Je reste disponible pour transmettre tout justificatif utile.` + end;
-        }
-
-        if (issue === "remboursement") {
-          return intro +
-`Je fais suite à ma demande de remboursement concernant mon dossier CPAM.
-
-Je vous remercie de bien vouloir vérifier les éléments transmis, notamment la prescription, les justificatifs et les dates concernées.
-
-Pouvez-vous m’indiquer l’état d’avancement de mon dossier et les pièces manquantes si nécessaire ?` + end;
-        }
-
-        return intro +
-`Je fais suite à votre courrier concernant mon dossier CPAM.
-
-Je souhaite obtenir des précisions afin de comprendre ce qui est attendu et vous transmettre les documents nécessaires.
-
-Pouvez-vous m’indiquer les pièces à fournir et les délais à respecter ?` + end;
+      if (tone === "poli") {
+        ending = "\n\nJe vous remercie par avance pour votre aide.\n\nCordialement,\n\n[Votre prénom et nom]";
       }
 
-      if (organism === "caf") {
-        if (intent === "contester" || issue === "refus") {
-          return intro +
-`Je fais suite à votre décision concernant mon dossier CAF.
-
-Je souhaite demander un réexamen de ma situation. Je vous remercie de bien vouloir m’indiquer les éléments ayant motivé cette décision.
-
-Je peux transmettre les justificatifs nécessaires concernant ma situation et la période concernée.` + end;
-        }
-
-        return intro +
-`Je fais suite à votre demande concernant mon dossier CAF.
-
-Je vous transmets les informations et justificatifs nécessaires au traitement de ma situation.
-
-Je vous remercie de me confirmer la bonne réception des documents et de m’indiquer si d’autres éléments sont nécessaires.` + end;
+      if (tone === "ferme") {
+        ending = "\n\nDans l’attente de votre retour écrit, je vous remercie de traiter ma demande.\n\nCordialement,\n\n[Votre prénom et nom]";
       }
 
-      if (organism === "banque") {
-        if (intent === "contester" || issue === "paiement") {
-          return intro +
-`Je fais suite à l’opération ou aux frais mentionnés sur mon compte.
+      if (intent === "delai" || issue === "delai") {
+        return opening +
+`Objet : ${subject}
 
-Je souhaite obtenir le détail de cette opération ainsi que les éléments justifiant le montant prélevé.
+Je fais suite à votre courrier concernant mon dossier auprès de ${org}.
 
-Dans l’attente de vos explications, je vous remercie de bien vouloir réexaminer ma situation.` + end;
-        }
+Je souhaite demander un délai supplémentaire afin de réunir les éléments nécessaires et vous répondre correctement.${detailLine}
 
-        return intro +
-`Je fais suite à votre courrier concernant mon compte bancaire.
-
-Je souhaite obtenir des explications claires sur la situation indiquée et les démarches à effectuer.
-
-Merci de me préciser les références, dates et montants concernés.` + end;
-      }
-
-      if (organism === "assurance") {
-        if (intent === "contester" || issue === "refus") {
-          return intro +
-`Je fais suite à votre décision concernant mon contrat ou mon sinistre.
-
-Je souhaite contester cette décision et demander un réexamen de mon dossier.
-
-Je vous remercie de bien vouloir m’indiquer le motif précis du refus ainsi que les garanties ou exclusions sur lesquelles vous vous appuyez.` + end;
-        }
-
-        return intro +
-`Je fais suite à mon dossier d’assurance.
-
-Je vous remercie de bien vouloir m’indiquer les pièces nécessaires au traitement de ma demande et l’état d’avancement du dossier.
-
-Je reste disponible pour transmettre tout document complémentaire.` + end;
-      }
-
-      if (organism === "logement") {
-        return intro +
-`Je fais suite à votre courrier concernant mon logement.
-
-Je souhaite obtenir des précisions sur la situation indiquée et les démarches à effectuer.
-
-Je vous remercie de bien vouloir me confirmer les éléments attendus et, si nécessaire, les délais à respecter.` + end;
-      }
-
-      if (organism === "employeur") {
-        return intro +
-`Je fais suite à votre courrier concernant ma situation professionnelle.
-
-Je souhaite obtenir une réponse écrite claire ainsi que les documents ou informations nécessaires au suivi de mon dossier.
-
-Je vous remercie de bien vouloir me confirmer les éléments à transmettre ou à compléter.` + end;
-      }
-
-      if (organism === "transport") {
-        return intro +
-`Je fais suite à votre courrier concernant mon dossier de transport.
-
-Je souhaite obtenir des précisions sur la décision indiquée et les justificatifs pris en compte.
-
-Je vous remercie de bien vouloir vérifier les dates, trajets et documents transmis, et de m’indiquer les pièces complémentaires si nécessaire.` + end;
+Je vous remercie de bien vouloir m’indiquer si ce délai peut être accepté.` + ending;
       }
 
       if (intent === "contester" || issue === "refus") {
-        return intro +
-`Je fais suite à votre courrier concernant mon dossier.
+        return opening +
+`Objet : ${subject}
 
-Je souhaite contester cette décision et demander un réexamen de ma situation.
+Je fais suite à votre courrier concernant mon dossier auprès de ${org}.
 
-Je vous remercie de bien vouloir m’indiquer le motif précis de votre décision ainsi que les éléments nécessaires pour compléter mon dossier.` + end;
+Je souhaite demander un réexamen de ma situation.
+
+Je vous remercie de bien vouloir m’indiquer le motif précis de votre décision et les pièces complémentaires éventuellement nécessaires.${detailLine}
+
+Je reste disponible pour transmettre les éléments utiles.` + ending;
       }
 
-      return intro +
-`Je fais suite à votre courrier concernant mon dossier.
+      if (issue === "remboursement") {
+        return opening +
+`Objet : ${subject}
 
-Je souhaite obtenir des précisions afin de comprendre votre demande et les démarches à effectuer.
+Je fais suite à ma demande concernant un remboursement ou une prise en charge auprès de ${org}.
 
-Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à respecter ?` + end;
+Je vous remercie de bien vouloir vérifier les éléments transmis et m’indiquer l’état d’avancement de mon dossier.${detailLine}
+
+Si une pièce est manquante, merci de me préciser laquelle afin que je puisse la transmettre rapidement.` + ending;
+      }
+
+      if (issue === "justificatif") {
+        return opening +
+`Objet : ${subject}
+
+Je fais suite à votre demande concernant mon dossier auprès de ${org}.
+
+Je vous transmets les informations et justificatifs nécessaires au traitement de ma situation.${detailLine}
+
+Merci de me confirmer la bonne réception des documents et de m’indiquer si d’autres éléments sont nécessaires.` + ending;
+      }
+
+      if (issue === "paiement") {
+        return opening +
+`Objet : ${subject}
+
+Je fais suite à votre courrier concernant une somme indiquée dans mon dossier auprès de ${org}.
+
+Je souhaite obtenir le détail du montant demandé ainsi que la période concernée.${detailLine}
+
+Je vous remercie de bien vouloir me transmettre les explications nécessaires.` + ending;
+      }
+
+      return opening +
+`Objet : ${subject}
+
+Je fais suite à votre courrier concernant mon dossier auprès de ${org}.
+
+Je souhaite obtenir une explication claire afin de comprendre votre demande et les démarches à effectuer.${detailLine}
+
+Merci de m’indiquer les documents nécessaires et les délais à respecter.` + ending;
+    }
+
+    function generateResult(text, organism, selectedIssue, intent, tone, detail) {
+      const issue = detectIssue(text, selectedIssue);
+      const summary = buildSummary(organism, issue);
+      const urgency = buildUrgency(issue);
+      const actions = buildActions(organism, issue, intent);
+      const response = buildResponse(organism, issue, intent, tone, detail);
+      const subject = buildSubject(organism, issue, intent);
+      const recipient = recipientLabel(organism);
+
+      return { issue, organism, summary, urgency, actions, response, subject, recipient };
     }
 
     function renderResult(result) {
-      const urgencyClass = result.urgency === "danger" ? "danger" : result.urgency === "urgent" ? "urgent" : "normal";
-      const actionsHtml = result.actions.map(a => `<li>${a}</li>`).join("");
+      const actionsHtml = result.actions.map(a => `<li>${escapeHtml(a)}</li>`).join("");
 
       document.getElementById("assistantResult").innerHTML = `
-        <div class="card compact">
-          <h2 class="title">Résultat</h2>
+        <div class="card">
+          <h2 class="title">Fiche express</h2>
 
-          <div class="mini-card">
-            <div class="mini-title">📌 Ce que ça veut dire</div>
-            <p>${result.summary}</p>
-            <span class="urgency-pill ${urgencyClass}">${result.urgencyLabel}</span>
-            <p class="muted">${result.urgencyText}</p>
+          <div class="result-card">
+            <div class="result-title">📌 Ce que ça veut dire</div>
+            <p class="result-line">${escapeHtml(result.summary)}</p>
+            <span class="pill ${result.urgency.cls}">${escapeHtml(result.urgency.level)}</span>
+            <p class="muted">${escapeHtml(result.urgency.text)}</p>
           </div>
 
-          <div class="mini-card">
-            <div class="mini-title">✅ À faire maintenant</div>
-            <ul>${actionsHtml}</ul>
+          <div class="result-card">
+            <div class="result-title">✅ À faire</div>
+            <ul class="actions-list">${actionsHtml}</ul>
           </div>
 
-          <details open>
-            <summary>✍️ Voir la réponse proposée</summary>
-            <div class="letter-preview" id="generatedResponse">${result.response}</div>
-            <div class="btn-row">
-              <button class="btn btn-dark" onclick="copyText('generatedResponse')">Copier la réponse</button>
-              <button class="btn btn-light" onclick="preparePdf()">Aperçu PDF Premium</button>
-              <button class="btn btn-light" onclick="createReminderFromResult()">Créer un rappel</button>
-            </div>
+          <div class="btn-row">
+            <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier la réponse</button>
+            <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
+            <button class="btn btn-light" onclick="createReminderFromResult()">Créer un rappel</button>
+          </div>
+
+          <details>
+            <summary>✍️ Voir la réponse complète</summary>
+            <div class="letter-preview" id="generatedResponse">${escapeHtml(result.response)}</div>
           </details>
 
-          <div class="notice">
-            Vérifiez toujours les informations importantes auprès de l’organisme concerné.
+          <div class="soft-note">
+            Courrier préparé pour vous aider à répondre clairement.
           </div>
         </div>
       `;
     }
 
-    function preparePdf() {
+    function copyGeneratedResponse() {
+      if (!lastGenerated) {
+        toast("Aucune réponse à copier.");
+        return;
+      }
+
+      navigator.clipboard.writeText(lastGenerated.response).then(() => {
+        toast("Réponse copiée.");
+      }).catch(() => {
+        toast("Copie impossible. Sélectionnez le texte manuellement.");
+      });
+    }
+
+    function showPdf() {
       if (!isPremium()) {
         toast("PDF disponible en Premium test.");
         openScreen("premium");
         return;
       }
 
-      if (!lastGeneratedResponse) {
+      if (!lastGenerated) {
         toast("Analysez d’abord un courrier.");
         return;
       }
 
-      const printWindow = window.open("", "_blank");
-      const safeResponse = escapeHtml(lastGeneratedResponse).replace(/\n/g, "<br>");
-      const safeSummary = escapeHtml(lastGeneratedSummary);
+      document.getElementById("pdfSubject").textContent = lastGenerated.subject;
+      document.getElementById("pdfRecipient").textContent = lastGenerated.recipient;
+      document.getElementById("pdfDate").textContent = new Date().toLocaleDateString("fr-FR");
+      document.getElementById("pdfLetter").textContent = lastGenerated.response;
 
-      printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-          <meta charset="UTF-8">
-          <title>Courrier - Mes Démarches Zen</title>
-          <style>
-            body {
-              font-family: Arial, sans-serif;
-              padding: 40px;
-              color: #111827;
-              line-height: 1.6;
-            }
-            .header {
-              border-bottom: 2px solid #0f2d46;
-              padding-bottom: 14px;
-              margin-bottom: 28px;
-            }
-            h1 {
-              color: #0f2d46;
-              margin: 0;
-            }
-            .summary {
-              background: #f3f6fb;
-              border: 1px solid #d8e1ee;
-              padding: 14px;
-              border-radius: 12px;
-              margin-bottom: 24px;
-            }
-            .letter {
-              font-size: 16px;
-              white-space: normal;
-            }
-            .footer {
-              margin-top: 36px;
-              font-size: 12px;
-              color: #64748b;
-              border-top: 1px solid #d8e1ee;
-              padding-top: 12px;
-            }
-            button {
-              margin-bottom: 20px;
-              padding: 12px 16px;
-              border: none;
-              background: #2563eb;
-              color: white;
-              border-radius: 10px;
-              font-weight: bold;
-              cursor: pointer;
-            }
-            @media print {
-              button { display: none; }
-              body { padding: 20px; }
-            }
-          </style>
-        </head>
-        <body>
-          <button onclick="window.print()">Télécharger / imprimer en PDF</button>
-          <div class="header">
-            <h1>Mes Démarches Zen</h1>
-            <p>Courrier préparé avec l’assistant</p>
-          </div>
-          <div class="summary">
-            <strong>Résumé :</strong><br>
-            ${safeSummary}
-          </div>
-          <div class="letter">
-            ${safeResponse}
-          </div>
-          <div class="footer">
-            Ce document est une aide à la rédaction. Il ne remplace pas un avocat, une administration ou un conseiller officiel.
-          </div>
-        </body>
-        </html>
-      `);
-
-      printWindow.document.close();
-    }
-
-    function escapeHtml(text) {
-      return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+      openScreen("pdf");
     }
 
     function renderModels() {
       const list = document.getElementById("modelList");
-      list.innerHTML = models.map((model, index) => `
-        <div class="model-item" onclick="showModel(${index})">
-          <strong>${model.title}</strong>
-          <span class="muted">${model.desc}</span>
+      list.innerHTML = models.map((m, i) => `
+        <div class="model-item" onclick="showModel(${i})">
+          <strong>${escapeHtml(m.title)}</strong>
+          <span class="muted">${escapeHtml(m.desc)}</span>
         </div>
       `).join("");
     }
 
     function showModel(index) {
-      const model = models[index];
-      const response = buildResponse(model.organism, "general", model.intent);
-      lastGeneratedResponse = response;
-      lastGeneratedSummary = model.title;
+      const m = models[index];
+      const result = generateResult("modèle", m.organism, m.issue, m.intent, "poli", "");
+      lastGenerated = result;
 
       document.getElementById("modelList").innerHTML = `
-        <div class="mini-card">
-          <div class="mini-title">📝 ${model.title}</div>
-          <div class="letter-preview" id="modelText">${response}</div>
+        <div class="result-card">
+          <div class="result-title">📝 ${escapeHtml(m.title)}</div>
+          <div class="letter-preview" id="modelText">${escapeHtml(result.response)}</div>
           <div class="btn-row">
-            <button class="btn btn-dark" onclick="copyText('modelText')">Copier le modèle</button>
-            <button class="btn btn-light" onclick="preparePdf()">Aperçu PDF Premium</button>
+            <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier</button>
+            <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
             <button class="btn btn-light" onclick="renderModels()">Retour</button>
           </div>
         </div>
       `;
-    }
-
-    function copyText(elementId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        toast("Texte copié.");
-      }).catch(() => {
-        toast("Copie impossible. Sélectionnez le texte manuellement.");
-      });
     }
 
     function requestNotifications() {
@@ -1518,17 +1455,13 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
       }
 
       Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          toast("Notifications activées.");
-        } else {
-          toast("Notifications non autorisées.");
-        }
+        toast(permission === "granted" ? "Notifications activées." : "Notifications refusées.");
       });
     }
 
     function vibrate() {
       if ("vibrate" in navigator) {
-        navigator.vibrate([350, 150, 350]);
+        navigator.vibrate([350, 120, 350]);
       }
     }
 
@@ -1536,24 +1469,22 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
       try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         const ctx = new AudioContext();
-        const oscillator = ctx.createOscillator();
+        const osc = ctx.createOscillator();
         const gain = ctx.createGain();
 
-        oscillator.type = "sine";
-        oscillator.frequency.value = 880;
+        osc.type = "sine";
+        osc.frequency.value = 880;
         gain.gain.value = 0.08;
 
-        oscillator.connect(gain);
+        osc.connect(gain);
         gain.connect(ctx.destination);
+        osc.start();
 
-        oscillator.start();
         setTimeout(() => {
-          oscillator.stop();
+          osc.stop();
           ctx.close();
         }, 450);
-      } catch (e) {
-        console.log("Son indisponible");
-      }
+      } catch (e) {}
     }
 
     function sendReminderAlert(title, note) {
@@ -1562,8 +1493,7 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
 
       if ("Notification" in window && Notification.permission === "granted") {
         new Notification("Mes Démarches Zen", {
-          body: title + (note ? " - " + note : ""),
-          icon: ""
+          body: title + (note ? " - " + note : "")
         });
       }
 
@@ -1571,15 +1501,21 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
     }
 
     function testAlert() {
-      sendReminderAlert("Test rappel", "Notification et vibration test.");
+      if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission().then(() => {
+          sendReminderAlert("Test rappel", "Alerte de démonstration.");
+        });
+      } else {
+        sendReminderAlert("Test rappel", "Alerte de démonstration.");
+      }
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz31_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz32_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz31_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz32_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1589,11 +1525,12 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
       const note = document.getElementById("reminderNote").value.trim();
 
       if (!title || !date) {
-        toast("Ajoutez au minimum un titre et une date.");
+        toast("Ajoutez un titre et une date.");
         return;
       }
 
       const reminders = getReminders();
+
       reminders.push({
         id: Date.now(),
         title,
@@ -1617,10 +1554,11 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
 
     function createReminderFromResult() {
       openScreen("reminders");
+
       setTimeout(() => {
         document.getElementById("reminderTitle").value = "Répondre à mon courrier";
-        document.getElementById("reminderNote").value = "Préparer la réponse et garder une preuve d’envoi.";
-      }, 250);
+        document.getElementById("reminderNote").value = "Copier la réponse, ajouter les pièces et garder une preuve d’envoi.";
+      }, 200);
     }
 
     function renderReminders() {
@@ -1634,30 +1572,31 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
 
       reminders.sort((a, b) => new Date(a.date + "T" + a.time) - new Date(b.date + "T" + b.time));
 
-      list.innerHTML = reminders.map(reminder => `
+      list.innerHTML = reminders.map(r => `
         <div class="reminder-item">
-          <strong>${reminder.done ? "✅ " : ""}${escapeHtml(reminder.title)}</strong>
-          <div class="date-blue">${formatDate(reminder.date)} à ${reminder.time}</div>
-          ${reminder.note ? `<p>${escapeHtml(reminder.note)}</p>` : ""}
+          <strong>${r.done ? "✅ " : ""}${escapeHtml(r.title)}</strong>
+          <div class="date-blue">${formatDate(r.date)} à ${escapeHtml(r.time)}</div>
+          ${r.note ? `<p>${escapeHtml(r.note)}</p>` : ""}
           <div class="btn-row">
-            <button class="btn btn-light" onclick="markDone(${reminder.id})">${reminder.done ? "Déjà fait" : "Marquer comme fait"}</button>
-            <button class="btn btn-red" onclick="deleteReminder(${reminder.id})">Supprimer</button>
+            <button class="btn btn-light" onclick="markDone(${r.id})">${r.done ? "Déjà fait" : "Marquer comme fait"}</button>
+            <button class="btn btn-red" onclick="deleteReminder(${r.id})">Supprimer</button>
           </div>
         </div>
       `).join("");
     }
 
     function markDone(id) {
-      const reminders = getReminders().map(item => {
-        if (item.id === id) item.done = true;
-        return item;
+      const reminders = getReminders().map(r => {
+        if (r.id === id) r.done = true;
+        return r;
       });
+
       saveReminders(reminders);
       renderReminders();
     }
 
     function deleteReminder(id) {
-      const reminders = getReminders().filter(item => item.id !== id);
+      const reminders = getReminders().filter(r => r.id !== id);
       saveReminders(reminders);
       renderReminders();
       toast("Rappel supprimé.");
@@ -1667,18 +1606,18 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
       const now = new Date();
       let changed = false;
 
-      const reminders = getReminders().map(item => {
-        if (item.done || item.notified) return item;
+      const reminders = getReminders().map(r => {
+        if (r.done || r.notified) return r;
 
-        const due = new Date(item.date + "T" + item.time);
+        const due = new Date(r.date + "T" + r.time);
 
         if (due <= now) {
-          sendReminderAlert(item.title, item.note);
-          item.notified = true;
+          sendReminderAlert(r.title, r.note);
+          r.notified = true;
           changed = true;
         }
 
-        return item;
+        return r;
       });
 
       if (changed) {
@@ -1699,14 +1638,23 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz31_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz32_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz31_senior") === "true") {
+      if (localStorage.getItem("mdz32_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     restoreSeniorMode();
@@ -1716,7 +1664,7 @@ Pouvez-vous m’indiquer les documents nécessaires ainsi que les délais à res
     updateFreeCounter();
 
     setInterval(checkReminders, 30000);
-    setTimeout(checkReminders, 1500);
+    setTimeout(checkReminders, 1200);
   </script>
 </body>
 </html>
