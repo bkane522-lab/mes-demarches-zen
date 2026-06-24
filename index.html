@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.2</title>
+  <title>Mes Démarches Zen - V3.3</title>
 
   <style>
     :root {
@@ -19,8 +19,8 @@
       --greenSoft: #dcfce7;
       --orange: #f59e0b;
       --orangeSoft: #fff7ed;
-      --redSoft: #fee2e2;
       --red: #991b1b;
+      --redSoft: #fee2e2;
       --shadow: 0 8px 24px rgba(15, 45, 70, 0.08);
       --radius: 22px;
       --navHeight: 82px;
@@ -51,14 +51,14 @@
       max-width: 720px;
       margin: 0 auto;
       min-height: 100vh;
-      padding-bottom: calc(var(--navHeight) + 20px);
+      padding-bottom: calc(var(--navHeight) + 18px);
       background: linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
     }
 
     .topbar {
       background: var(--navy);
       color: white;
-      padding: 16px 18px 18px;
+      padding: 15px 17px 17px;
       border-radius: 0 0 24px 24px;
       box-shadow: var(--shadow);
     }
@@ -70,20 +70,20 @@
     }
 
     .logo {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 15px;
       background: white;
       color: var(--navy);
       display: grid;
       place-items: center;
-      font-size: 29px;
+      font-size: 28px;
       flex: 0 0 auto;
     }
 
     .brand h1 {
       margin: 0;
-      font-size: 23px;
+      font-size: 22px;
       line-height: 1.08;
       font-weight: 950;
       letter-spacing: -0.02em;
@@ -109,7 +109,7 @@
     }
 
     .hero {
-      margin-top: 14px;
+      margin-top: 13px;
     }
 
     .hero .label {
@@ -123,20 +123,20 @@
 
     .hero h2 {
       margin: 0;
-      font-size: 29px;
+      font-size: 28px;
       line-height: 1.12;
       font-weight: 950;
       letter-spacing: -0.035em;
     }
 
     .hero p {
-      margin: 10px 0 0;
+      margin: 9px 0 0;
       color: #dbeafe;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .content {
-      padding: 14px;
+      padding: 13px;
     }
 
     .screen {
@@ -151,9 +151,9 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 15px;
       box-shadow: var(--shadow);
-      margin-bottom: 13px;
+      margin-bottom: 12px;
     }
 
     .main-action {
@@ -162,10 +162,10 @@
       background: var(--navy);
       color: white;
       border-radius: 22px;
-      padding: 18px;
+      padding: 17px;
       text-align: left;
       box-shadow: var(--shadow);
-      margin-bottom: 12px;
+      margin-bottom: 11px;
       cursor: pointer;
     }
 
@@ -181,7 +181,7 @@
 
     .main-action strong {
       display: block;
-      font-size: 27px;
+      font-size: 26px;
       line-height: 1.1;
       font-weight: 950;
       letter-spacing: -0.03em;
@@ -196,7 +196,7 @@
 
     .quick-list {
       display: grid;
-      gap: 10px;
+      gap: 9px;
     }
 
     .quick-btn {
@@ -204,30 +204,30 @@
       border: 1px solid var(--border);
       background: white;
       border-radius: 19px;
-      padding: 13px;
+      padding: 12px;
       display: flex;
       align-items: center;
-      gap: 13px;
+      gap: 12px;
       text-align: left;
       box-shadow: 0 4px 14px rgba(15, 45, 70, 0.04);
       cursor: pointer;
-      min-height: 68px;
+      min-height: 65px;
     }
 
     .quick-icon {
-      width: 43px;
-      height: 43px;
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
       background: var(--soft);
       display: grid;
       place-items: center;
-      font-size: 24px;
+      font-size: 23px;
       flex: 0 0 auto;
     }
 
     .quick-title {
       display: block;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 950;
       line-height: 1.12;
     }
@@ -239,25 +239,15 @@
       margin-top: 2px;
     }
 
-    .soft-note {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      color: #713f12;
-      border-radius: 17px;
-      padding: 12px;
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
     .title {
       margin: 0 0 7px;
-      font-size: 26px;
+      font-size: 25px;
       font-weight: 950;
       letter-spacing: -0.03em;
     }
 
     .subtitle {
-      margin: 0 0 13px;
+      margin: 0 0 12px;
       color: var(--muted);
       font-size: 16px;
     }
@@ -267,12 +257,12 @@
       background: transparent;
       color: var(--blue);
       font-weight: 950;
-      padding: 5px 0 11px;
+      padding: 5px 0 10px;
       cursor: pointer;
     }
 
     .field {
-      margin-bottom: 12px;
+      margin-bottom: 11px;
     }
 
     label {
@@ -288,15 +278,15 @@
       width: 100%;
       border: 2px solid var(--border);
       border-radius: 16px;
-      padding: 13px;
-      min-height: 52px;
+      padding: 12px;
+      min-height: 50px;
       outline: none;
       background: white;
       color: var(--text);
     }
 
     textarea {
-      min-height: 112px;
+      min-height: 104px;
       resize: vertical;
     }
 
@@ -310,14 +300,14 @@
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 9px;
     }
 
     .btn {
       border: none;
       border-radius: 16px;
-      padding: 14px 16px;
-      min-height: 52px;
+      padding: 13px 15px;
+      min-height: 50px;
       font-weight: 950;
       cursor: pointer;
     }
@@ -384,8 +374,8 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 10px;
+      padding: 13px;
+      margin-bottom: 9px;
     }
 
     .result-title {
@@ -426,12 +416,14 @@
       background: var(--redSoft);
     }
 
-    .actions-list {
+    .actions-list,
+    .small-list {
       margin: 8px 0 0;
-      padding-left: 22px;
+      padding-left: 21px;
     }
 
-    .actions-list li {
+    .actions-list li,
+    .small-list li {
       margin-bottom: 4px;
     }
 
@@ -439,8 +431,8 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 13px;
-      margin-top: 10px;
+      padding: 12px;
+      margin-top: 9px;
     }
 
     summary {
@@ -454,8 +446,8 @@
       background: #fbfdff;
       border: 1px solid var(--border);
       border-radius: 15px;
-      padding: 13px;
-      margin-top: 12px;
+      padding: 12px;
+      margin-top: 11px;
       font-size: 16px;
     }
 
@@ -464,7 +456,7 @@
       border: 1px solid var(--border);
       background: white;
       border-radius: 18px;
-      padding: 13px;
+      padding: 12px;
       margin-bottom: 9px;
     }
 
@@ -502,15 +494,15 @@
     .compare {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 9px;
+      margin-top: 9px;
     }
 
     .plan {
       background: white;
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 13px;
+      padding: 12px;
     }
 
     .plan h3 {
@@ -543,15 +535,36 @@
     }
 
     .pdf-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       border-bottom: 2px solid var(--navy);
-      padding-bottom: 10px;
+      padding-bottom: 12px;
       margin-bottom: 14px;
+    }
+
+    .pdf-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      flex: 0 0 auto;
     }
 
     .pdf-header h2 {
       margin: 0;
       color: var(--navy);
       font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .pdf-header p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .pdf-meta {
@@ -559,14 +572,22 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 13px;
       font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .pdf-section-title {
+      color: var(--navy);
+      font-weight: 950;
+      font-size: 18px;
+      margin: 15px 0 8px;
     }
 
     .pdf-letter {
       white-space: pre-line;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     .pdf-footer {
@@ -646,22 +667,21 @@
     }
 
     .senior-mode .quick-desc,
-    .senior-mode .muted,
-    .senior-mode .soft-note {
+    .senior-mode .muted {
       font-size: 15px;
     }
 
     @media (max-width: 420px) {
       .hero h2 {
-        font-size: 27px;
+        font-size: 26px;
       }
 
       .main-action strong {
-        font-size: 25px;
+        font-size: 24px;
       }
 
       .brand h1 {
-        font-size: 21px;
+        font-size: 20px;
       }
 
       .grid-2,
@@ -670,7 +690,7 @@
       }
 
       .content {
-        padding: 13px;
+        padding: 12px;
       }
     }
 
@@ -765,13 +785,9 @@
           </button>
         </div>
 
-        <div class="soft-note">
-          Courrier préparé pour vous aider à répondre clairement.
-        </div>
-
         <div class="card">
           <h2 class="title">Premium</h2>
-          <p class="subtitle">PDF prêt à imprimer, historique, réponses plus avancées et rappels renforcés.</p>
+          <p class="subtitle">PDF prêt à imprimer, objets automatiques, pièces à joindre et réponses avancées.</p>
           <button class="btn btn-light" onclick="openScreen('premium')">Voir Gratuit / Premium</button>
         </div>
       </section>
@@ -785,7 +801,7 @@
 
           <div class="field">
             <label for="letterText">Votre courrier</label>
-            <textarea id="letterText" placeholder="Collez ici le texte du courrier reçu..."></textarea>
+            <textarea id="letterText" placeholder="Collez ici le texte principal du courrier reçu..."></textarea>
           </div>
 
           <div class="grid-2">
@@ -868,7 +884,7 @@
 
         <div class="card">
           <h2 class="title">Rappel</h2>
-          <p class="subtitle">Ajoutez une date et une heure. L’app peut afficher une alerte si elle est ouverte.</p>
+          <p class="subtitle">Ajoutez une date et une heure pour ne pas oublier.</p>
 
           <div class="field">
             <label for="reminderTitle">Titre</label>
@@ -897,10 +913,6 @@
             <button class="btn btn-light" onclick="requestNotifications()">Activer les notifications</button>
             <button class="btn btn-light" onclick="testAlert()">Tester l’alerte</button>
           </div>
-
-          <div class="soft-note">
-            Les notifications web dépendent du téléphone. L’app affiche aussi une alerte interne.
-          </div>
         </div>
 
         <div class="card">
@@ -914,7 +926,7 @@
 
         <div class="card">
           <h2 class="title">Gratuit / Premium</h2>
-          <p class="subtitle">Le Premium doit apporter un vrai confort : PDF, historique, réponses avancées.</p>
+          <p class="subtitle">Le Premium apporte un vrai confort : PDF, objets, pièces à joindre et réponses avancées.</p>
 
           <div class="compare">
             <div class="plan">
@@ -933,8 +945,8 @@
                 <li>Analyses illimitées</li>
                 <li>PDF prêt à imprimer</li>
                 <li>Objet automatique</li>
-                <li>Historique futur</li>
-                <li>Réponses plus avancées</li>
+                <li>Pièces à joindre</li>
+                <li>Réponses avancées</li>
               </ul>
             </div>
           </div>
@@ -958,8 +970,11 @@
 
         <div class="pdf-page" id="pdfPage">
           <div class="pdf-header">
-            <h2>Mes Démarches Zen</h2>
-            <p>Courrier préparé pour vous aider à répondre clairement.</p>
+            <div class="pdf-logo">📄</div>
+            <div>
+              <h2>Mes Démarches Zen</h2>
+              <p>Courrier prêt à envoyer</p>
+            </div>
           </div>
 
           <div class="pdf-meta">
@@ -968,10 +983,17 @@
             <strong>Date :</strong> <span id="pdfDate"></span>
           </div>
 
+          <div class="pdf-section-title">Courrier</div>
           <div class="pdf-letter" id="pdfLetter"></div>
 
+          <div class="pdf-section-title">Pièces à joindre</div>
+          <ul class="small-list" id="pdfPieces"></ul>
+
+          <div class="pdf-section-title">Prochaine étape</div>
+          <div id="pdfNextStep"></div>
+
           <div class="pdf-footer">
-            Document préparé avec Mes Démarches Zen.
+            Document généré avec Mes Démarches Zen.
           </div>
         </div>
       </section>
@@ -1008,12 +1030,15 @@
     let lastGenerated = null;
 
     const models = [
-      { title: "CPAM - Remboursement", desc: "Transport, soins, prise en charge.", organism: "cpam", issue: "remboursement", intent: "repondre" },
-      { title: "CPAM - Contester un refus", desc: "Demander un réexamen.", organism: "cpam", issue: "refus", intent: "contester" },
-      { title: "CAF - Envoyer un document", desc: "Justificatif ou complément.", organism: "caf", issue: "justificatif", intent: "repondre" },
+      { title: "CPAM - Demander un remboursement", desc: "Transport, soins, prise en charge.", organism: "cpam", issue: "remboursement", intent: "repondre" },
+      { title: "CPAM - Contester un refus", desc: "Demander un réexamen du dossier.", organism: "cpam", issue: "refus", intent: "contester" },
+      { title: "CAF - Envoyer des justificatifs", desc: "Document manquant ou complément.", organism: "caf", issue: "justificatif", intent: "repondre" },
+      { title: "CAF - Trop-perçu", desc: "Demander le détail ou un échéancier.", organism: "caf", issue: "paiement", intent: "repondre" },
       { title: "Banque - Contester des frais", desc: "Frais, prélèvement, explication.", organism: "banque", issue: "paiement", intent: "contester" },
       { title: "Assurance - Prise en charge", desc: "Sinistre, garantie, indemnisation.", organism: "assurance", issue: "remboursement", intent: "repondre" },
       { title: "Employeur - Document manquant", desc: "Attestation, bulletin, certificat.", organism: "employeur", issue: "justificatif", intent: "repondre" },
+      { title: "Logement - Réparation", desc: "Travaux, bailleur, logement.", organism: "logement", issue: "general", intent: "repondre" },
+      { title: "Impôts - Réclamation", desc: "Demande d’explication ou correction.", organism: "impots", issue: "paiement", intent: "contester" },
       { title: "Demander un délai", desc: "Plus de temps pour répondre.", organism: "administration", issue: "delai", intent: "delai" }
     ];
 
@@ -1039,7 +1064,7 @@
       const el = document.getElementById("toast");
       el.textContent = message;
       el.classList.add("show");
-      setTimeout(() => el.classList.remove("show"), 2600);
+      setTimeout(() => el.classList.remove("show"), 2500);
     }
 
     function selectIntent(intent, btn) {
@@ -1049,11 +1074,11 @@
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz32_premium") === "true";
+      return localStorage.getItem("mdz33_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz32_premium", "true");
+      localStorage.setItem("mdz33_premium", "true");
       toast("Premium test activé.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1061,7 +1086,7 @@
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz32_premium", "false");
+      localStorage.setItem("mdz33_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1073,11 +1098,11 @@
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz32_usage") || "0");
+      return Number(localStorage.getItem("mdz33_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz32_usage", String(v));
+      localStorage.setItem("mdz33_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1177,12 +1202,14 @@
       if (issue === "justificatif") return "Transmission de justificatifs";
       if (issue === "paiement") return "Demande d’explication concernant une somme";
       if (issue === "convocation") return "Demande de précision concernant une convocation";
+      if (organism === "logement") return "Demande d’intervention concernant mon logement";
+      if (organism === "employeur") return "Demande de document ou d’information";
       return "Demande d’explications concernant mon dossier";
     }
 
     function buildSummary(organism, issue) {
       if (issue === "signature_auto") {
-        return "Le texte collé ressemble surtout à une mention automatique de confidentialité. Il manque peut-être le vrai contenu du courrier.";
+        return "Le texte collé ressemble surtout à une mention automatique. Il manque probablement le vrai contenu du courrier.";
       }
 
       const org = recipientLabel(organism);
@@ -1194,7 +1221,7 @@
         paiement: "Le courrier semble parler d’une somme à payer ou à vérifier. Il faut demander le détail.",
         convocation: "Le courrier semble annoncer un rendez-vous ou une convocation. Il faut vérifier la date et les documents à apporter.",
         delai: "Il semble y avoir une date limite. Il faut répondre rapidement ou demander un délai.",
-        grave: "Le courrier semble important. Il faut agir avec prudence et garder une trace écrite.",
+        grave: "Le courrier semble important. Il faut agir rapidement et garder une trace écrite.",
         general: "Le courrier concerne votre dossier auprès de " + org + ". Il faut identifier la demande exacte."
       };
 
@@ -1221,7 +1248,7 @@
       return {
         level: "Normal",
         cls: "normal",
-        text: "Prenez le temps de répondre correctement."
+        text: "Préparez une réponse claire avec les bons documents."
       };
     }
 
@@ -1236,8 +1263,8 @@
 
       let actions = [
         "Repérer la date limite.",
-        "Faire une photo ou une copie du courrier.",
-        "Garder une preuve de tout envoi."
+        "Faire une copie du courrier.",
+        "Garder une preuve de l’envoi."
       ];
 
       if (organism === "cpam") actions.push("Vérifier prescription, dates et justificatifs.");
@@ -1251,9 +1278,39 @@
       return actions.slice(0, 3);
     }
 
+    function buildPieces(organism, issue) {
+      if (issue === "signature_auto") {
+        return ["Le contenu principal du courrier", "La référence du dossier si disponible"];
+      }
+
+      const common = ["Copie du courrier reçu", "Votre numéro de dossier si disponible", "Preuve d’envoi"];
+
+      if (organism === "cpam") return ["Prescription médicale si concernée", "Justificatifs de transport ou de soins", "Copie du courrier reçu", "Numéro de sécurité sociale"];
+      if (organism === "caf") return ["Justificatif demandé", "Ressources ou situation familiale si concernées", "Copie du courrier reçu", "Numéro allocataire"];
+      if (organism === "banque") return ["Relevé bancaire concerné", "Date et montant de l’opération", "Copie du courrier reçu"];
+      if (organism === "assurance") return ["Contrat ou numéro de sinistre", "Photos ou justificatifs", "Factures si concernées", "Copie du courrier reçu"];
+      if (organism === "logement") return ["Photos du problème si nécessaire", "Copie du bail ou quittance", "Échanges précédents avec le bailleur"];
+      if (organism === "employeur") return ["Copie du courrier reçu", "Bulletin ou document concerné", "Références du contrat si nécessaire"];
+      if (organism === "impots") return ["Avis ou courrier fiscal", "Justificatifs de paiement ou revenus", "Numéro fiscal si nécessaire"];
+
+      return common;
+    }
+
+    function buildNextStep(organism, issue, intent) {
+      if (issue === "signature_auto") return "Copiez le contenu principal du courrier, puis relancez l’analyse.";
+
+      if (intent === "delai" || issue === "delai") return "Envoyer la demande de délai rapidement et garder une preuve.";
+      if (intent === "contester" || issue === "refus") return "Envoyer le courrier de réexamen avec les justificatifs utiles.";
+      if (issue === "justificatif") return "Joindre les documents demandés et demander confirmation de réception.";
+      if (issue === "paiement") return "Demander le détail de la somme et conserver la réponse écrite.";
+      if (issue === "remboursement") return "Envoyer les pièces utiles et demander l’état d’avancement du dossier.";
+
+      return "Envoyer la réponse et conserver une copie.";
+    }
+
     function buildResponse(organism, issue, intent, tone, detail) {
       if (issue === "signature_auto") {
-        return "Le texte collé ne contient pas encore la demande principale.\n\nCopiez le contenu du courrier avant la mention de confidentialité, puis relancez l’analyse.";
+        return "Le texte collé ne contient pas encore la demande principale.\n\nCopiez le contenu du courrier avant la mention automatique, puis relancez l’analyse.";
       }
 
       const org = recipientLabel(organism);
@@ -1264,7 +1321,7 @@
       let ending = "\n\nCordialement,\n\n[Votre prénom et nom]";
 
       if (tone === "poli") {
-        ending = "\n\nJe vous remercie par avance pour votre aide.\n\nCordialement,\n\n[Votre prénom et nom]";
+        ending = "\n\nJe vous remercie par avance pour votre retour.\n\nCordialement,\n\n[Votre prénom et nom]";
       }
 
       if (tone === "ferme") {
@@ -1328,6 +1385,28 @@ Je souhaite obtenir le détail du montant demandé ainsi que la période concern
 Je vous remercie de bien vouloir me transmettre les explications nécessaires.` + ending;
       }
 
+      if (organism === "logement") {
+        return opening +
+`Objet : ${subject}
+
+Je fais suite à la situation concernant mon logement.
+
+Je vous remercie de bien vouloir prendre en compte ma demande et m’indiquer les suites prévues.${detailLine}
+
+Je reste disponible pour transmettre les éléments nécessaires.` + ending;
+      }
+
+      if (organism === "employeur") {
+        return opening +
+`Objet : ${subject}
+
+Je fais suite à votre courrier concernant ma situation professionnelle.
+
+Je souhaite obtenir une réponse écrite claire ainsi que les documents ou informations nécessaires au suivi de mon dossier.${detailLine}
+
+Je vous remercie de bien vouloir me confirmer les éléments à transmettre ou à compléter.` + ending;
+      }
+
       return opening +
 `Objet : ${subject}
 
@@ -1346,12 +1425,15 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       const response = buildResponse(organism, issue, intent, tone, detail);
       const subject = buildSubject(organism, issue, intent);
       const recipient = recipientLabel(organism);
+      const pieces = buildPieces(organism, issue);
+      const nextStep = buildNextStep(organism, issue, intent);
 
-      return { issue, organism, summary, urgency, actions, response, subject, recipient };
+      return { issue, organism, summary, urgency, actions, response, subject, recipient, pieces, nextStep };
     }
 
     function renderResult(result) {
       const actionsHtml = result.actions.map(a => `<li>${escapeHtml(a)}</li>`).join("");
+      const piecesHtml = result.pieces.slice(0, 3).map(p => `<li>${escapeHtml(p)}</li>`).join("");
 
       document.getElementById("assistantResult").innerHTML = `
         <div class="card">
@@ -1364,9 +1446,21 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
             <p class="muted">${escapeHtml(result.urgency.text)}</p>
           </div>
 
+          <div class="grid-2">
+            <div class="result-card">
+              <div class="result-title">✅ À faire</div>
+              <ul class="actions-list">${actionsHtml}</ul>
+            </div>
+
+            <div class="result-card">
+              <div class="result-title">📎 Pièces</div>
+              <ul class="actions-list">${piecesHtml}</ul>
+            </div>
+          </div>
+
           <div class="result-card">
-            <div class="result-title">✅ À faire</div>
-            <ul class="actions-list">${actionsHtml}</ul>
+            <div class="result-title">➡️ Prochaine étape</div>
+            <p class="result-line">${escapeHtml(result.nextStep)}</p>
           </div>
 
           <div class="btn-row">
@@ -1379,10 +1473,6 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
             <summary>✍️ Voir la réponse complète</summary>
             <div class="letter-preview" id="generatedResponse">${escapeHtml(result.response)}</div>
           </details>
-
-          <div class="soft-note">
-            Courrier préparé pour vous aider à répondre clairement.
-          </div>
         </div>
       `;
     }
@@ -1416,6 +1506,9 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       document.getElementById("pdfRecipient").textContent = lastGenerated.recipient;
       document.getElementById("pdfDate").textContent = new Date().toLocaleDateString("fr-FR");
       document.getElementById("pdfLetter").textContent = lastGenerated.response;
+
+      document.getElementById("pdfPieces").innerHTML = lastGenerated.pieces.map(piece => `<li>${escapeHtml(piece)}</li>`).join("");
+      document.getElementById("pdfNextStep").textContent = lastGenerated.nextStep;
 
       openScreen("pdf");
     }
@@ -1511,11 +1604,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz32_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz33_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz32_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz33_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1638,12 +1731,12 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz32_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz33_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz32_senior") === "true") {
+      if (localStorage.getItem("mdz33_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
     }
