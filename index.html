@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.3</title>
+  <title>Mes Démarches Zen - V3.4 Base Pro</title>
 
   <style>
     :root {
@@ -136,7 +136,7 @@
     }
 
     .content {
-      padding: 13px;
+      padding: 12px;
     }
 
     .screen {
@@ -151,7 +151,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 15px;
+      padding: 14px;
       box-shadow: var(--shadow);
       margin-bottom: 12px;
     }
@@ -165,7 +165,7 @@
       padding: 17px;
       text-align: left;
       box-shadow: var(--shadow);
-      margin-bottom: 11px;
+      margin-bottom: 10px;
       cursor: pointer;
     }
 
@@ -211,7 +211,7 @@
       text-align: left;
       box-shadow: 0 4px 14px rgba(15, 45, 70, 0.04);
       cursor: pointer;
-      min-height: 65px;
+      min-height: 64px;
     }
 
     .quick-icon {
@@ -262,7 +262,7 @@
     }
 
     .field {
-      margin-bottom: 11px;
+      margin-bottom: 10px;
     }
 
     label {
@@ -286,7 +286,7 @@
     }
 
     textarea {
-      min-height: 104px;
+      min-height: 98px;
       resize: vertical;
     }
 
@@ -826,6 +826,8 @@
               <select id="issueSelect">
                 <option value="auto">Détection automatique</option>
                 <option value="refus">Refus / décision négative</option>
+                <option value="recours">Recours / réexamen</option>
+                <option value="reclamation">Réclamation</option>
                 <option value="remboursement">Remboursement</option>
                 <option value="justificatif">Document demandé</option>
                 <option value="paiement">Dette / trop-perçu / somme</option>
@@ -873,7 +875,7 @@
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
         <div class="card">
-          <h2 class="title">Modèles</h2>
+          <h2 class="title">Modèles pro</h2>
           <p class="subtitle">Choisissez une situation pour obtenir une réponse adaptée.</p>
           <div id="modelList"></div>
         </div>
@@ -1030,15 +1032,17 @@
     let lastGenerated = null;
 
     const models = [
-      { title: "CPAM - Demander un remboursement", desc: "Transport, soins, prise en charge.", organism: "cpam", issue: "remboursement", intent: "repondre" },
-      { title: "CPAM - Contester un refus", desc: "Demander un réexamen du dossier.", organism: "cpam", issue: "refus", intent: "contester" },
-      { title: "CAF - Envoyer des justificatifs", desc: "Document manquant ou complément.", organism: "caf", issue: "justificatif", intent: "repondre" },
+      { title: "CPAM - Réclamation", desc: "Demander le suivi ou la correction d’un dossier.", organism: "cpam", issue: "reclamation", intent: "repondre" },
+      { title: "CPAM - Contester une décision", desc: "Demander un réexamen.", organism: "cpam", issue: "recours", intent: "contester" },
+      { title: "CPAM - Remboursement transport / soins", desc: "Demander un suivi de remboursement.", organism: "cpam", issue: "remboursement", intent: "repondre" },
       { title: "CAF - Trop-perçu", desc: "Demander le détail ou un échéancier.", organism: "caf", issue: "paiement", intent: "repondre" },
-      { title: "Banque - Contester des frais", desc: "Frais, prélèvement, explication.", organism: "banque", issue: "paiement", intent: "contester" },
-      { title: "Assurance - Prise en charge", desc: "Sinistre, garantie, indemnisation.", organism: "assurance", issue: "remboursement", intent: "repondre" },
-      { title: "Employeur - Document manquant", desc: "Attestation, bulletin, certificat.", organism: "employeur", issue: "justificatif", intent: "repondre" },
-      { title: "Logement - Réparation", desc: "Travaux, bailleur, logement.", organism: "logement", issue: "general", intent: "repondre" },
-      { title: "Impôts - Réclamation", desc: "Demande d’explication ou correction.", organism: "impots", issue: "paiement", intent: "contester" },
+      { title: "CAF - Envoyer des justificatifs", desc: "Document manquant ou complément.", organism: "caf", issue: "justificatif", intent: "repondre" },
+      { title: "Impôts - Réclamation", desc: "Demander correction ou explication.", organism: "impots", issue: "reclamation", intent: "contester" },
+      { title: "Banque - Contester des frais", desc: "Frais, prélèvement, opération inconnue.", organism: "banque", issue: "paiement", intent: "contester" },
+      { title: "Assurance - Refus de prise en charge", desc: "Demander le motif et le réexamen.", organism: "assurance", issue: "refus", intent: "contester" },
+      { title: "Logement - Demander une réparation", desc: "Travaux, problème, bailleur.", organism: "logement", issue: "general", intent: "repondre" },
+      { title: "Employeur - Documents de fin de contrat", desc: "Bulletins, attestation, certificat.", organism: "employeur", issue: "justificatif", intent: "repondre" },
+      { title: "Transport - Remboursement", desc: "Demander remboursement ou justificatif.", organism: "transport", issue: "remboursement", intent: "repondre" },
       { title: "Demander un délai", desc: "Plus de temps pour répondre.", organism: "administration", issue: "delai", intent: "delai" }
     ];
 
@@ -1074,11 +1078,11 @@
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz33_premium") === "true";
+      return localStorage.getItem("mdz34_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz33_premium", "true");
+      localStorage.setItem("mdz34_premium", "true");
       toast("Premium test activé.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1086,7 +1090,7 @@
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz33_premium", "false");
+      localStorage.setItem("mdz34_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1098,11 +1102,11 @@
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz33_usage") || "0");
+      return Number(localStorage.getItem("mdz34_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz33_usage", String(v));
+      localStorage.setItem("mdz34_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1168,6 +1172,8 @@
       }
 
       if (hasAny(lower, ["mise en demeure", "dernier rappel", "recouvrement", "huissier", "saisie", "contentieux", "expulsion"])) return "grave";
+      if (hasAny(lower, ["réclamation", "réclamer", "insatisfaction", "plainte"])) return "reclamation";
+      if (hasAny(lower, ["recours", "commission", "réexamen", "contester"])) return "recours";
       if (hasAny(lower, ["refus", "rejet", "défavorable", "non accordé", "refusé"])) return "refus";
       if (hasAny(lower, ["remboursement", "rembourser", "indemnisation", "prise en charge"])) return "remboursement";
       if (hasAny(lower, ["justificatif", "document", "pièce", "attestation", "complément"])) return "justificatif";
@@ -1197,6 +1203,8 @@
     function buildSubject(organism, issue, intent) {
       if (issue === "signature_auto") return "Demande à compléter";
       if (intent === "delai" || issue === "delai") return "Demande de délai supplémentaire";
+      if (issue === "recours") return "Demande de réexamen de mon dossier";
+      if (issue === "reclamation") return "Réclamation concernant mon dossier";
       if (intent === "contester" || issue === "refus") return "Demande de réexamen de mon dossier";
       if (issue === "remboursement") return "Demande de suivi de remboursement";
       if (issue === "justificatif") return "Transmission de justificatifs";
@@ -1215,6 +1223,8 @@
       const org = recipientLabel(organism);
 
       const summaries = {
+        reclamation: "La situation ressemble à une réclamation. Il faut expliquer le problème, rappeler les références du dossier et demander une réponse écrite.",
+        recours: "La situation ressemble à une demande de recours ou de réexamen. Il faut contester clairement la décision et joindre les justificatifs utiles.",
         refus: "Il semble y avoir une décision négative. Il faut demander le motif et préparer une réponse claire.",
         remboursement: "Le courrier semble concerner un remboursement ou une prise en charge. Il faut vérifier les dates et les justificatifs.",
         justificatif: "L’organisme semble demander un document. Il faut envoyer la pièce demandée et garder une preuve.",
@@ -1237,7 +1247,7 @@
         };
       }
 
-      if (issue === "delai" || issue === "paiement" || issue === "refus") {
+      if (["delai", "paiement", "refus", "recours", "reclamation"].includes(issue)) {
         return {
           level: "À traiter",
           cls: "urgent",
@@ -1271,8 +1281,10 @@
       if (organism === "caf") actions.push("Vérifier ressources, période et documents demandés.");
       if (organism === "banque") actions.push("Comparer avec vos relevés bancaires.");
       if (organism === "assurance") actions.push("Vérifier les garanties du contrat.");
+      if (organism === "impots") actions.push("Vérifier l’avis fiscal ou le montant contesté.");
       if (organism === "employeur") actions.push("Demander une réponse écrite.");
-      if (issue === "refus") actions.push("Demander le motif précis du refus.");
+      if (issue === "refus" || issue === "recours") actions.push("Demander le motif précis de la décision.");
+      if (issue === "reclamation") actions.push("Expliquer clairement le problème rencontré.");
       if (intent === "delai") actions.push("Demander un délai par écrit.");
 
       return actions.slice(0, 3);
@@ -1283,24 +1295,24 @@
         return ["Le contenu principal du courrier", "La référence du dossier si disponible"];
       }
 
-      const common = ["Copie du courrier reçu", "Votre numéro de dossier si disponible", "Preuve d’envoi"];
-
-      if (organism === "cpam") return ["Prescription médicale si concernée", "Justificatifs de transport ou de soins", "Copie du courrier reçu", "Numéro de sécurité sociale"];
-      if (organism === "caf") return ["Justificatif demandé", "Ressources ou situation familiale si concernées", "Copie du courrier reçu", "Numéro allocataire"];
-      if (organism === "banque") return ["Relevé bancaire concerné", "Date et montant de l’opération", "Copie du courrier reçu"];
-      if (organism === "assurance") return ["Contrat ou numéro de sinistre", "Photos ou justificatifs", "Factures si concernées", "Copie du courrier reçu"];
-      if (organism === "logement") return ["Photos du problème si nécessaire", "Copie du bail ou quittance", "Échanges précédents avec le bailleur"];
-      if (organism === "employeur") return ["Copie du courrier reçu", "Bulletin ou document concerné", "Références du contrat si nécessaire"];
+      if (organism === "cpam") return ["Courrier reçu", "Numéro de sécurité sociale", "Justificatifs médicaux ou de transport", "Prescription si concernée"];
+      if (organism === "caf") return ["Courrier reçu", "Numéro allocataire", "Justificatif demandé", "Ressources ou situation familiale si concernées"];
+      if (organism === "banque") return ["Relevé bancaire concerné", "Date et montant de l’opération", "Courrier ou message reçu"];
+      if (organism === "assurance") return ["Contrat ou numéro de sinistre", "Courrier reçu", "Factures ou photos si concernées", "Justificatifs du dommage"];
+      if (organism === "logement") return ["Photos du problème", "Copie du bail ou quittance", "Échanges précédents avec le bailleur"];
+      if (organism === "employeur") return ["Courrier reçu", "Bulletin ou document concerné", "Contrat ou référence du dossier si nécessaire"];
       if (organism === "impots") return ["Avis ou courrier fiscal", "Justificatifs de paiement ou revenus", "Numéro fiscal si nécessaire"];
+      if (organism === "transport") return ["Billet ou justificatif de trajet", "Prescription si transport médical", "Preuve de paiement", "Courrier reçu"];
 
-      return common;
+      return ["Courrier reçu", "Numéro de dossier si disponible", "Justificatifs utiles", "Preuve d’envoi"];
     }
 
     function buildNextStep(organism, issue, intent) {
       if (issue === "signature_auto") return "Copiez le contenu principal du courrier, puis relancez l’analyse.";
 
       if (intent === "delai" || issue === "delai") return "Envoyer la demande de délai rapidement et garder une preuve.";
-      if (intent === "contester" || issue === "refus") return "Envoyer le courrier de réexamen avec les justificatifs utiles.";
+      if (issue === "recours" || intent === "contester" || issue === "refus") return "Envoyer le courrier de réexamen avec les justificatifs utiles.";
+      if (issue === "reclamation") return "Envoyer la réclamation avec les références du dossier et conserver la réponse.";
       if (issue === "justificatif") return "Joindre les documents demandés et demander confirmation de réception.";
       if (issue === "paiement") return "Demander le détail de la somme et conserver la réponse écrite.";
       if (issue === "remboursement") return "Envoyer les pièces utiles et demander l’état d’avancement du dossier.";
@@ -1339,17 +1351,28 @@ Je souhaite demander un délai supplémentaire afin de réunir les éléments n�
 Je vous remercie de bien vouloir m’indiquer si ce délai peut être accepté.` + ending;
       }
 
-      if (intent === "contester" || issue === "refus") {
+      if (issue === "reclamation") {
         return opening +
 `Objet : ${subject}
 
-Je fais suite à votre courrier concernant mon dossier auprès de ${org}.
+Je fais suite à la situation rencontrée concernant mon dossier auprès de ${org}.
+
+Je souhaite déposer une réclamation afin que mon dossier soit vérifié et qu’une réponse claire me soit apportée.${detailLine}
+
+Je vous remercie de bien vouloir m’indiquer les suites données à ma demande et les éléments éventuellement nécessaires pour compléter mon dossier.` + ending;
+      }
+
+      if (issue === "recours" || intent === "contester" || issue === "refus") {
+        return opening +
+`Objet : ${subject}
+
+Je fais suite à votre décision concernant mon dossier auprès de ${org}.
 
 Je souhaite demander un réexamen de ma situation.
 
 Je vous remercie de bien vouloir m’indiquer le motif précis de votre décision et les pièces complémentaires éventuellement nécessaires.${detailLine}
 
-Je reste disponible pour transmettre les éléments utiles.` + ending;
+Je reste disponible pour transmettre les éléments utiles à l’étude de mon dossier.` + ending;
       }
 
       if (issue === "remboursement") {
@@ -1604,11 +1627,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz33_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz34_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz33_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz34_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1731,12 +1754,12 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz33_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz34_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz33_senior") === "true") {
+      if (localStorage.getItem("mdz34_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
     }
