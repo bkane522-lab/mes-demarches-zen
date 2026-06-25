@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.6 UX 9/10</title>
+  <title>Mes Démarches Zen - V3.7 UX 10/10</title>
 
   <style>
     :root {
@@ -26,7 +26,9 @@
       --navHeight: 82px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -37,7 +39,10 @@
       line-height: 1.42;
     }
 
-    button, input, textarea, select {
+    button,
+    input,
+    textarea,
+    select {
       font-family: inherit;
       font-size: 17px;
     }
@@ -146,10 +151,19 @@
       font-size: 16px;
     }
 
-    .content { padding: 12px; }
+    .content {
+      padding: 12px;
+    }
 
-    .screen, .wizard-step { display: none; }
-    .screen.active, .wizard-step.active { display: block; }
+    .screen,
+    .wizard-step {
+      display: none;
+    }
+
+    .screen.active,
+    .wizard-step.active {
+      display: block;
+    }
 
     .card {
       background: var(--card);
@@ -265,7 +279,9 @@
       cursor: pointer;
     }
 
-    .field { margin-bottom: 10px; }
+    .field {
+      margin-bottom: 10px;
+    }
 
     label {
       display: block;
@@ -274,7 +290,9 @@
       font-size: 16px;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
       border: 2px solid var(--border);
       border-radius: 16px;
@@ -286,16 +304,19 @@
     }
 
     textarea {
-      min-height: 125px;
+      min-height: 126px;
       resize: vertical;
     }
 
-    input:focus, textarea:focus, select:focus {
+    input:focus,
+    textarea:focus,
+    select:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
     }
 
-    .grid-2 {
+    .grid-2,
+    .mini-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 9px;
@@ -317,20 +338,30 @@
       font-size: 18px;
     }
 
-    .btn-dark { background: var(--navy); color: white; }
-    .btn-light { background: var(--soft); color: var(--navy); border: 1px solid var(--border); }
-    .btn-green { background: var(--green); color: white; }
-    .btn-red { background: var(--redSoft); color: var(--red); border: 1px solid #fecaca; }
+    .btn-dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .btn-light {
+      background: var(--soft);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-red {
+      background: var(--redSoft);
+      color: var(--red);
+      border: 1px solid #fecaca;
+    }
 
     .btn-row {
       display: grid;
-      gap: 9px;
-      margin-top: 10px;
-    }
-
-    .mini-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 9px;
       margin-top: 10px;
     }
@@ -363,6 +394,33 @@
       background: var(--blue);
       border-radius: 999px;
       transition: width 0.2s ease;
+    }
+
+    .detected-box {
+      border: 2px solid rgba(37, 99, 235, 0.25);
+      background: #f8fbff;
+      border-radius: 20px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .detected-box .big {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 950;
+      margin-bottom: 6px;
+    }
+
+    .detected-emoji {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
     }
 
     .choice-grid {
@@ -484,16 +542,29 @@
       margin-top: 8px;
     }
 
-    .pill.normal { color: #166534; background: var(--greenSoft); }
-    .pill.urgent { color: #9a3412; background: var(--orangeSoft); }
-    .pill.danger { color: var(--red); background: var(--redSoft); }
+    .pill.normal {
+      color: #166534;
+      background: var(--greenSoft);
+    }
 
-    .actions-list, .small-list {
+    .pill.urgent {
+      color: #9a3412;
+      background: var(--orangeSoft);
+    }
+
+    .pill.danger {
+      color: var(--red);
+      background: var(--redSoft);
+    }
+
+    .actions-list,
+    .small-list {
       margin: 8px 0 0;
       padding-left: 21px;
     }
 
-    .actions-list li, .small-list li {
+    .actions-list li,
+    .small-list li {
       margin-bottom: 4px;
     }
 
@@ -507,7 +578,9 @@
       font-size: 16px;
     }
 
-    .model-item, .reminder-item {
+    .model-item,
+    .reminder-item,
+    .history-item {
       border: 1px solid var(--border);
       background: white;
       border-radius: 18px;
@@ -515,9 +588,14 @@
       margin-bottom: 9px;
     }
 
-    .model-item { cursor: pointer; }
+    .model-item,
+    .history-item {
+      cursor: pointer;
+    }
 
-    .model-item strong, .reminder-item strong {
+    .model-item strong,
+    .reminder-item strong,
+    .history-item strong {
       display: block;
       font-size: 18px;
       margin-bottom: 3px;
@@ -569,7 +647,9 @@
       font-size: 14px;
     }
 
-    .plan li { margin-bottom: 5px; }
+    .plan li {
+      margin-bottom: 5px;
+    }
 
     .premium-plan {
       border-color: rgba(37, 99, 235, 0.35);
@@ -665,7 +745,9 @@
       z-index: 50;
     }
 
-    .toast.show { display: block; }
+    .toast.show {
+      display: block;
+    }
 
     .bottom-nav {
       position: fixed;
@@ -702,22 +784,52 @@
       line-height: 1;
     }
 
-    .nav-btn.active { color: var(--blue); }
+    .nav-btn.active {
+      color: var(--blue);
+    }
 
-    .senior-mode { font-size: 18px; }
-    .senior-mode .quick-title { font-size: 21px; }
-    .senior-mode .quick-desc, .senior-mode .muted { font-size: 15px; }
+    .senior-mode {
+      font-size: 18px;
+    }
+
+    .senior-mode .quick-title {
+      font-size: 21px;
+    }
+
+    .senior-mode .quick-desc,
+    .senior-mode .muted {
+      font-size: 15px;
+    }
 
     @media (max-width: 420px) {
-      .hero h2 { font-size: 26px; }
-      .main-action strong { font-size: 24px; }
-      .brand h1 { font-size: 20px; }
-      .grid-2, .compare, .mini-row { grid-template-columns: 1fr; }
-      .content { padding: 12px; }
+      .hero h2 {
+        font-size: 26px;
+      }
+
+      .main-action strong {
+        font-size: 24px;
+      }
+
+      .brand h1,
+      .app.inner .brand h1 {
+        font-size: 20px;
+      }
+
+      .grid-2,
+      .compare,
+      .mini-row {
+        grid-template-columns: 1fr;
+      }
+
+      .content {
+        padding: 12px;
+      }
     }
 
     @media print {
-      body { background: white; }
+      body {
+        background: white;
+      }
 
       .topbar,
       .bottom-nav,
@@ -734,9 +846,13 @@
         background: white;
       }
 
-      .content { padding: 0; }
+      .content {
+        padding: 0;
+      }
 
-      #pdf { display: block !important; }
+      #pdf {
+        display: block !important;
+      }
 
       .pdf-page {
         border: none;
@@ -757,7 +873,7 @@
           <h1>Mes Démarches Zen</h1>
           <p>Aide aux courriers</p>
         </div>
-        <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Premium</button>
+        <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Pro</button>
       </div>
 
       <div class="hero" id="homeHero">
@@ -800,6 +916,8 @@
             </span>
           </button>
         </div>
+
+        <div id="homeHistory"></div>
       </section>
 
       <section class="screen" id="assistant">
@@ -822,59 +940,74 @@
               <textarea id="letterText" placeholder="Collez ici le texte principal du courrier..."></textarea>
             </div>
 
-            <button class="btn btn-primary" onclick="goStep2()">Continuer</button>
+            <div class="mini-row">
+              <button class="btn btn-light" onclick="pasteClipboard()">Coller</button>
+              <button class="btn btn-light" onclick="clearLetter()">Effacer</button>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top:10px;" onclick="goStep2()">Continuer</button>
           </div>
 
           <div class="wizard-step" id="step2">
             <h3 class="title">Qui vous a écrit ?</h3>
-            <p class="subtitle">L’app peut détecter automatiquement, mais vous pouvez corriger.</p>
+            <p class="subtitle">L’app propose une détection. Vous pouvez corriger si besoin.</p>
 
-            <div class="choice-grid" id="organismChoices">
-              <button class="choice-card" data-org="cpam" onclick="selectOrganism('cpam', this)">
-                <span class="choice-emoji">🏥</span>
-                <span><strong>CPAM / Santé</strong><span>Remboursement, transport, soins.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="caf" onclick="selectOrganism('caf', this)">
-                <span class="choice-emoji">🏠</span>
-                <span><strong>CAF / Aides</strong><span>Aide, trop-perçu, justificatif.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="banque" onclick="selectOrganism('banque', this)">
-                <span class="choice-emoji">🏦</span>
-                <span><strong>Banque</strong><span>Frais, prélèvement, compte.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="assurance" onclick="selectOrganism('assurance', this)">
-                <span class="choice-emoji">🛡️</span>
-                <span><strong>Assurance</strong><span>Sinistre, garantie, prise en charge.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="logement" onclick="selectOrganism('logement', this)">
-                <span class="choice-emoji">🔑</span>
-                <span><strong>Logement</strong><span>Bailleur, loyer, travaux.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="employeur" onclick="selectOrganism('employeur', this)">
-                <span class="choice-emoji">💼</span>
-                <span><strong>Employeur</strong><span>Bulletin, attestation, document.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="impots" onclick="selectOrganism('impots', this)">
-                <span class="choice-emoji">🧾</span>
-                <span><strong>Impôts</strong><span>Avis, paiement, réclamation.</span></span>
-              </button>
-
-              <button class="choice-card" data-org="administration" onclick="selectOrganism('administration', this)">
-                <span class="choice-emoji">📄</span>
-                <span><strong>Autre / je ne sais pas</strong><span>Autre courrier administratif.</span></span>
-              </button>
+            <div class="detected-box">
+              <div class="big">
+                <span class="detected-emoji" id="detectedEmoji">📄</span>
+                <span id="detectedName">Administration</span>
+              </div>
+              <p class="muted" id="detectedDesc">Autre courrier administratif.</p>
+              <button class="btn btn-primary" onclick="goStep3()">Oui, continuer</button>
             </div>
 
-            <div class="mini-row">
-              <button class="btn btn-light" onclick="showStep(1)">Retour</button>
-              <button class="btn btn-primary" onclick="goStep3()">Continuer</button>
-            </div>
+            <details>
+              <summary>Changer l’organisme</summary>
+
+              <div class="choice-grid" id="organismChoices" style="margin-top:10px;">
+                <button class="choice-card" data-org="cpam" onclick="selectOrganism('cpam', this)">
+                  <span class="choice-emoji">🏥</span>
+                  <span><strong>CPAM / Santé</strong><span>Remboursement, transport, soins.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="caf" onclick="selectOrganism('caf', this)">
+                  <span class="choice-emoji">🏠</span>
+                  <span><strong>CAF / Aides</strong><span>Aide, trop-perçu, justificatif.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="banque" onclick="selectOrganism('banque', this)">
+                  <span class="choice-emoji">🏦</span>
+                  <span><strong>Banque</strong><span>Frais, prélèvement, compte.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="assurance" onclick="selectOrganism('assurance', this)">
+                  <span class="choice-emoji">🛡️</span>
+                  <span><strong>Assurance</strong><span>Sinistre, garantie, prise en charge.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="logement" onclick="selectOrganism('logement', this)">
+                  <span class="choice-emoji">🔑</span>
+                  <span><strong>Logement</strong><span>Bailleur, loyer, travaux.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="employeur" onclick="selectOrganism('employeur', this)">
+                  <span class="choice-emoji">💼</span>
+                  <span><strong>Employeur</strong><span>Bulletin, attestation, document.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="impots" onclick="selectOrganism('impots', this)">
+                  <span class="choice-emoji">🧾</span>
+                  <span><strong>Impôts</strong><span>Avis, paiement, réclamation.</span></span>
+                </button>
+
+                <button class="choice-card" data-org="administration" onclick="selectOrganism('administration', this)">
+                  <span class="choice-emoji">📄</span>
+                  <span><strong>Autre / je ne sais pas</strong><span>Autre courrier administratif.</span></span>
+                </button>
+              </div>
+            </details>
+
+            <button class="btn btn-light" style="margin-top:10px;width:100%;" onclick="showStep(1)">Retour</button>
           </div>
 
           <div class="wizard-step" id="step3">
@@ -1024,8 +1157,8 @@
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
         <div class="card">
-          <h2 class="title">Premium</h2>
-          <p class="subtitle">Le Premium apporte le PDF, les réponses avancées et les analyses illimitées.</p>
+          <h2 class="title">Version Pro</h2>
+          <p class="subtitle">PDF, analyses illimitées, réponses avancées et confort complet.</p>
 
           <div class="compare">
             <div class="plan">
@@ -1039,7 +1172,7 @@
             </div>
 
             <div class="plan premium-plan">
-              <h3>Premium</h3>
+              <h3>Pro</h3>
               <ul>
                 <li>Analyses illimitées</li>
                 <li>PDF prêt à imprimer</li>
@@ -1051,7 +1184,7 @@
           </div>
 
           <div class="btn-row">
-            <button class="btn btn-green" onclick="activatePremium()">Activer Premium test</button>
+            <button class="btn btn-green" onclick="activatePremium()">Activer Pro test</button>
             <button class="btn btn-light" onclick="deactivatePremium()">Revenir en gratuit</button>
             <button class="btn btn-light" onclick="toggleSeniorMode()">Mode senior</button>
           </div>
@@ -1131,6 +1264,18 @@
     let activeModelFilter = "all";
     let lastGenerated = null;
 
+    const organismInfo = {
+      administration: { name: "Administration", emoji: "📄", desc: "Autre courrier administratif." },
+      cpam: { name: "CPAM / Santé", emoji: "🏥", desc: "Remboursement, transport, soins." },
+      caf: { name: "CAF / Aides", emoji: "🏠", desc: "Aide, trop-perçu, justificatif." },
+      banque: { name: "Banque", emoji: "🏦", desc: "Frais, prélèvement, compte." },
+      assurance: { name: "Assurance", emoji: "🛡️", desc: "Sinistre, garantie, prise en charge." },
+      logement: { name: "Logement", emoji: "🔑", desc: "Bailleur, loyer, travaux." },
+      employeur: { name: "Employeur", emoji: "💼", desc: "Bulletin, attestation, document." },
+      impots: { name: "Impôts", emoji: "🧾", desc: "Avis, paiement, réclamation." },
+      transport: { name: "Transport", emoji: "🚌", desc: "Billet, remboursement, justificatif." }
+    };
+
     const models = [
       { title: "CPAM - Réclamation", desc: "Demander le suivi ou la correction d’un dossier.", organism: "cpam", issue: "reclamation", intent: "repondre" },
       { title: "CPAM - Contester une décision", desc: "Demander un réexamen.", organism: "cpam", issue: "recours", intent: "contester" },
@@ -1157,6 +1302,7 @@
       document.getElementById("homeHero").style.display = id === "home" ? "block" : "none";
       document.getElementById("app").classList.toggle("inner", id !== "home");
 
+      if (id === "home") renderHomeHistory();
       if (id === "models") renderModels();
       if (id === "reminders") renderReminders();
 
@@ -1168,6 +1314,13 @@
     function startWizard() {
       openScreen("assistant");
       showStep(1);
+    }
+
+    function newAnalysis() {
+      clearLetter();
+      lastGenerated = null;
+      document.getElementById("assistantResult").innerHTML = "";
+      startWizard();
     }
 
     function showStep(step) {
@@ -1188,7 +1341,10 @@
         return;
       }
 
+      localStorage.setItem("mdz37_draft", text);
+
       wizardOrganism = detectOrganism(text);
+      setDetectedOrganism(wizardOrganism);
       setActiveOrganismCard(wizardOrganism);
       showStep(2);
     }
@@ -1197,16 +1353,24 @@
       showStep(3);
     }
 
+    function setDetectedOrganism(value) {
+      const info = organismInfo[value] || organismInfo.administration;
+      document.getElementById("detectedEmoji").textContent = info.emoji;
+      document.getElementById("detectedName").textContent = info.name;
+      document.getElementById("detectedDesc").textContent = info.desc;
+    }
+
     function detectOrganism(text) {
       const lower = text.toLowerCase();
 
-      if (lower.includes("cpam") || lower.includes("assurance maladie") || lower.includes("ameli")) return "cpam";
-      if (lower.includes("caf") || lower.includes("allocataire") || lower.includes("allocation")) return "caf";
-      if (lower.includes("banque") || lower.includes("prélèvement") || lower.includes("compte bancaire")) return "banque";
-      if (lower.includes("assurance") || lower.includes("sinistre") || lower.includes("garantie")) return "assurance";
-      if (lower.includes("bailleur") || lower.includes("loyer") || lower.includes("logement")) return "logement";
-      if (lower.includes("employeur") || lower.includes("bulletin") || lower.includes("contrat de travail")) return "employeur";
-      if (lower.includes("impôt") || lower.includes("impots") || lower.includes("fiscal")) return "impots";
+      if (lower.includes("cpam") || lower.includes("assurance maladie") || lower.includes("ameli") || lower.includes("sécurité sociale")) return "cpam";
+      if (lower.includes("caf") || lower.includes("allocataire") || lower.includes("allocation") || lower.includes("caisse d'allocations")) return "caf";
+      if (lower.includes("banque") || lower.includes("prélèvement") || lower.includes("compte bancaire") || lower.includes("caisse d’épargne") || lower.includes("caisse d'epargne")) return "banque";
+      if (lower.includes("assurance") || lower.includes("sinistre") || lower.includes("garantie") || lower.includes("indemnisation")) return "assurance";
+      if (lower.includes("bailleur") || lower.includes("loyer") || lower.includes("logement") || lower.includes("dépôt de garantie")) return "logement";
+      if (lower.includes("employeur") || lower.includes("bulletin") || lower.includes("contrat de travail") || lower.includes("solde de tout compte")) return "employeur";
+      if (lower.includes("impôt") || lower.includes("impots") || lower.includes("fiscal") || lower.includes("taxe")) return "impots";
+      if (lower.includes("transport") || lower.includes("billet") || lower.includes("trajet") || lower.includes("sncf")) return "transport";
 
       return "administration";
     }
@@ -1219,6 +1383,7 @@
 
     function selectOrganism(value, btn) {
       wizardOrganism = value;
+      setDetectedOrganism(value);
       document.querySelectorAll("#organismChoices .choice-card").forEach(card => card.classList.remove("active"));
       btn.classList.add("active");
     }
@@ -1229,6 +1394,28 @@
       btn.classList.add("active");
     }
 
+    async function pasteClipboard() {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (!text) {
+          toast("Aucun texte trouvé dans le presse-papiers.");
+          return;
+        }
+        document.getElementById("letterText").value = text;
+        localStorage.setItem("mdz37_draft", text);
+        toast("Courrier collé.");
+      } catch (e) {
+        toast("Collage automatique impossible. Collez manuellement.");
+      }
+    }
+
+    function clearLetter() {
+      document.getElementById("letterText").value = "";
+      document.getElementById("assistantResult").innerHTML = "";
+      localStorage.removeItem("mdz37_draft");
+      toast("Zone effacée.");
+    }
+
     function toast(message) {
       const el = document.getElementById("toast");
       el.textContent = message;
@@ -1237,19 +1424,19 @@
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz36_premium") === "true";
+      return localStorage.getItem("mdz37_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz36_premium", "true");
-      toast("Premium test activé.");
+      localStorage.setItem("mdz37_premium", "true");
+      toast("Version Pro test activée.");
       updatePremiumBadge();
       updateFreeCounter();
       openScreen("home");
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz36_premium", "false");
+      localStorage.setItem("mdz37_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1257,15 +1444,15 @@
     }
 
     function updatePremiumBadge() {
-      document.getElementById("premiumBadge").textContent = isPremium() ? "Premium" : "Premium";
+      document.getElementById("premiumBadge").textContent = isPremium() ? "Pro actif" : "Pro";
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz36_usage") || "0");
+      return Number(localStorage.getItem("mdz37_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz36_usage", String(v));
+      localStorage.setItem("mdz37_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1273,7 +1460,7 @@
       if (!el) return;
 
       if (isPremium()) {
-        el.textContent = "Premium actif : analyses illimitées en mode test.";
+        el.textContent = "Pro actif : analyses illimitées en mode test.";
       } else {
         const remaining = Math.max(0, FREE_LIMIT - getUsageCount());
         el.textContent = "Version gratuite : " + remaining + " analyse(s) restante(s).";
@@ -1296,8 +1483,8 @@
         document.getElementById("assistantResult").innerHTML = `
           <div class="card">
             <h2 class="title">Limite gratuite atteinte</h2>
-            <p class="subtitle">Passez en Premium test pour continuer.</p>
-            <button class="btn btn-primary" onclick="openScreen('premium')">Voir Premium</button>
+            <p class="subtitle">Passez en version Pro test pour continuer.</p>
+            <button class="btn btn-primary" onclick="openScreen('premium')">Voir Pro</button>
           </div>
         `;
         return;
@@ -1309,6 +1496,7 @@
 
       const result = generateResult(text, wizardOrganism, selectedIssue, selectedIntent, tone, detail);
       lastGenerated = result;
+      saveHistory(result);
       renderResult(result);
       updateFreeCounter();
 
@@ -1379,8 +1567,8 @@
       const org = recipientLabel(organism);
 
       const summaries = {
-        reclamation: "La situation ressemble à une réclamation. Il faut expliquer le problème, rappeler les références du dossier et demander une réponse écrite.",
-        recours: "La situation ressemble à une demande de recours ou de réexamen. Il faut contester clairement la décision et joindre les justificatifs utiles.",
+        reclamation: "La situation ressemble à une réclamation. Il faut expliquer le problème et demander une réponse écrite.",
+        recours: "La situation ressemble à une demande de recours ou de réexamen. Il faut contester clairement et joindre les justificatifs utiles.",
         refus: "Il semble y avoir une décision négative. Il faut demander le motif et préparer une réponse claire.",
         remboursement: "Le courrier semble concerner un remboursement ou une prise en charge. Il faut vérifier les dates et les justificatifs.",
         justificatif: "L’organisme semble demander un document. Il faut envoyer la pièce demandée et garder une preuve.",
@@ -1584,7 +1772,20 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       const pieces = buildPieces(organism, issue);
       const nextStep = buildNextStep(organism, issue, intent);
 
-      return { issue, organism, summary, urgency, actions, response, subject, recipient, pieces, nextStep };
+      return {
+        id: Date.now(),
+        createdAt: new Date().toISOString(),
+        issue,
+        organism,
+        summary,
+        urgency,
+        actions,
+        response,
+        subject,
+        recipient,
+        pieces,
+        nextStep
+      };
     }
 
     function renderResult(result) {
@@ -1602,7 +1803,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
             <p class="muted">${escapeHtml(result.urgency.text)}</p>
           </div>
 
-          <div class="grid-2">
+          <div class="btn-row">
+            <button class="btn btn-light" onclick="speakSummary()">Lire le résumé</button>
+          </div>
+
+          <div class="grid-2" style="margin-top:9px;">
             <div class="result-card">
               <div class="result-title">✅ À faire</div>
               <ul class="actions-list">${actionsHtml}</ul>
@@ -1621,9 +1826,9 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
           <div class="btn-row">
             <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier la réponse</button>
-            <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
+            <button class="btn btn-light" onclick="showPdf()">Voir PDF Pro</button>
             <button class="btn btn-light" onclick="createReminderFromResult()">Créer un rappel</button>
-            <button class="btn btn-light" onclick="startWizard()">Nouvelle analyse</button>
+            <button class="btn btn-light" onclick="newAnalysis()">Nouvelle analyse</button>
           </div>
 
           <details>
@@ -1632,6 +1837,27 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
           </details>
         </div>
       `;
+    }
+
+    function speakSummary() {
+      if (!lastGenerated) {
+        toast("Aucun résumé à lire.");
+        return;
+      }
+
+      if (!("speechSynthesis" in window)) {
+        toast("Lecture vocale non disponible.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      const text = lastGenerated.summary + ". Prochaine étape : " + lastGenerated.nextStep;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "fr-FR";
+      utterance.rate = 0.92;
+
+      window.speechSynthesis.speak(utterance);
     }
 
     function copyGeneratedResponse() {
@@ -1649,7 +1875,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function showPdf() {
       if (!isPremium()) {
-        toast("PDF disponible en Premium test.");
+        toast("PDF disponible en version Pro test.");
         openScreen("premium");
         return;
       }
@@ -1669,12 +1895,61 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       openScreen("pdf");
     }
 
+    function getHistory() {
+      return JSON.parse(localStorage.getItem("mdz37_history") || "[]");
+    }
+
+    function saveHistory(result) {
+      const history = getHistory();
+      history.unshift(result);
+      localStorage.setItem("mdz37_history", JSON.stringify(history.slice(0, 5)));
+    }
+
+    function renderHomeHistory() {
+      const box = document.getElementById("homeHistory");
+      const history = getHistory();
+
+      if (!history.length) {
+        box.innerHTML = "";
+        return;
+      }
+
+      const last = history[0];
+
+      box.innerHTML = `
+        <div class="card">
+          <h2 class="title">Dernière fiche</h2>
+          <div class="history-item" onclick="loadHistory(${last.id})">
+            <strong>${escapeHtml(last.subject)}</strong>
+            <span class="muted">${escapeHtml(last.recipient)} • ${formatShortDate(last.createdAt)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function loadHistory(id) {
+      const history = getHistory();
+      const item = history.find(h => h.id === id);
+
+      if (!item) {
+        toast("Fiche introuvable.");
+        return;
+      }
+
+      lastGenerated = item;
+      openScreen("assistant");
+      showStep(3);
+      renderResult(item);
+
+      setTimeout(() => {
+        document.getElementById("assistantResult").scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+
     function setModelFilter(filter, btn) {
       activeModelFilter = filter;
-
       document.querySelectorAll("#modelFilters .chip").forEach(chip => chip.classList.remove("active"));
       btn.classList.add("active");
-
       renderModels();
     }
 
@@ -1712,7 +1987,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
           <div class="letter-preview">${escapeHtml(result.response)}</div>
           <div class="btn-row">
             <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier</button>
-            <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
+            <button class="btn btn-light" onclick="showPdf()">Voir PDF Pro</button>
             <button class="btn btn-light" onclick="renderModels()">Retour</button>
           </div>
         </div>
@@ -1806,11 +2081,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz36_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz37_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz36_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz37_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1853,6 +2128,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       setTimeout(() => {
         document.getElementById("reminderTitle").value = "Répondre à mon courrier";
         document.getElementById("reminderNote").value = "Copier la réponse, ajouter les pièces et garder une preuve d’envoi.";
+        quickReminder(1);
       }, 200);
     }
 
@@ -1930,17 +2206,37 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       });
     }
 
+    function formatShortDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+    }
+
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz36_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz37_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz36_senior") === "true") {
+      if (localStorage.getItem("mdz37_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
+    }
+
+    function restoreDraft() {
+      const draft = localStorage.getItem("mdz37_draft");
+      if (draft) {
+        document.getElementById("letterText").value = draft;
+      }
+
+      document.getElementById("letterText").addEventListener("input", function () {
+        localStorage.setItem("mdz37_draft", this.value);
+      });
     }
 
     function escapeHtml(text) {
@@ -1953,8 +2249,10 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     restoreSeniorMode();
+    restoreDraft();
     renderModels();
     renderReminders();
+    renderHomeHistory();
     updatePremiumBadge();
     updateFreeCounter();
 
