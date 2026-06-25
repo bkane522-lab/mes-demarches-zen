@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes Démarches Zen - Hors connexion</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f6fb;
+      color: #102235;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #d8e1ee;
+      border-radius: 24px;
+      padding: 24px;
+      max-width: 520px;
+      box-shadow: 0 8px 24px rgba(15, 45, 70, 0.08);
+      text-align: center;
+    }
+
+    .icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: #eef3f9;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      font-size: 36px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #0f2d46;
+      font-size: 28px;
+    }
+
+    p {
+      color: #64748b;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 16px;
+      border: none;
+      border-radius: 16px;
+      background: #2563eb;
+      color: white;
+      padding: 14px 18px;
+      font-weight: 800;
+      font-size: 17px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">📄</div>
+    <h1>Vous êtes hors connexion</h1>
+    <p>
+      Mes Démarches Zen ne peut pas charger la page pour le moment.
+      Vérifiez votre connexion puis réessayez.
+    </p>
+    <button onclick="window.location.reload()">Réessayer</button>
+  </div>
+</body>
+</html>
