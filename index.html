@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.7 UX 10/10</title>
+
+  <title>Mes Démarches Zen - PWA</title>
+  <meta name="description" content="Une aide simple pour comprendre les courriers administratifs, préparer une réponse et ne pas oublier les démarches importantes." />
+
+  <meta name="theme-color" content="#0f2d46" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Démarches Zen" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
   <style>
     :root {
@@ -172,6 +184,11 @@
       padding: 14px;
       box-shadow: var(--shadow);
       margin-bottom: 12px;
+    }
+
+    .install-card {
+      border-color: rgba(37, 99, 235, 0.22);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     }
 
     .main-action {
@@ -917,6 +934,12 @@
           </button>
         </div>
 
+        <div class="card install-card" id="installBox" style="display:none;">
+          <h2 class="title">Installer l’application</h2>
+          <p class="subtitle">Ajoutez Mes Démarches Zen sur l’écran d’accueil pour l’utiliser comme une vraie app.</p>
+          <button class="btn btn-primary" onclick="installApp()">Installer</button>
+        </div>
+
         <div id="homeHistory"></div>
       </section>
 
@@ -1263,6 +1286,7 @@
     let selectedIntent = "comprendre";
     let activeModelFilter = "all";
     let lastGenerated = null;
+    let deferredPrompt = null;
 
     const organismInfo = {
       administration: { name: "Administration", emoji: "📄", desc: "Autre courrier administratif." },
@@ -1302,7 +1326,11 @@
       document.getElementById("homeHero").style.display = id === "home" ? "block" : "none";
       document.getElementById("app").classList.toggle("inner", id !== "home");
 
-      if (id === "home") renderHomeHistory();
+      if (id === "home") {
+        renderHomeHistory();
+        updateInstallBox();
+      }
+
       if (id === "models") renderModels();
       if (id === "reminders") renderReminders();
 
@@ -1341,7 +1369,7 @@
         return;
       }
 
-      localStorage.setItem("mdz37_draft", text);
+      localStorage.setItem("mdz38_draft", text);
 
       wizardOrganism = detectOrganism(text);
       setDetectedOrganism(wizardOrganism);
@@ -1402,7 +1430,7 @@
           return;
         }
         document.getElementById("letterText").value = text;
-        localStorage.setItem("mdz37_draft", text);
+        localStorage.setItem("mdz38_draft", text);
         toast("Courrier collé.");
       } catch (e) {
         toast("Collage automatique impossible. Collez manuellement.");
@@ -1412,7 +1440,7 @@
     function clearLetter() {
       document.getElementById("letterText").value = "";
       document.getElementById("assistantResult").innerHTML = "";
-      localStorage.removeItem("mdz37_draft");
+      localStorage.removeItem("mdz38_draft");
       toast("Zone effacée.");
     }
 
@@ -1424,11 +1452,11 @@
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz37_premium") === "true";
+      return localStorage.getItem("mdz38_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz37_premium", "true");
+      localStorage.setItem("mdz38_premium", "true");
       toast("Version Pro test activée.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1436,7 +1464,7 @@
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz37_premium", "false");
+      localStorage.setItem("mdz38_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1448,11 +1476,11 @@
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz37_usage") || "0");
+      return Number(localStorage.getItem("mdz38_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz37_usage", String(v));
+      localStorage.setItem("mdz38_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1896,13 +1924,13 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getHistory() {
-      return JSON.parse(localStorage.getItem("mdz37_history") || "[]");
+      return JSON.parse(localStorage.getItem("mdz38_history") || "[]");
     }
 
     function saveHistory(result) {
       const history = getHistory();
       history.unshift(result);
-      localStorage.setItem("mdz37_history", JSON.stringify(history.slice(0, 5)));
+      localStorage.setItem("mdz38_history", JSON.stringify(history.slice(0, 5)));
     }
 
     function renderHomeHistory() {
@@ -2081,11 +2109,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz37_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz38_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz37_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz38_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -2218,24 +2246,24 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz37_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz38_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz37_senior") === "true") {
+      if (localStorage.getItem("mdz38_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
     }
 
     function restoreDraft() {
-      const draft = localStorage.getItem("mdz37_draft");
+      const draft = localStorage.getItem("mdz38_draft");
       if (draft) {
         document.getElementById("letterText").value = draft;
       }
 
       document.getElementById("letterText").addEventListener("input", function () {
-        localStorage.setItem("mdz37_draft", this.value);
+        localStorage.setItem("mdz38_draft", this.value);
       });
     }
 
@@ -2248,6 +2276,77 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
         .replaceAll("'", "&#039;");
     }
 
+    function isStandalone() {
+      return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+    }
+
+    function updateInstallBox() {
+      const box = document.getElementById("installBox");
+      if (!box) return;
+
+      if (isStandalone()) {
+        box.style.display = "none";
+        return;
+      }
+
+      box.style.display = deferredPrompt ? "block" : "none";
+    }
+
+    async function installApp() {
+      if (!deferredPrompt) {
+        toast("Installation non proposée pour le moment. Utilisez le menu du navigateur : Ajouter à l’écran d’accueil.");
+        return;
+      }
+
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      updateInstallBox();
+    }
+
+    function registerServiceWorker() {
+      if (!("serviceWorker" in navigator)) return;
+
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/sw.js")
+          .then(() => {
+            console.log("Service worker enregistré.");
+          })
+          .catch(error => {
+            console.log("Service worker non enregistré :", error);
+          });
+      });
+    }
+
+    function handleLaunchAction() {
+      const params = new URLSearchParams(window.location.search);
+      const action = params.get("action");
+
+      if (action === "assistant") {
+        setTimeout(() => startWizard(), 250);
+      }
+
+      if (action === "reminders") {
+        setTimeout(() => openScreen("reminders"), 250);
+      }
+
+      if (action === "models") {
+        setTimeout(() => openScreen("models"), 250);
+      }
+    }
+
+    window.addEventListener("beforeinstallprompt", function (event) {
+      event.preventDefault();
+      deferredPrompt = event;
+      updateInstallBox();
+    });
+
+    window.addEventListener("appinstalled", function () {
+      deferredPrompt = null;
+      updateInstallBox();
+      toast("Application installée.");
+    });
+
     restoreSeniorMode();
     restoreDraft();
     renderModels();
@@ -2255,6 +2354,9 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     renderHomeHistory();
     updatePremiumBadge();
     updateFreeCounter();
+    updateInstallBox();
+    registerServiceWorker();
+    handleLaunchAction();
 
     setInterval(checkReminders, 30000);
     setTimeout(checkReminders, 1200);
