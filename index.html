@@ -14,8 +14,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <link rel="manifest" href="/manifest.json" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
 
   <style>
     :root {
@@ -1425,10 +1425,12 @@
     async function pasteClipboard() {
       try {
         const text = await navigator.clipboard.readText();
+
         if (!text) {
           toast("Aucun texte trouvé dans le presse-papiers.");
           return;
         }
+
         document.getElementById("letterText").value = text;
         localStorage.setItem("mdz38_draft", text);
         toast("Courrier collé.");
@@ -1485,6 +1487,7 @@
 
     function updateFreeCounter() {
       const el = document.getElementById("freeCounterText");
+
       if (!el) return;
 
       if (isPremium()) {
@@ -1569,6 +1572,7 @@
         transport: "Service transport",
         ecole: "Établissement scolaire"
       };
+
       return map[organism] || "Administration";
     }
 
@@ -1584,6 +1588,7 @@
       if (issue === "convocation") return "Demande de précision concernant une convocation";
       if (organism === "logement") return "Demande d’intervention concernant mon logement";
       if (organism === "employeur") return "Demande de document ou d’information";
+
       return "Demande d’explications concernant mon dossier";
     }
 
@@ -1612,22 +1617,42 @@
 
     function buildUrgency(issue) {
       if (issue === "grave") {
-        return { level: "Important", cls: "danger", text: "Répondez par écrit et gardez une preuve." };
+        return {
+          level: "Important",
+          cls: "danger",
+          text: "Répondez par écrit et gardez une preuve."
+        };
       }
 
       if (["delai", "paiement", "refus", "recours", "reclamation"].includes(issue)) {
-        return { level: "À traiter", cls: "urgent", text: "Vérifiez la date limite et préparez les pièces." };
+        return {
+          level: "À traiter",
+          cls: "urgent",
+          text: "Vérifiez la date limite et préparez les pièces."
+        };
       }
 
-      return { level: "Normal", cls: "normal", text: "Préparez une réponse claire avec les bons documents." };
+      return {
+        level: "Normal",
+        cls: "normal",
+        text: "Préparez une réponse claire avec les bons documents."
+      };
     }
 
     function buildActions(organism, issue, intent) {
       if (issue === "signature_auto") {
-        return ["Remonter plus haut dans l’email.", "Copier le vrai contenu du message.", "Relancer l’analyse avec le texte principal."];
+        return [
+          "Remonter plus haut dans l’email.",
+          "Copier le vrai contenu du message.",
+          "Relancer l’analyse avec le texte principal."
+        ];
       }
 
-      let actions = ["Repérer la date limite.", "Faire une copie du courrier.", "Garder une preuve de l’envoi."];
+      let actions = [
+        "Repérer la date limite.",
+        "Faire une copie du courrier.",
+        "Garder une preuve de l’envoi."
+      ];
 
       if (organism === "cpam") actions.push("Vérifier prescription, dates et justificatifs.");
       if (organism === "caf") actions.push("Vérifier ressources, période et documents demandés.");
@@ -1643,7 +1668,12 @@
     }
 
     function buildPieces(organism, issue) {
-      if (issue === "signature_auto") return ["Le contenu principal du courrier", "La référence du dossier si disponible"];
+      if (issue === "signature_auto") {
+        return [
+          "Le contenu principal du courrier",
+          "La référence du dossier si disponible"
+        ];
+      }
 
       if (organism === "cpam") return ["Courrier reçu", "Numéro de sécurité sociale", "Justificatifs médicaux ou de transport", "Prescription si concernée"];
       if (organism === "caf") return ["Courrier reçu", "Numéro allocataire", "Justificatif demandé", "Ressources ou situation familiale si concernées"];
@@ -1654,7 +1684,12 @@
       if (organism === "impots") return ["Avis ou courrier fiscal", "Justificatifs de paiement ou revenus", "Numéro fiscal si nécessaire"];
       if (organism === "transport") return ["Billet ou justificatif de trajet", "Prescription si transport médical", "Preuve de paiement", "Courrier reçu"];
 
-      return ["Courrier reçu", "Numéro de dossier si disponible", "Justificatifs utiles", "Preuve d’envoi"];
+      return [
+        "Courrier reçu",
+        "Numéro de dossier si disponible",
+        "Justificatifs utiles",
+        "Preuve d’envoi"
+      ];
     }
 
     function buildNextStep(organism, issue, intent) {
@@ -1917,6 +1952,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       document.getElementById("pdfRecipient").textContent = lastGenerated.recipient;
       document.getElementById("pdfDate").textContent = new Date().toLocaleDateString("fr-FR");
       document.getElementById("pdfLetter").textContent = lastGenerated.response;
+
       document.getElementById("pdfPieces").innerHTML = lastGenerated.pieces.map(piece => `<li>${escapeHtml(piece)}</li>`).join("");
       document.getElementById("pdfNextStep").textContent = lastGenerated.nextStep;
 
@@ -1976,8 +2012,10 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function setModelFilter(filter, btn) {
       activeModelFilter = filter;
+
       document.querySelectorAll("#modelFilters .chip").forEach(chip => chip.classList.remove("active"));
       btn.classList.add("active");
+
       renderModels();
     }
 
@@ -2007,6 +2045,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function showModel(index) {
       const m = models[index];
       const result = generateResult("modèle", m.organism, m.issue, m.intent, "poli", "");
+
       lastGenerated = result;
 
       document.getElementById("modelList").innerHTML = `
@@ -2227,6 +2266,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function formatDate(dateString) {
       const date = new Date(dateString + "T00:00:00");
+
       return date.toLocaleDateString("fr-FR", {
         day: "2-digit",
         month: "long",
@@ -2236,6 +2276,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function formatShortDate(dateString) {
       const date = new Date(dateString);
+
       return date.toLocaleDateString("fr-FR", {
         day: "2-digit",
         month: "2-digit",
@@ -2258,6 +2299,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function restoreDraft() {
       const draft = localStorage.getItem("mdz38_draft");
+
       if (draft) {
         document.getElementById("letterText").value = draft;
       }
@@ -2282,6 +2324,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
     function updateInstallBox() {
       const box = document.getElementById("installBox");
+
       if (!box) return;
 
       if (isStandalone()) {
