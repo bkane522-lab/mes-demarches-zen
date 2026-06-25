@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.4 Base Pro</title>
+  <title>Mes Démarches Zen - V3.5 UX Senior</title>
 
   <style>
     :root {
@@ -139,11 +139,13 @@
       padding: 12px;
     }
 
-    .screen {
+    .screen,
+    .wizard-step {
       display: none;
     }
 
-    .screen.active {
+    .screen.active,
+    .wizard-step.active {
       display: block;
     }
 
@@ -286,7 +288,7 @@
     }
 
     textarea {
-      min-height: 98px;
+      min-height: 120px;
       resize: vertical;
     }
 
@@ -345,6 +347,91 @@
       display: grid;
       gap: 9px;
       margin-top: 10px;
+    }
+
+    .mini-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .progress-box {
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+
+    .progress-label {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .progress-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #dbeafe;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 25%;
+      background: var(--blue);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .choice-grid {
+      display: grid;
+      gap: 9px;
+    }
+
+    .choice-card {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 18px;
+      padding: 13px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+    }
+
+    .choice-card.active {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+      background: #f8fbff;
+    }
+
+    .choice-emoji {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+
+    .choice-card strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+
+    .choice-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 3px;
     }
 
     .chips {
@@ -685,7 +772,8 @@
       }
 
       .grid-2,
-      .compare {
+      .compare,
+      .mini-row {
         grid-template-columns: 1fr;
       }
 
@@ -739,7 +827,7 @@
         <div class="logo">📄</div>
         <div>
           <h1>Mes Démarches Zen</h1>
-          <p>Assistant IA simple</p>
+          <p>Aide aux courriers</p>
         </div>
         <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Gratuit</button>
       </div>
@@ -753,14 +841,14 @@
 
     <main class="content">
       <section class="screen active" id="home">
-        <button class="main-action" onclick="openScreen('assistant')">
+        <button class="main-action" onclick="startWizard()">
           <small>Commencer</small>
           <strong>J’ai reçu un courrier</strong>
-          <span>L’assistant vous aide à comprendre et répondre.</span>
+          <span>On vous guide étape par étape.</span>
         </button>
 
         <div class="quick-list">
-          <button class="quick-btn" onclick="openScreen('assistant')">
+          <button class="quick-btn" onclick="startWizard()">
             <span class="quick-icon">✉️</span>
             <span>
               <span class="quick-title">Comprendre un courrier</span>
@@ -784,42 +872,118 @@
             </span>
           </button>
         </div>
-
-        <div class="card">
-          <h2 class="title">Premium</h2>
-          <p class="subtitle">PDF prêt à imprimer, objets automatiques, pièces à joindre et réponses avancées.</p>
-          <button class="btn btn-light" onclick="openScreen('premium')">Voir Gratuit / Premium</button>
-        </div>
       </section>
 
       <section class="screen" id="assistant">
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
         <div class="card">
-          <h2 class="title">Assistant IA</h2>
-          <p class="subtitle">Collez le courrier. Choisissez la situation. L’app prépare une fiche courte.</p>
+          <h2 class="title">Assistant guidé</h2>
+          <p class="subtitle">Répondez à quelques étapes simples.</p>
 
-          <div class="field">
-            <label for="letterText">Votre courrier</label>
-            <textarea id="letterText" placeholder="Collez ici le texte principal du courrier reçu..."></textarea>
+          <div class="progress-box">
+            <div class="progress-label" id="progressLabel">Étape 1 sur 4</div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
           </div>
 
-          <div class="grid-2">
+          <div class="wizard-step active" id="step1">
             <div class="field">
-              <label for="organism">Organisme</label>
-              <select id="organism">
-                <option value="administration">Administration</option>
-                <option value="cpam">CPAM / Santé</option>
-                <option value="caf">CAF / aides</option>
-                <option value="banque">Banque</option>
-                <option value="assurance">Assurance</option>
-                <option value="logement">Logement</option>
-                <option value="impots">Impôts</option>
-                <option value="employeur">Employeur</option>
-                <option value="transport">Transport</option>
-                <option value="ecole">École</option>
-              </select>
+              <label for="letterText">Collez le courrier reçu</label>
+              <textarea id="letterText" placeholder="Collez ici le texte principal du courrier..."></textarea>
             </div>
+
+            <button class="btn btn-primary" onclick="goStep2()">Continuer</button>
+          </div>
+
+          <div class="wizard-step" id="step2">
+            <h3 class="title">Qui vous a écrit ?</h3>
+            <p class="subtitle">Choisissez l’organisme le plus proche.</p>
+
+            <div class="choice-grid" id="organismChoices">
+              <button class="choice-card" onclick="selectOrganism('cpam', this)">
+                <span class="choice-emoji">🏥</span>
+                <span><strong>CPAM / Santé</strong><span>Remboursement, transport, soins.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('caf', this)">
+                <span class="choice-emoji">🏠</span>
+                <span><strong>CAF / Aides</strong><span>Aide, trop-perçu, justificatif.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('banque', this)">
+                <span class="choice-emoji">🏦</span>
+                <span><strong>Banque</strong><span>Frais, prélèvement, compte.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('assurance', this)">
+                <span class="choice-emoji">🛡️</span>
+                <span><strong>Assurance</strong><span>Sinistre, garantie, prise en charge.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('logement', this)">
+                <span class="choice-emoji">🔑</span>
+                <span><strong>Logement</strong><span>Bailleur, loyer, travaux.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('employeur', this)">
+                <span class="choice-emoji">💼</span>
+                <span><strong>Employeur</strong><span>Bulletin, attestation, document.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('impots', this)">
+                <span class="choice-emoji">🧾</span>
+                <span><strong>Impôts</strong><span>Avis, paiement, réclamation.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectOrganism('administration', this)">
+                <span class="choice-emoji">📄</span>
+                <span><strong>Autre administration</strong><span>Autre courrier administratif.</span></span>
+              </button>
+            </div>
+
+            <div class="mini-row">
+              <button class="btn btn-light" onclick="showStep(1)">Retour</button>
+              <button class="btn btn-primary" onclick="goStep3()">Continuer</button>
+            </div>
+          </div>
+
+          <div class="wizard-step" id="step3">
+            <h3 class="title">Que voulez-vous faire ?</h3>
+            <p class="subtitle">Choisissez l’action principale.</p>
+
+            <div class="choice-grid">
+              <button class="choice-card active" onclick="selectIntentWizard('comprendre', this)">
+                <span class="choice-emoji">👀</span>
+                <span><strong>Comprendre</strong><span>Savoir ce que le courrier veut dire.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectIntentWizard('repondre', this)">
+                <span class="choice-emoji">✍️</span>
+                <span><strong>Répondre</strong><span>Préparer une réponse claire.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectIntentWizard('contester', this)">
+                <span class="choice-emoji">⚖️</span>
+                <span><strong>Contester</strong><span>Demander un réexamen.</span></span>
+              </button>
+
+              <button class="choice-card" onclick="selectIntentWizard('delai', this)">
+                <span class="choice-emoji">⏳</span>
+                <span><strong>Demander un délai</strong><span>Avoir plus de temps pour répondre.</span></span>
+              </button>
+            </div>
+
+            <div class="mini-row">
+              <button class="btn btn-light" onclick="showStep(2)">Retour</button>
+              <button class="btn btn-primary" onclick="goStep4()">Continuer</button>
+            </div>
+          </div>
+
+          <div class="wizard-step" id="step4">
+            <h3 class="title">Derniers détails</h3>
+            <p class="subtitle">Laissez “détection automatique” si vous ne savez pas.</p>
 
             <div class="field">
               <label for="issueSelect">Situation</label>
@@ -836,36 +1000,30 @@
                 <option value="general">Autre demande</option>
               </select>
             </div>
-          </div>
 
-          <div class="grid-2">
-            <div class="field">
-              <label for="toneSelect">Ton</label>
-              <select id="toneSelect">
-                <option value="simple">Simple</option>
-                <option value="poli">Poli</option>
-                <option value="ferme">Ferme</option>
-              </select>
+            <div class="grid-2">
+              <div class="field">
+                <label for="toneSelect">Ton</label>
+                <select id="toneSelect">
+                  <option value="simple">Simple</option>
+                  <option value="poli">Poli</option>
+                  <option value="ferme">Ferme</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="detailText">Détail utile</label>
+                <input id="detailText" placeholder="N° dossier, date, montant..." />
+              </div>
             </div>
 
-            <div class="field">
-              <label for="detailText">Détail utile</label>
-              <input id="detailText" placeholder="N° dossier, date, montant..." />
+            <div class="mini-row">
+              <button class="btn btn-light" onclick="showStep(3)">Retour</button>
+              <button class="btn btn-primary" onclick="analyseLetter()">Voir ma fiche</button>
             </div>
-          </div>
 
-          <div class="field">
-            <label>Action souhaitée</label>
-            <div class="chips" id="intentChips">
-              <button class="chip active" onclick="selectIntent('comprendre', this)">Comprendre</button>
-              <button class="chip" onclick="selectIntent('repondre', this)">Répondre</button>
-              <button class="chip" onclick="selectIntent('contester', this)">Contester</button>
-              <button class="chip" onclick="selectIntent('delai', this)">Délai</button>
-            </div>
+            <p class="muted" id="freeCounterText" style="margin-top:9px;"></p>
           </div>
-
-          <button class="btn btn-primary" onclick="analyseLetter()">Analyser</button>
-          <p class="muted" id="freeCounterText" style="margin-top:9px;"></p>
         </div>
 
         <div id="assistantResult"></div>
@@ -893,7 +1051,12 @@
             <input id="reminderTitle" placeholder="Exemple : Répondre à la CPAM" />
           </div>
 
-          <div class="grid-2">
+          <div class="mini-row">
+            <button class="btn btn-light" onclick="quickReminder(1)">Demain</button>
+            <button class="btn btn-light" onclick="quickReminder(3)">Dans 3 jours</button>
+          </div>
+
+          <div class="grid-2" style="margin-top:10px;">
             <div class="field">
               <label for="reminderDate">Date</label>
               <input id="reminderDate" type="date" />
@@ -1007,7 +1170,7 @@
         Accueil
       </button>
 
-      <button class="nav-btn" onclick="openScreen('assistant')" data-screen="assistant">
+      <button class="nav-btn" onclick="startWizard()" data-screen="assistant">
         <span class="nav-icon">💬</span>
         Assistant
       </button>
@@ -1028,6 +1191,9 @@
 
   <script>
     const FREE_LIMIT = 3;
+
+    let wizardStep = 1;
+    let wizardOrganism = "administration";
     let selectedIntent = "comprendre";
     let lastGenerated = null;
 
@@ -1064,6 +1230,62 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    function startWizard() {
+      openScreen("assistant");
+      showStep(1);
+    }
+
+    function showStep(step) {
+      wizardStep = step;
+
+      document.querySelectorAll(".wizard-step").forEach(s => s.classList.remove("active"));
+      document.getElementById("step" + step).classList.add("active");
+
+      document.getElementById("progressLabel").textContent = "Étape " + step + " sur 4";
+      document.getElementById("progressFill").style.width = (step * 25) + "%";
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goStep2() {
+      const text = document.getElementById("letterText").value.trim();
+
+      if (!text) {
+        toast("Collez ou écrivez d’abord le courrier.");
+        return;
+      }
+
+      showStep(2);
+    }
+
+    function selectOrganism(value, btn) {
+      wizardOrganism = value;
+
+      document.querySelectorAll("#organismChoices .choice-card").forEach(card => {
+        card.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+    }
+
+    function goStep3() {
+      showStep(3);
+    }
+
+    function selectIntentWizard(intent, btn) {
+      selectedIntent = intent;
+
+      btn.parentElement.querySelectorAll(".choice-card").forEach(card => {
+        card.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+    }
+
+    function goStep4() {
+      showStep(4);
+    }
+
     function toast(message) {
       const el = document.getElementById("toast");
       el.textContent = message;
@@ -1071,18 +1293,12 @@
       setTimeout(() => el.classList.remove("show"), 2500);
     }
 
-    function selectIntent(intent, btn) {
-      selectedIntent = intent;
-      document.querySelectorAll("#intentChips .chip").forEach(c => c.classList.remove("active"));
-      btn.classList.add("active");
-    }
-
     function isPremium() {
-      return localStorage.getItem("mdz34_premium") === "true";
+      return localStorage.getItem("mdz35_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz34_premium", "true");
+      localStorage.setItem("mdz35_premium", "true");
       toast("Premium test activé.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1090,7 +1306,7 @@
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz34_premium", "false");
+      localStorage.setItem("mdz35_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1102,11 +1318,11 @@
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz34_usage") || "0");
+      return Number(localStorage.getItem("mdz35_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz34_usage", String(v));
+      localStorage.setItem("mdz35_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1123,13 +1339,13 @@
 
     function analyseLetter() {
       const text = document.getElementById("letterText").value.trim();
-      const organism = document.getElementById("organism").value;
       const selectedIssue = document.getElementById("issueSelect").value;
       const tone = document.getElementById("toneSelect").value;
       const detail = document.getElementById("detailText").value.trim();
 
       if (!text) {
         toast("Collez ou écrivez d’abord le courrier.");
+        showStep(1);
         return;
       }
 
@@ -1148,7 +1364,7 @@
         setUsageCount(getUsageCount() + 1);
       }
 
-      const result = generateResult(text, organism, selectedIssue, selectedIntent, tone, detail);
+      const result = generateResult(text, wizardOrganism, selectedIssue, selectedIntent, tone, detail);
       lastGenerated = result;
       renderResult(result);
       updateFreeCounter();
@@ -1490,6 +1706,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
             <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier la réponse</button>
             <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
             <button class="btn btn-light" onclick="createReminderFromResult()">Créer un rappel</button>
+            <button class="btn btn-light" onclick="startWizard()">Nouvelle analyse</button>
           </div>
 
           <details>
@@ -1626,12 +1843,28 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       }
     }
 
+    function quickReminder(days) {
+      const date = new Date();
+      date.setDate(date.getDate() + days);
+
+      const yyyy = date.getFullYear();
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const dd = String(date.getDate()).padStart(2, "0");
+
+      document.getElementById("reminderDate").value = `${yyyy}-${mm}-${dd}`;
+      document.getElementById("reminderTime").value = "09:00";
+
+      if (!document.getElementById("reminderTitle").value.trim()) {
+        document.getElementById("reminderTitle").value = "Répondre à mon courrier";
+      }
+    }
+
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz34_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz35_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz34_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz35_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1754,12 +1987,12 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz34_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz35_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz34_senior") === "true") {
+      if (localStorage.getItem("mdz35_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
     }
