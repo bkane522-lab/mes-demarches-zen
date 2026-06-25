@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mes Démarches Zen - V3.5 UX Senior</title>
+  <title>Mes Démarches Zen - V3.6 UX 9/10</title>
 
   <style>
     :root {
@@ -26,9 +26,7 @@
       --navHeight: 82px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -39,10 +37,7 @@
       line-height: 1.42;
     }
 
-    button,
-    input,
-    textarea,
-    select {
+    button, input, textarea, select {
       font-family: inherit;
       font-size: 17px;
     }
@@ -61,6 +56,12 @@
       padding: 15px 17px 17px;
       border-radius: 0 0 24px 24px;
       box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+
+    .app.inner .topbar {
+      padding: 12px 16px;
+      border-radius: 0 0 20px 20px;
     }
 
     .brand {
@@ -81,12 +82,22 @@
       flex: 0 0 auto;
     }
 
+    .app.inner .logo {
+      width: 44px;
+      height: 44px;
+      font-size: 25px;
+    }
+
     .brand h1 {
       margin: 0;
       font-size: 22px;
       line-height: 1.08;
       font-weight: 950;
       letter-spacing: -0.02em;
+    }
+
+    .app.inner .brand h1 {
+      font-size: 21px;
     }
 
     .brand p {
@@ -135,19 +146,10 @@
       font-size: 16px;
     }
 
-    .content {
-      padding: 12px;
-    }
+    .content { padding: 12px; }
 
-    .screen,
-    .wizard-step {
-      display: none;
-    }
-
-    .screen.active,
-    .wizard-step.active {
-      display: block;
-    }
+    .screen, .wizard-step { display: none; }
+    .screen.active, .wizard-step.active { display: block; }
 
     .card {
       background: var(--card);
@@ -263,9 +265,7 @@
       cursor: pointer;
     }
 
-    .field {
-      margin-bottom: 10px;
-    }
+    .field { margin-bottom: 10px; }
 
     label {
       display: block;
@@ -274,9 +274,7 @@
       font-size: 16px;
     }
 
-    input,
-    textarea,
-    select {
+    input, textarea, select {
       width: 100%;
       border: 2px solid var(--border);
       border-radius: 16px;
@@ -288,13 +286,11 @@
     }
 
     textarea {
-      min-height: 120px;
+      min-height: 125px;
       resize: vertical;
     }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
     }
@@ -321,27 +317,10 @@
       font-size: 18px;
     }
 
-    .btn-dark {
-      background: var(--navy);
-      color: white;
-    }
-
-    .btn-light {
-      background: var(--soft);
-      color: var(--navy);
-      border: 1px solid var(--border);
-    }
-
-    .btn-green {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-red {
-      background: var(--redSoft);
-      color: var(--red);
-      border: 1px solid #fecaca;
-    }
+    .btn-dark { background: var(--navy); color: white; }
+    .btn-light { background: var(--soft); color: var(--navy); border: 1px solid var(--border); }
+    .btn-green { background: var(--green); color: white; }
+    .btn-red { background: var(--redSoft); color: var(--red); border: 1px solid #fecaca; }
 
     .btn-row {
       display: grid;
@@ -380,7 +359,7 @@
 
     .progress-fill {
       height: 100%;
-      width: 25%;
+      width: 33%;
       background: var(--blue);
       border-radius: 999px;
       transition: width 0.2s ease;
@@ -427,17 +406,33 @@
       line-height: 1.1;
     }
 
-    .choice-card span {
+    .choice-card span span {
       display: block;
       color: var(--muted);
       font-size: 14px;
       margin-top: 3px;
     }
 
-    .chips {
+    details {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 12px;
+      margin-top: 9px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .filter-row {
       display: flex;
-      flex-wrap: wrap;
       gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .chip {
@@ -449,6 +444,7 @@
       font-weight: 950;
       font-size: 14px;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .chip.active {
@@ -488,44 +484,17 @@
       margin-top: 8px;
     }
 
-    .pill.normal {
-      color: #166534;
-      background: var(--greenSoft);
-    }
+    .pill.normal { color: #166534; background: var(--greenSoft); }
+    .pill.urgent { color: #9a3412; background: var(--orangeSoft); }
+    .pill.danger { color: var(--red); background: var(--redSoft); }
 
-    .pill.urgent {
-      color: #9a3412;
-      background: var(--orangeSoft);
-    }
-
-    .pill.danger {
-      color: var(--red);
-      background: var(--redSoft);
-    }
-
-    .actions-list,
-    .small-list {
+    .actions-list, .small-list {
       margin: 8px 0 0;
       padding-left: 21px;
     }
 
-    .actions-list li,
-    .small-list li {
+    .actions-list li, .small-list li {
       margin-bottom: 4px;
-    }
-
-    details {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 12px;
-      margin-top: 9px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-size: 18px;
-      font-weight: 950;
     }
 
     .letter-preview {
@@ -538,8 +507,7 @@
       font-size: 16px;
     }
 
-    .model-item,
-    .reminder-item {
+    .model-item, .reminder-item {
       border: 1px solid var(--border);
       background: white;
       border-radius: 18px;
@@ -547,12 +515,9 @@
       margin-bottom: 9px;
     }
 
-    .model-item {
-      cursor: pointer;
-    }
+    .model-item { cursor: pointer; }
 
-    .model-item strong,
-    .reminder-item strong {
+    .model-item strong, .reminder-item strong {
       display: block;
       font-size: 18px;
       margin-bottom: 3px;
@@ -604,9 +569,7 @@
       font-size: 14px;
     }
 
-    .plan li {
-      margin-bottom: 5px;
-    }
+    .plan li { margin-bottom: 5px; }
 
     .premium-plan {
       border-color: rgba(37, 99, 235, 0.35);
@@ -702,9 +665,7 @@
       z-index: 50;
     }
 
-    .toast.show {
-      display: block;
-    }
+    .toast.show { display: block; }
 
     .bottom-nav {
       position: fixed;
@@ -741,51 +702,22 @@
       line-height: 1;
     }
 
-    .nav-btn.active {
-      color: var(--blue);
-    }
+    .nav-btn.active { color: var(--blue); }
 
-    .senior-mode {
-      font-size: 18px;
-    }
-
-    .senior-mode .quick-title {
-      font-size: 21px;
-    }
-
-    .senior-mode .quick-desc,
-    .senior-mode .muted {
-      font-size: 15px;
-    }
+    .senior-mode { font-size: 18px; }
+    .senior-mode .quick-title { font-size: 21px; }
+    .senior-mode .quick-desc, .senior-mode .muted { font-size: 15px; }
 
     @media (max-width: 420px) {
-      .hero h2 {
-        font-size: 26px;
-      }
-
-      .main-action strong {
-        font-size: 24px;
-      }
-
-      .brand h1 {
-        font-size: 20px;
-      }
-
-      .grid-2,
-      .compare,
-      .mini-row {
-        grid-template-columns: 1fr;
-      }
-
-      .content {
-        padding: 12px;
-      }
+      .hero h2 { font-size: 26px; }
+      .main-action strong { font-size: 24px; }
+      .brand h1 { font-size: 20px; }
+      .grid-2, .compare, .mini-row { grid-template-columns: 1fr; }
+      .content { padding: 12px; }
     }
 
     @media print {
-      body {
-        background: white;
-      }
+      body { background: white; }
 
       .topbar,
       .bottom-nav,
@@ -802,13 +734,9 @@
         background: white;
       }
 
-      .content {
-        padding: 0;
-      }
+      .content { padding: 0; }
 
-      #pdf {
-        display: block !important;
-      }
+      #pdf { display: block !important; }
 
       .pdf-page {
         border: none;
@@ -829,7 +757,7 @@
           <h1>Mes Démarches Zen</h1>
           <p>Aide aux courriers</p>
         </div>
-        <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Gratuit</button>
+        <button class="premium-badge" id="premiumBadge" onclick="openScreen('premium')">Premium</button>
       </div>
 
       <div class="hero" id="homeHero">
@@ -879,10 +807,10 @@
 
         <div class="card">
           <h2 class="title">Assistant guidé</h2>
-          <p class="subtitle">Répondez à quelques étapes simples.</p>
+          <p class="subtitle">3 étapes simples pour préparer votre réponse.</p>
 
           <div class="progress-box">
-            <div class="progress-label" id="progressLabel">Étape 1 sur 4</div>
+            <div class="progress-label" id="progressLabel">Étape 1 sur 3</div>
             <div class="progress-track">
               <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -899,47 +827,47 @@
 
           <div class="wizard-step" id="step2">
             <h3 class="title">Qui vous a écrit ?</h3>
-            <p class="subtitle">Choisissez l’organisme le plus proche.</p>
+            <p class="subtitle">L’app peut détecter automatiquement, mais vous pouvez corriger.</p>
 
             <div class="choice-grid" id="organismChoices">
-              <button class="choice-card" onclick="selectOrganism('cpam', this)">
+              <button class="choice-card" data-org="cpam" onclick="selectOrganism('cpam', this)">
                 <span class="choice-emoji">🏥</span>
                 <span><strong>CPAM / Santé</strong><span>Remboursement, transport, soins.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('caf', this)">
+              <button class="choice-card" data-org="caf" onclick="selectOrganism('caf', this)">
                 <span class="choice-emoji">🏠</span>
                 <span><strong>CAF / Aides</strong><span>Aide, trop-perçu, justificatif.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('banque', this)">
+              <button class="choice-card" data-org="banque" onclick="selectOrganism('banque', this)">
                 <span class="choice-emoji">🏦</span>
                 <span><strong>Banque</strong><span>Frais, prélèvement, compte.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('assurance', this)">
+              <button class="choice-card" data-org="assurance" onclick="selectOrganism('assurance', this)">
                 <span class="choice-emoji">🛡️</span>
                 <span><strong>Assurance</strong><span>Sinistre, garantie, prise en charge.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('logement', this)">
+              <button class="choice-card" data-org="logement" onclick="selectOrganism('logement', this)">
                 <span class="choice-emoji">🔑</span>
                 <span><strong>Logement</strong><span>Bailleur, loyer, travaux.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('employeur', this)">
+              <button class="choice-card" data-org="employeur" onclick="selectOrganism('employeur', this)">
                 <span class="choice-emoji">💼</span>
                 <span><strong>Employeur</strong><span>Bulletin, attestation, document.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('impots', this)">
+              <button class="choice-card" data-org="impots" onclick="selectOrganism('impots', this)">
                 <span class="choice-emoji">🧾</span>
                 <span><strong>Impôts</strong><span>Avis, paiement, réclamation.</span></span>
               </button>
 
-              <button class="choice-card" onclick="selectOrganism('administration', this)">
+              <button class="choice-card" data-org="administration" onclick="selectOrganism('administration', this)">
                 <span class="choice-emoji">📄</span>
-                <span><strong>Autre administration</strong><span>Autre courrier administratif.</span></span>
+                <span><strong>Autre / je ne sais pas</strong><span>Autre courrier administratif.</span></span>
               </button>
             </div>
 
@@ -953,7 +881,7 @@
             <h3 class="title">Que voulez-vous faire ?</h3>
             <p class="subtitle">Choisissez l’action principale.</p>
 
-            <div class="choice-grid">
+            <div class="choice-grid" id="intentChoices">
               <button class="choice-card active" onclick="selectIntentWizard('comprendre', this)">
                 <span class="choice-emoji">👀</span>
                 <span><strong>Comprendre</strong><span>Savoir ce que le courrier veut dire.</span></span>
@@ -975,50 +903,44 @@
               </button>
             </div>
 
-            <div class="mini-row">
-              <button class="btn btn-light" onclick="showStep(2)">Retour</button>
-              <button class="btn btn-primary" onclick="goStep4()">Continuer</button>
-            </div>
-          </div>
+            <details>
+              <summary>Options avancées</summary>
 
-          <div class="wizard-step" id="step4">
-            <h3 class="title">Derniers détails</h3>
-            <p class="subtitle">Laissez “détection automatique” si vous ne savez pas.</p>
-
-            <div class="field">
-              <label for="issueSelect">Situation</label>
-              <select id="issueSelect">
-                <option value="auto">Détection automatique</option>
-                <option value="refus">Refus / décision négative</option>
-                <option value="recours">Recours / réexamen</option>
-                <option value="reclamation">Réclamation</option>
-                <option value="remboursement">Remboursement</option>
-                <option value="justificatif">Document demandé</option>
-                <option value="paiement">Dette / trop-perçu / somme</option>
-                <option value="convocation">Convocation</option>
-                <option value="delai">Date limite / délai</option>
-                <option value="general">Autre demande</option>
-              </select>
-            </div>
-
-            <div class="grid-2">
-              <div class="field">
-                <label for="toneSelect">Ton</label>
-                <select id="toneSelect">
-                  <option value="simple">Simple</option>
-                  <option value="poli">Poli</option>
-                  <option value="ferme">Ferme</option>
+              <div class="field" style="margin-top:10px;">
+                <label for="issueSelect">Situation</label>
+                <select id="issueSelect">
+                  <option value="auto">Détection automatique</option>
+                  <option value="refus">Refus / décision négative</option>
+                  <option value="recours">Recours / réexamen</option>
+                  <option value="reclamation">Réclamation</option>
+                  <option value="remboursement">Remboursement</option>
+                  <option value="justificatif">Document demandé</option>
+                  <option value="paiement">Dette / trop-perçu / somme</option>
+                  <option value="convocation">Convocation</option>
+                  <option value="delai">Date limite / délai</option>
+                  <option value="general">Autre demande</option>
                 </select>
               </div>
 
-              <div class="field">
-                <label for="detailText">Détail utile</label>
-                <input id="detailText" placeholder="N° dossier, date, montant..." />
+              <div class="grid-2">
+                <div class="field">
+                  <label for="toneSelect">Ton</label>
+                  <select id="toneSelect">
+                    <option value="simple">Simple</option>
+                    <option value="poli" selected>Poli</option>
+                    <option value="ferme">Ferme</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="detailText">Détail utile</label>
+                  <input id="detailText" placeholder="N° dossier, date, montant..." />
+                </div>
               </div>
-            </div>
+            </details>
 
             <div class="mini-row">
-              <button class="btn btn-light" onclick="showStep(3)">Retour</button>
+              <button class="btn btn-light" onclick="showStep(2)">Retour</button>
               <button class="btn btn-primary" onclick="analyseLetter()">Voir ma fiche</button>
             </div>
 
@@ -1034,7 +956,18 @@
 
         <div class="card">
           <h2 class="title">Modèles pro</h2>
-          <p class="subtitle">Choisissez une situation pour obtenir une réponse adaptée.</p>
+          <p class="subtitle">Choisissez une catégorie.</p>
+
+          <div class="filter-row" id="modelFilters">
+            <button class="chip active" onclick="setModelFilter('all', this)">Tous</button>
+            <button class="chip" onclick="setModelFilter('cpam', this)">CPAM</button>
+            <button class="chip" onclick="setModelFilter('caf', this)">CAF</button>
+            <button class="chip" onclick="setModelFilter('banque', this)">Banque</button>
+            <button class="chip" onclick="setModelFilter('assurance', this)">Assurance</button>
+            <button class="chip" onclick="setModelFilter('employeur', this)">Employeur</button>
+            <button class="chip" onclick="setModelFilter('logement', this)">Logement</button>
+          </div>
+
           <div id="modelList"></div>
         </div>
       </section>
@@ -1044,14 +977,15 @@
 
         <div class="card">
           <h2 class="title">Rappel</h2>
-          <p class="subtitle">Ajoutez une date et une heure pour ne pas oublier.</p>
+          <p class="subtitle">Choisissez rapidement une date.</p>
 
           <div class="field">
             <label for="reminderTitle">Titre</label>
             <input id="reminderTitle" placeholder="Exemple : Répondre à la CPAM" />
           </div>
 
-          <div class="mini-row">
+          <div class="btn-row">
+            <button class="btn btn-light" onclick="quickReminderToday()">Ce soir</button>
             <button class="btn btn-light" onclick="quickReminder(1)">Demain</button>
             <button class="btn btn-light" onclick="quickReminder(3)">Dans 3 jours</button>
           </div>
@@ -1090,8 +1024,8 @@
         <button class="back" onclick="openScreen('home')">← Retour</button>
 
         <div class="card">
-          <h2 class="title">Gratuit / Premium</h2>
-          <p class="subtitle">Le Premium apporte un vrai confort : PDF, objets, pièces à joindre et réponses avancées.</p>
+          <h2 class="title">Premium</h2>
+          <p class="subtitle">Le Premium apporte le PDF, les réponses avancées et les analyses illimitées.</p>
 
           <div class="compare">
             <div class="plan">
@@ -1192,9 +1126,9 @@
   <script>
     const FREE_LIMIT = 3;
 
-    let wizardStep = 1;
     let wizardOrganism = "administration";
     let selectedIntent = "comprendre";
+    let activeModelFilter = "all";
     let lastGenerated = null;
 
     const models = [
@@ -1221,6 +1155,7 @@
       });
 
       document.getElementById("homeHero").style.display = id === "home" ? "block" : "none";
+      document.getElementById("app").classList.toggle("inner", id !== "home");
 
       if (id === "models") renderModels();
       if (id === "reminders") renderReminders();
@@ -1236,13 +1171,11 @@
     }
 
     function showStep(step) {
-      wizardStep = step;
-
       document.querySelectorAll(".wizard-step").forEach(s => s.classList.remove("active"));
       document.getElementById("step" + step).classList.add("active");
 
-      document.getElementById("progressLabel").textContent = "Étape " + step + " sur 4";
-      document.getElementById("progressFill").style.width = (step * 25) + "%";
+      document.getElementById("progressLabel").textContent = "Étape " + step + " sur 3";
+      document.getElementById("progressFill").style.width = (step * 33.33) + "%";
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -1255,35 +1188,45 @@
         return;
       }
 
+      wizardOrganism = detectOrganism(text);
+      setActiveOrganismCard(wizardOrganism);
       showStep(2);
-    }
-
-    function selectOrganism(value, btn) {
-      wizardOrganism = value;
-
-      document.querySelectorAll("#organismChoices .choice-card").forEach(card => {
-        card.classList.remove("active");
-      });
-
-      btn.classList.add("active");
     }
 
     function goStep3() {
       showStep(3);
     }
 
-    function selectIntentWizard(intent, btn) {
-      selectedIntent = intent;
+    function detectOrganism(text) {
+      const lower = text.toLowerCase();
 
-      btn.parentElement.querySelectorAll(".choice-card").forEach(card => {
-        card.classList.remove("active");
+      if (lower.includes("cpam") || lower.includes("assurance maladie") || lower.includes("ameli")) return "cpam";
+      if (lower.includes("caf") || lower.includes("allocataire") || lower.includes("allocation")) return "caf";
+      if (lower.includes("banque") || lower.includes("prélèvement") || lower.includes("compte bancaire")) return "banque";
+      if (lower.includes("assurance") || lower.includes("sinistre") || lower.includes("garantie")) return "assurance";
+      if (lower.includes("bailleur") || lower.includes("loyer") || lower.includes("logement")) return "logement";
+      if (lower.includes("employeur") || lower.includes("bulletin") || lower.includes("contrat de travail")) return "employeur";
+      if (lower.includes("impôt") || lower.includes("impots") || lower.includes("fiscal")) return "impots";
+
+      return "administration";
+    }
+
+    function setActiveOrganismCard(value) {
+      document.querySelectorAll("#organismChoices .choice-card").forEach(card => {
+        card.classList.toggle("active", card.dataset.org === value);
       });
+    }
 
+    function selectOrganism(value, btn) {
+      wizardOrganism = value;
+      document.querySelectorAll("#organismChoices .choice-card").forEach(card => card.classList.remove("active"));
       btn.classList.add("active");
     }
 
-    function goStep4() {
-      showStep(4);
+    function selectIntentWizard(intent, btn) {
+      selectedIntent = intent;
+      document.querySelectorAll("#intentChoices .choice-card").forEach(card => card.classList.remove("active"));
+      btn.classList.add("active");
     }
 
     function toast(message) {
@@ -1294,11 +1237,11 @@
     }
 
     function isPremium() {
-      return localStorage.getItem("mdz35_premium") === "true";
+      return localStorage.getItem("mdz36_premium") === "true";
     }
 
     function activatePremium() {
-      localStorage.setItem("mdz35_premium", "true");
+      localStorage.setItem("mdz36_premium", "true");
       toast("Premium test activé.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1306,7 +1249,7 @@
     }
 
     function deactivatePremium() {
-      localStorage.setItem("mdz35_premium", "false");
+      localStorage.setItem("mdz36_premium", "false");
       toast("Retour en version gratuite.");
       updatePremiumBadge();
       updateFreeCounter();
@@ -1314,15 +1257,15 @@
     }
 
     function updatePremiumBadge() {
-      document.getElementById("premiumBadge").textContent = isPremium() ? "Premium" : "Gratuit";
+      document.getElementById("premiumBadge").textContent = isPremium() ? "Premium" : "Premium";
     }
 
     function getUsageCount() {
-      return Number(localStorage.getItem("mdz35_usage") || "0");
+      return Number(localStorage.getItem("mdz36_usage") || "0");
     }
 
     function setUsageCount(v) {
-      localStorage.setItem("mdz35_usage", String(v));
+      localStorage.setItem("mdz36_usage", String(v));
     }
 
     function updateFreeCounter() {
@@ -1383,10 +1326,7 @@
 
       const lower = text.toLowerCase();
 
-      if (hasAny(lower, ["si vous n'êtes pas le destinataire", "si vous n’êtes pas le destinataire", "détruire ce message", "ne pas divulguer", "confidentiel"])) {
-        return "signature_auto";
-      }
-
+      if (hasAny(lower, ["si vous n'êtes pas le destinataire", "si vous n’êtes pas le destinataire", "détruire ce message", "ne pas divulguer", "confidentiel"])) return "signature_auto";
       if (hasAny(lower, ["mise en demeure", "dernier rappel", "recouvrement", "huissier", "saisie", "contentieux", "expulsion"])) return "grave";
       if (hasAny(lower, ["réclamation", "réclamer", "insatisfaction", "plainte"])) return "reclamation";
       if (hasAny(lower, ["recours", "commission", "réexamen", "contester"])) return "recours";
@@ -1456,42 +1396,22 @@
 
     function buildUrgency(issue) {
       if (issue === "grave") {
-        return {
-          level: "Important",
-          cls: "danger",
-          text: "Répondez par écrit et gardez une preuve."
-        };
+        return { level: "Important", cls: "danger", text: "Répondez par écrit et gardez une preuve." };
       }
 
       if (["delai", "paiement", "refus", "recours", "reclamation"].includes(issue)) {
-        return {
-          level: "À traiter",
-          cls: "urgent",
-          text: "Vérifiez la date limite et préparez les pièces."
-        };
+        return { level: "À traiter", cls: "urgent", text: "Vérifiez la date limite et préparez les pièces." };
       }
 
-      return {
-        level: "Normal",
-        cls: "normal",
-        text: "Préparez une réponse claire avec les bons documents."
-      };
+      return { level: "Normal", cls: "normal", text: "Préparez une réponse claire avec les bons documents." };
     }
 
     function buildActions(organism, issue, intent) {
       if (issue === "signature_auto") {
-        return [
-          "Remonter plus haut dans l’email.",
-          "Copier le vrai contenu du message.",
-          "Relancer l’analyse avec le texte principal."
-        ];
+        return ["Remonter plus haut dans l’email.", "Copier le vrai contenu du message.", "Relancer l’analyse avec le texte principal."];
       }
 
-      let actions = [
-        "Repérer la date limite.",
-        "Faire une copie du courrier.",
-        "Garder une preuve de l’envoi."
-      ];
+      let actions = ["Repérer la date limite.", "Faire une copie du courrier.", "Garder une preuve de l’envoi."];
 
       if (organism === "cpam") actions.push("Vérifier prescription, dates et justificatifs.");
       if (organism === "caf") actions.push("Vérifier ressources, période et documents demandés.");
@@ -1507,9 +1427,7 @@
     }
 
     function buildPieces(organism, issue) {
-      if (issue === "signature_auto") {
-        return ["Le contenu principal du courrier", "La référence du dossier si disponible"];
-      }
+      if (issue === "signature_auto") return ["Le contenu principal du courrier", "La référence du dossier si disponible"];
 
       if (organism === "cpam") return ["Courrier reçu", "Numéro de sécurité sociale", "Justificatifs médicaux ou de transport", "Prescription si concernée"];
       if (organism === "caf") return ["Courrier reçu", "Numéro allocataire", "Justificatif demandé", "Ressources ou situation familiale si concernées"];
@@ -1525,7 +1443,6 @@
 
     function buildNextStep(organism, issue, intent) {
       if (issue === "signature_auto") return "Copiez le contenu principal du courrier, puis relancez l’analyse.";
-
       if (intent === "delai" || issue === "delai") return "Envoyer la demande de délai rapidement et garder une preuve.";
       if (issue === "recours" || intent === "contester" || issue === "refus") return "Envoyer le courrier de réexamen avec les justificatifs utiles.";
       if (issue === "reclamation") return "Envoyer la réclamation avec les références du dossier et conserver la réponse.";
@@ -1711,7 +1628,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
 
           <details>
             <summary>✍️ Voir la réponse complète</summary>
-            <div class="letter-preview" id="generatedResponse">${escapeHtml(result.response)}</div>
+            <div class="letter-preview">${escapeHtml(result.response)}</div>
           </details>
         </div>
       `;
@@ -1746,21 +1663,42 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       document.getElementById("pdfRecipient").textContent = lastGenerated.recipient;
       document.getElementById("pdfDate").textContent = new Date().toLocaleDateString("fr-FR");
       document.getElementById("pdfLetter").textContent = lastGenerated.response;
-
       document.getElementById("pdfPieces").innerHTML = lastGenerated.pieces.map(piece => `<li>${escapeHtml(piece)}</li>`).join("");
       document.getElementById("pdfNextStep").textContent = lastGenerated.nextStep;
 
       openScreen("pdf");
     }
 
+    function setModelFilter(filter, btn) {
+      activeModelFilter = filter;
+
+      document.querySelectorAll("#modelFilters .chip").forEach(chip => chip.classList.remove("active"));
+      btn.classList.add("active");
+
+      renderModels();
+    }
+
     function renderModels() {
       const list = document.getElementById("modelList");
-      list.innerHTML = models.map((m, i) => `
-        <div class="model-item" onclick="showModel(${i})">
-          <strong>${escapeHtml(m.title)}</strong>
-          <span class="muted">${escapeHtml(m.desc)}</span>
-        </div>
-      `).join("");
+      const filtered = activeModelFilter === "all"
+        ? models
+        : models.filter(m => m.organism === activeModelFilter);
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<div class="empty">Aucun modèle dans cette catégorie.</div>`;
+        return;
+      }
+
+      list.innerHTML = filtered.map((m) => {
+        const originalIndex = models.indexOf(m);
+
+        return `
+          <div class="model-item" onclick="showModel(${originalIndex})">
+            <strong>${escapeHtml(m.title)}</strong>
+            <span class="muted">${escapeHtml(m.desc)}</span>
+          </div>
+        `;
+      }).join("");
     }
 
     function showModel(index) {
@@ -1771,7 +1709,7 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       document.getElementById("modelList").innerHTML = `
         <div class="result-card">
           <div class="result-title">📝 ${escapeHtml(m.title)}</div>
-          <div class="letter-preview" id="modelText">${escapeHtml(result.response)}</div>
+          <div class="letter-preview">${escapeHtml(result.response)}</div>
           <div class="btn-row">
             <button class="btn btn-dark" onclick="copyGeneratedResponse()">Copier</button>
             <button class="btn btn-light" onclick="showPdf()">Voir PDF Premium</button>
@@ -1843,16 +1781,24 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
       }
     }
 
+    function quickReminderToday() {
+      const date = new Date();
+      setReminderDate(date, "19:00");
+    }
+
     function quickReminder(days) {
       const date = new Date();
       date.setDate(date.getDate() + days);
+      setReminderDate(date, "09:00");
+    }
 
+    function setReminderDate(date, time) {
       const yyyy = date.getFullYear();
       const mm = String(date.getMonth() + 1).padStart(2, "0");
       const dd = String(date.getDate()).padStart(2, "0");
 
       document.getElementById("reminderDate").value = `${yyyy}-${mm}-${dd}`;
-      document.getElementById("reminderTime").value = "09:00";
+      document.getElementById("reminderTime").value = time;
 
       if (!document.getElementById("reminderTitle").value.trim()) {
         document.getElementById("reminderTitle").value = "Répondre à mon courrier";
@@ -1860,11 +1806,11 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     }
 
     function getReminders() {
-      return JSON.parse(localStorage.getItem("mdz35_reminders") || "[]");
+      return JSON.parse(localStorage.getItem("mdz36_reminders") || "[]");
     }
 
     function saveReminders(reminders) {
-      localStorage.setItem("mdz35_reminders", JSON.stringify(reminders));
+      localStorage.setItem("mdz36_reminders", JSON.stringify(reminders));
     }
 
     function addReminder() {
@@ -1987,12 +1933,12 @@ Merci de m’indiquer les documents nécessaires et les délais à respecter.` +
     function toggleSeniorMode() {
       const app = document.getElementById("app");
       app.classList.toggle("senior-mode");
-      localStorage.setItem("mdz35_senior", app.classList.contains("senior-mode") ? "true" : "false");
+      localStorage.setItem("mdz36_senior", app.classList.contains("senior-mode") ? "true" : "false");
       toast("Mode senior modifié.");
     }
 
     function restoreSeniorMode() {
-      if (localStorage.getItem("mdz35_senior") === "true") {
+      if (localStorage.getItem("mdz36_senior") === "true") {
         document.getElementById("app").classList.add("senior-mode");
       }
     }
