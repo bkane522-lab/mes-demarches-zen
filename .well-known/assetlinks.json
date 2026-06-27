@@ -1,12 +1,8 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.mesdemarcheszen.app",
-      "sha256_cert_fingerprints": [
-        "..."
-      ]
-    }
-  }
-]
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.mes_demarches_zen.twa",
+        "sha256_cert_fingerprints": ["D8:E2:1A:C1:68:85:22:AC:F6:65:4C:06:5E:77:63:E8:D8:76:CE:8F:75:EF:E2:DD:4B:7B:2A:5B:D1:3E:37:E2"]
+      }
+    }]
